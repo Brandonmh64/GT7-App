@@ -1,9 +1,16 @@
+using GranTurismoApp.Properties;
+
 namespace GranTurismoApp
 {
     public partial class Main : Form
     {
         private TabPage _loadingTab { get; set; }
 
+        private ImageList _carImages { get; set; }
+
+
+
+        /* Initialize */
 
         public Main()
         {
@@ -12,11 +19,20 @@ namespace GranTurismoApp
 
             TabControl.SelectedIndex = 0;
         }
-
         private void Main_Load(object sender, EventArgs e)
         {
             ShowLoadingTab(BlacklistTab);
         }
+
+        private void LoadCarImages()
+        {
+            _carImages = new ImageList();
+
+            //_carImages.Images.Add()
+        }
+
+
+        /* Loading Tab */
 
         private async void ShowLoadingTab(TabPage nextTab)
         {
@@ -29,7 +45,7 @@ namespace GranTurismoApp
 
                 TabControl.SelectedTab = _loadingTab;
 
-                Task.Delay(3000).Wait();
+                Task.Delay(5000).Wait();
 
                 TabControl.TabPages.Remove(LoadingTab);
 
@@ -46,13 +62,12 @@ namespace GranTurismoApp
 
 
 
-        /// <summary>
-        /// Hide tabs that are only meant to be seen by dev
-        /// </summary>
-        private void HideTabs()
-        {
-        }
 
-        
+        /* Blacklist Tab */
+
+        private void LoadBlacklist()
+        {
+
+        }
     }
 }

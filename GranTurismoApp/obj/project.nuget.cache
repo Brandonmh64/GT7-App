@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F/ZQl1jaVTFOg+eESqHMkOuZSr11mAMBe1GI595NGu2ampMBjmLoLyYZiwIhLW5dkV5QbRJfFH3/qPXvwthjzg==",
+  "dgSpecHash": "cQ3ZGZr+lk4RaYF412nUAuCvtUI7X38fWLJa5owMN3dYs3t3qRSktNhcg4I3PJ1qsRE8pxcIBknV59c/jARR5w==",
   "success": true,
-  "projectFilePath": "C:\\Repos\\GranTurismoApp\\GranTurismoApp\\GranTurismoApp.csproj",
+  "projectFilePath": "C:\\repos\\GT7-App\\GranTurismoApp\\GranTurismoApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
