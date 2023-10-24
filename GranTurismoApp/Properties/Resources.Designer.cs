@@ -73,9 +73,9 @@ namespace GranTurismoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SkylineFullReducedSize {
+        internal static System.Drawing.Bitmap SkylineIcon {
             get {
-                object obj = ResourceManager.GetObject("SkylineFullReducedSize", resourceCulture);
+                object obj = ResourceManager.GetObject("SkylineIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace GranTurismoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TruenoFullReducedSize {
+        internal static System.Drawing.Bitmap SkylineVsTrueno {
             get {
-                object obj = ResourceManager.GetObject("TruenoFullReducedSize", resourceCulture);
+                object obj = ResourceManager.GetObject("SkylineVsTrueno", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -22,13 +22,16 @@ namespace GranTurismoApp
         private void Main_Load(object sender, EventArgs e)
         {
             ShowLoadingTab(BlacklistTab);
+
+            LoadCarImages();
+            LoadBlacklist();
         }
 
         private void LoadCarImages()
         {
             _carImages = new ImageList();
 
-            //_carImages.Images.Add()
+            _carImages.Images.Add("Skyline", Resources.SkylineIcon);
         }
 
 
@@ -67,7 +70,14 @@ namespace GranTurismoApp
 
         private void LoadBlacklist()
         {
+            //BlacklistListView.LargeImageList = _carImages;
 
+            var skyline = new ListViewItem();
+            skyline.ImageKey = "Skyline";
+
+            skyline.Text = "R34 Skyline";
+
+            //BlacklistListView.Items.Add(skyline);
         }
     }
 }
