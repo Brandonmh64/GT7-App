@@ -1,3 +1,4 @@
+using GranTurismoLibrary.Models;
 using GranTurismoApp.Properties;
 
 namespace GranTurismoApp
@@ -16,6 +17,7 @@ namespace GranTurismoApp
         {
             InitializeComponent();
             _loadingTab = LoadingTab;
+            _carImages = new ImageList();
 
             TabControl.SelectedIndex = 0;
         }
@@ -29,8 +31,6 @@ namespace GranTurismoApp
 
         private void LoadCarImages()
         {
-            _carImages = new ImageList();
-
             _carImages.Images.Add("Skyline", Resources.SkylineIcon);
         }
 
@@ -70,14 +70,34 @@ namespace GranTurismoApp
 
         private void LoadBlacklist()
         {
-            //BlacklistListView.LargeImageList = _carImages;
+            for (int i = 1; i < 16; i++)
+            {
+                var bL = new BlacklistCar();
 
-            var skyline = new ListViewItem();
-            skyline.ImageKey = "Skyline";
+                var pictureBox = Controls.Find($"BLImage{i}", true).FirstOrDefault() as PictureBox;
+                if (pictureBox != null) { pictureBox.Image = GetBlacklistIcon(bL.Name); }
+                
+                var nameLabel = Controls.Find($"BLName{i}", true).FirstOrDefault() as Label;
+                if (nameLabel != null) { nameLabel.Text = bL.Name; }
 
-            skyline.Text = "R34 Skyline";
+                var performanceLabel = Controls.Find($"BLPerformance{i}", true).FirstOrDefault() as Label;
+                if (performanceLabel != null) { performanceLabel.Text = bL.Performance; }
 
-            //BlacklistListView.Items.Add(skyline);
+                var timeLabel = Controls.Find($"BLTime{i}", true).FirstOrDefault() as Label;
+                if (timeLabel != null) {  timeLabel.Text = bL.Time;}
+            }
+        }
+
+        private Image? GetBlacklistIcon(string carName)
+        {
+            if (_carImages.Images.ContainsKey(carName))
+            {
+                return _carImages.Images[carName];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

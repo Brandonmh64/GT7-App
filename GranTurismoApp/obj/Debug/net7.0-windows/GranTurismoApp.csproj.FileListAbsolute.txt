@@ -33,3 +33,7 @@ C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\refint\GranTurismoApp.d
 C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\GranTurismoApp.pdb
 C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\GranTurismoApp.genruntimeconfig.cache
 C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\ref\GranTurismoApp.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\GranTurismoLibrary.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\GranTurismoLibrary.pdb
+C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\GranTurismoApp.csproj.AssemblyReference.cache
+C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\GranTurismoApp.csproj.CopyComplete

@@ -1,0 +1,12 @@
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\GranTurismoLibrary.deps.json
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\GranTurismoLibrary.dll
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\GranTurismoLibrary.pdb
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.csproj.AssemblyReference.cache
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.AssemblyInfoInputs.cache
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.AssemblyInfo.cs
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.csproj.CoreCompileInputs.cache
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.dll
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\refint\GranTurismoLibrary.dll
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.pdb
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\ref\GranTurismoLibrary.dll
