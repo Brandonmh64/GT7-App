@@ -16,7 +16,7 @@ namespace GranTurismoFramework
     public partial class GranTurismoDb : DbContext
     {
         public GranTurismoDb()
-            : base("name=masterEntities")
+            : base("name=GranTurismoDb")
         {
         }
     

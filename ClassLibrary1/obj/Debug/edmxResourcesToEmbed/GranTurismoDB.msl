@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GranTurismoDbModelStoreContainer" CdmEntityContainer="masterEntities">
+  <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="GranTurismoDb">
     <EntitySetMapping Name="Cars">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.Car">
+      <EntityTypeMapping TypeName="masterModel.Car">
         <MappingFragment StoreEntitySet="Car">
           <ScalarProperty Name="CarId" ColumnName="CarId" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -12,7 +12,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Courses">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.Course">
+      <EntityTypeMapping TypeName="masterModel.Course">
         <MappingFragment StoreEntitySet="Course">
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Manufacturers">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.Manufacturer">
+      <EntityTypeMapping TypeName="masterModel.Manufacturer">
         <MappingFragment StoreEntitySet="Manufacturer">
           <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -30,7 +30,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Regions">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.Region">
+      <EntityTypeMapping TypeName="masterModel.Region">
         <MappingFragment StoreEntitySet="Region">
           <ScalarProperty Name="RegionId" ColumnName="RegionId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -38,7 +38,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TimeTrials">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.TimeTrial">
+      <EntityTypeMapping TypeName="masterModel.TimeTrial">
         <MappingFragment StoreEntitySet="TimeTrial">
           <ScalarProperty Name="TimeTrialId" ColumnName="TimeTrialId" />
           <ScalarProperty Name="TrackId" ColumnName="TrackId" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TireTypes">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.TireType">
+      <EntityTypeMapping TypeName="masterModel.TireType">
         <MappingFragment StoreEntitySet="TireType">
           <ScalarProperty Name="TireId" ColumnName="TireId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -58,7 +58,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tracks">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.Track">
+      <EntityTypeMapping TypeName="masterModel.Track">
         <MappingFragment StoreEntitySet="Track">
           <ScalarProperty Name="TrackId" ColumnName="TrackId" />
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
@@ -67,7 +67,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tunes">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.Tune">
+      <EntityTypeMapping TypeName="masterModel.Tune">
         <MappingFragment StoreEntitySet="Tune">
           <ScalarProperty Name="TuneId" ColumnName="TuneId" />
           <ScalarProperty Name="CarId" ColumnName="CarId" />
@@ -79,7 +79,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MSreplication_options">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.MSreplication_options">
+      <EntityTypeMapping TypeName="masterModel.MSreplication_options">
         <MappingFragment StoreEntitySet="MSreplication_options">
           <ScalarProperty Name="optname" ColumnName="optname" />
           <ScalarProperty Name="value" ColumnName="value" />
@@ -91,7 +91,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="spt_fallback_db">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.spt_fallback_db">
+      <EntityTypeMapping TypeName="masterModel.spt_fallback_db">
         <MappingFragment StoreEntitySet="spt_fallback_db">
           <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
           <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
@@ -105,7 +105,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="spt_fallback_dev">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.spt_fallback_dev">
+      <EntityTypeMapping TypeName="masterModel.spt_fallback_dev">
         <MappingFragment StoreEntitySet="spt_fallback_dev">
           <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
           <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
@@ -121,7 +121,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="spt_fallback_usg">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.spt_fallback_usg">
+      <EntityTypeMapping TypeName="masterModel.spt_fallback_usg">
         <MappingFragment StoreEntitySet="spt_fallback_usg">
           <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
           <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
@@ -136,7 +136,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="spt_monitor">
-      <EntityTypeMapping TypeName="GranTurismoDbModel.spt_monitor">
+      <EntityTypeMapping TypeName="masterModel.spt_monitor">
         <MappingFragment StoreEntitySet="spt_monitor">
           <ScalarProperty Name="lastrun" ColumnName="lastrun" />
           <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />

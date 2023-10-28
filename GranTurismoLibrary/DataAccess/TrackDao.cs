@@ -1,4 +1,5 @@
-﻿using GranTurismoLibrary.Models;
+﻿using GranTurismoLibrary.Helpers;
+using GranTurismoLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +10,12 @@ namespace GranTurismoLibrary.DataAccess
 {
     public class TrackDao
     {
-        public List<TrackDto> GetTracks()
+        public List<TrackInfo> GetAllTrackInfo()
         {
-            var tracks = new List<TrackDto>();
+            var trackDao = new GranTurismoFramework.DataAccess.TrackDao();
 
-            foreach (var track in new GranTurismoFramework.DataAccess.TrackDao().GetTracks())
-            {
-                var trackDto = new TrackDto(track);
-                
-                tracks.Add(trackDto);
-            }
-
-            return tracks;
+            var mappedTracks = GtMapper.MapList<GranTurismoFramework.DataTransfer.TrackInfo, TrackInfo>(trackDao.GetAllTrackInfo());
+            return mappedTracks;
         }
     }
 }

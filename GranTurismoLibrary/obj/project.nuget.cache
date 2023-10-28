@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "EoBh7yQS7KlElhepfPXGJQAycwg1ahhmRkdApq7OmhEuBbWSJob7AJ97s/ya8Mc+6m1o4PIkZF5tCwQZQx5wSg==",
+  "dgSpecHash": "BbfKv9KDE0ODHtcl9vwmhGv+H7nYUm9en+x/kWGQNog3HhuSZvzdzdvDMHJ3aRihG4NnZRJDypHXSHqJUyOctA==",
   "success": true,
   "projectFilePath": "C:\\repos\\GT7-App\\GranTurismoLibrary\\GranTurismoLibrary.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\brand\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\brand\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\brand\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\brand\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512"
   ],

@@ -9,15 +9,17 @@ namespace GranTurismoLibrary.DataAccess
 {
     public class BlacklistCarDao
     {
-        public List<BlacklistCar> GetBlacklistCars()
+        public List<BlacklistCarInfo> GetBlacklistCars()
         {
-            var potentialBlacklistCars = new List<BlacklistCar>();
+            var potentialBlacklistCars = new List<BlacklistCarInfo>();
             var carDao = new GranTurismoFramework.DataAccess.CarDao();
 
-            foreach (var car in carDao.GetCars())
+            foreach (var car in carDao.GetAllCarInfo())
             {
 
             }
+
+            return potentialBlacklistCars;
         }
     }
 }

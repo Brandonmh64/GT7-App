@@ -37,3 +37,16 @@ C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\GranTurismoLibrary.dll
 C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\GranTurismoLibrary.pdb
 C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\GranTurismoApp.csproj.AssemblyReference.cache
 C:\repos\GT7-App\GranTurismoApp\obj\Debug\net7.0-windows\GranTurismoApp.csproj.CopyComplete
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\AutoMapper.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\ClassLibrary1.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\EntityFramework.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\ClassLibrary1.pdb
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\GranTurismoApp.dll.config
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\ClassLibrary1.dll.config
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\EntityFramework.SqlServer.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\System.Data.SqlClient.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\runtimes\win-arm64\native\sni.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\runtimes\win-x64\native\sni.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\runtimes\win-x86\native\sni.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\repos\GT7-App\GranTurismoApp\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

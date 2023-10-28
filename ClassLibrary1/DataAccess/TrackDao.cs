@@ -10,16 +10,16 @@ namespace GranTurismoFramework.DataAccess
 {
     public class TrackDao
     {
-        public List<TrackDto> GetTracks()
+        public List<TrackInfo> GetAllTrackInfo()
         {
-            var tracks = new List<TrackDto>();
+            var tracks = new List<TrackInfo>();
 
             using (var context = new GranTurismoDb())
             {
                 var query = from t in context.Tracks
                             join c in context.Courses on t.CourseId equals c.CourseId
                             join r in context.Regions on c.RegionId equals r.RegionId
-                            select (new TrackDto()
+                            select (new TrackInfo()
                             {
                                 Course = c,
                                 Track = t,

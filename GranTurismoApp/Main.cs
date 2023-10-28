@@ -1,5 +1,6 @@
 using GranTurismoLibrary.Models;
 using GranTurismoApp.Properties;
+using GranTurismoFramework.DataAccess;
 
 namespace GranTurismoApp
 {
@@ -20,6 +21,9 @@ namespace GranTurismoApp
             _carImages = new ImageList();
 
             TabControl.SelectedIndex = 0;
+
+            var dao = new TrackDao();
+            var tracks = dao.GetAllTrackInfo();
         }
         private void Main_Load(object sender, EventArgs e)
         {
@@ -72,7 +76,7 @@ namespace GranTurismoApp
         {
             for (int i = 1; i < 16; i++)
             {
-                var bL = new BlacklistCar();
+                var bL = new BlacklistCarInfo();
 
                 var pictureBox = Controls.Find($"BLImage{i}", true).FirstOrDefault() as PictureBox;
                 if (pictureBox != null) { pictureBox.Image = GetBlacklistIcon(bL.Name); }

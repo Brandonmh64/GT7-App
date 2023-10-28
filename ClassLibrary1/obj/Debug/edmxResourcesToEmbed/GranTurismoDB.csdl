@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="GranTurismoDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Car">
     <Key>
       <PropertyRef Name="CarId" />
@@ -173,7 +173,7 @@
     <Property Name="total_write" Type="Int32" Nullable="false" />
     <Property Name="total_errors" Type="Int32" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="masterEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="GranTurismoDb" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cars" EntityType="Self.Car" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
     <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />

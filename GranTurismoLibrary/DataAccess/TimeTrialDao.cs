@@ -10,12 +10,6 @@ namespace GranTurismoLibrary.DataAccess
 {
     public class TimeTrialDao
     {
-        public List<TimeTrialDto> GetTimeTrials()
-        {
-            var timeTrials = new List<TimeTrialDto>();
-
-            var cars = new CarDao().GetCars();
-            var 
-        }
+        
     }
 }

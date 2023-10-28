@@ -10,3 +10,9 @@ C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.dll
 C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\refint\GranTurismoLibrary.dll
 C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.pdb
 C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\ref\GranTurismoLibrary.dll
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\ClassLibrary1.dll
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\EntityFramework.dll
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\ClassLibrary1.pdb
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\EntityFramework.xml
+C:\repos\GT7-App\GranTurismoLibrary\obj\Debug\net7.0\GranTurismoLibrary.csproj.CopyComplete
+C:\repos\GT7-App\GranTurismoLibrary\bin\Debug\net7.0\ClassLibrary1.dll.config

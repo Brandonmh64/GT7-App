@@ -10,9 +10,9 @@ namespace GranTurismoFramework.DataAccess
 {
     public class TimeTrialDao
     {
-        public List<TimeTrialDto> GetTimeTrials()
+        public List<TimeTrialInfoDto> GetTimeTrials()
         {
-            var timeTrials = new List<TimeTrialDto>();
+            var timeTrials = new List<TimeTrialInfoDto>();
 
             using (var context = new GranTurismoDb())
             {
@@ -23,17 +23,20 @@ namespace GranTurismoFramework.DataAccess
                              join track in context.Tracks on tt.TrackId equals track.TrackId
                              join course in context.Courses on track.TrackId equals course.CourseId
                              join region in context.Regions on course.RegionId equals region.RegionId
-                             select (new TimeTrialDto
+                             select (new TimeTrialInfoDto
                              {
                                  TimeTrial = tt,
-                                 Track = new TrackDto
+                                 TrackInfo = new TrackInfo()
                                  {
-                                     Course = course,
                                      Track = track,
+                                     Course = course,
                                      Region = region,
                                  },
-                                 Car = c,
-                                 Manufacturer = m,
+                                 CarInfo = new CarInfo()
+                                 {
+                                     Car = c,
+                                     Manufacturer = m,
+                                 },
                                  Tune = tune,
                              });
 
