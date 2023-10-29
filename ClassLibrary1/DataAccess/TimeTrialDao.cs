@@ -26,13 +26,13 @@ namespace GranTurismoFramework.DataAccess
                              select (new TimeTrialInfoDto
                              {
                                  TimeTrial = tt,
-                                 TrackInfo = new TrackInfo()
+                                 TrackInfo = new TrackInfoDto()
                                  {
                                      Track = track,
                                      Course = course,
                                      Region = region,
                                  },
-                                 CarInfo = new CarInfo()
+                                 CarInfo = new CarInfoDto()
                                  {
                                      Car = c,
                                      Manufacturer = m,

@@ -14,7 +14,7 @@ namespace GranTurismoLibrary.DataAccess
         {
             var trackDao = new GranTurismoFramework.DataAccess.TrackDao();
 
-            var mappedTracks = GtMapper.MapList<GranTurismoFramework.DataTransfer.TrackInfo, TrackInfo>(trackDao.GetAllTrackInfo());
+            var mappedTracks = GtMapper.MapList<GranTurismoFramework.DataTransfer.TrackInfoDto, TrackInfo>(trackDao.GetAllTrackInfo());
             return mappedTracks;
         }
     }

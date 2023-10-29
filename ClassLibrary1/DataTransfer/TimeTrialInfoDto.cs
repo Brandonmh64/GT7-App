@@ -11,9 +11,9 @@ namespace GranTurismoFramework.DataTransfer
     public class TimeTrialInfoDto
     {
         public TimeTrial TimeTrial { get; set; }
-        public TrackInfo TrackInfo { get; set; }
+        public TrackInfoDto TrackInfo { get; set; }
 
-        public CarInfo CarInfo { get; set; }
+        public CarInfoDto CarInfo { get; set; }
         public Tune Tune { get; set; }
     }
 }

@@ -11,7 +11,9 @@ namespace GranTurismoLibrary.Models
         public int TuneId { get; set; }
 
         public int CarId { get; set; }
-        public double PerformancePoints { get; set; }
+        public float PerformancePoints { get; set; }
+        public float HorsePower { get; set; }
+        public float Weight { get; set; }  
         
         public int TiresFrontId { get; set; }
         public string TiresFront { get; set; }

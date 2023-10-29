@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace GranTurismoLibrary.DataAccess
 {
-    public class BlacklistCarDao
+    public class OwnedCarDao
     {
-        public List<BlacklistCarInfo> GetBlacklistCars()
+        public List<OwnedCarInfo> GetAllCars()
         {
-            var potentialBlacklistCars = new List<BlacklistCarInfo>();
+            var allCars = new List<OwnedCarInfo>();
             var carDao = new GranTurismoFramework.DataAccess.CarDao();
 
             foreach (var car in carDao.GetAllCarInfo())

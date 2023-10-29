@@ -69,9 +69,9 @@
     <Compile Include="DataAccess\TireTypeDao.cs" />
     <Compile Include="DataAccess\TrackDao.cs" />
     <Compile Include="DataAccess\TuneDao.cs" />
-    <Compile Include="DataTransfer\CarInfo.cs" />
+    <Compile Include="DataTransfer\CarInfoDto.cs" />
     <Compile Include="DataTransfer\TimeTrialInfoDto.cs" />
-    <Compile Include="DataTransfer\TrackInfo.cs" />
+    <Compile Include="DataTransfer\TrackInfoDto.cs" />
     <Compile Include="GranTurismoDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

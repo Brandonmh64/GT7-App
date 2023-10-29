@@ -9,18 +9,20 @@ namespace GranTurismoFramework.DataAccess
 {
     public class CarDao
     {
-        public List<CarInfo> GetAllCarInfo()
+        public List<CarInfoDto> GetAllCarInfo()
         {
-            var cars = new List<CarInfo>();
+            var cars = new List<CarInfoDto>();
 
             using (var db = new GranTurismoDb())
             {
                 var query = from car in db.Cars
                             join manufacturer in db.Manufacturers on car.ManufacturerId equals manufacturer.ManufacturerId
-                            select new CarInfo
+                            join region in db.Regions on manufacturer.RegionId equals region.RegionId
+                            select new CarInfoDto
                             {
                                 Car = car,
                                 Manufacturer = manufacturer,
+                                Region = region,
                             };
                 cars = query.ToList();
             }
