@@ -21,9 +21,6 @@ namespace GranTurismoApp
             _carImages = new ImageList();
 
             TabControl.SelectedIndex = 0;
-
-            var dao = new TrackDao();
-            var tracks = dao.GetAllTrackInfo();
         }
         private void Main_Load(object sender, EventArgs e)
         {
@@ -80,7 +77,7 @@ namespace GranTurismoApp
 
                 var pictureBox = Controls.Find($"BLImage{i}", true).FirstOrDefault() as PictureBox;
                 if (pictureBox != null) { pictureBox.Image = GetBlacklistIcon(bL.Name); }
-                
+
                 var nameLabel = Controls.Find($"BLName{i}", true).FirstOrDefault() as Label;
                 if (nameLabel != null) { nameLabel.Text = bL.Name; }
 
@@ -88,7 +85,7 @@ namespace GranTurismoApp
                 if (performanceLabel != null) { performanceLabel.Text = bL.Performance; }
 
                 var timeLabel = Controls.Find($"BLTime{i}", true).FirstOrDefault() as Label;
-                if (timeLabel != null) {  timeLabel.Text = bL.Time;}
+                if (timeLabel != null) { timeLabel.Text = bL.Time; }
             }
         }
 
@@ -102,6 +99,11 @@ namespace GranTurismoApp
             {
                 return null;
             }
+        }
+
+        private void AddCar_BrowseButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -17,6 +17,6 @@ namespace GranTurismoLibrary.Models
 
         public string RegionName { get; set; }
 
-        CarInfo CarInfo { get; set; }
+        OwnedCarInfo CarInfo { get; set; }
     }
 }
