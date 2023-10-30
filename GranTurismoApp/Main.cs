@@ -3,6 +3,7 @@ using GranTurismoApp.Properties;
 using GranTurismoLibrary.DataAccess;
 using GranTurismoFramework.DataTransfer.Simple;
 using GranTurismoFramework.DataTransfer;
+using GranTurismoFramework;
 
 namespace GranTurismoApp
 {
@@ -165,46 +166,36 @@ namespace GranTurismoApp
         }
 
 
-        // Add Car
+        // Add Car Panel
 
         private void LoadRegionList(int manufacturerId = 0, int modelId = 0)
         {
             var regionDao = new RegionDao();
             var regionList = regionDao.GetRegions();
-            var filteredList = new List<RegionDto>();
 
-            if (manufacturerId > 0 || modelId > 0)
-            {
-                if (manufacturerId > 0)
-                {
-                    var selectedManufacturer = AddCar_ManufacturerDropDown?.SelectedItem as ManufacturerDto;
-                    if (selectedManufacturer != null)
-                    {
-                        filteredList = regionList.Where(r => r.RegionId == selectedManufacturer.RegionId).ToList();
-                    }
-                }
-                if (modelId > 0)
-                {
-                    var selectedModel = AddCar_ModelDropDown?.SelectedItem as CarInfoDto;
-
-                    if (selectedModel != null)
-                    {
-                        filteredList = regionList.Where(r => r.RegionId == selectedModel.Region.RegionId).ToList();
-                    }
-                }
-
-                AddCar_RegionDropDown.DataSource = filteredList;
-            }
-            else
-            {
-                AddCar_RegionDropDown.DataSource = regionList;
-            }
-
+            AddCar_RegionDropDown.DataSource = regionList;
             AddCar_RegionDropDown.DisplayMember = "Name";
             AddCar_RegionDropDown.ValueMember = "RegionId";
 
-            AddCar_RegionDropDown.SelectedIndex = -1;
-            AddCar_RegionDropDown.Text = "";
+            if (manufacturerId > 0 || modelId > 0)
+            {
+                var selectedManufacturer = AddCar_ManufacturerDropDown.SelectedValue as ManufacturerDto;
+                if (selectedManufacturer != null)
+                {
+                    AddCar_RegionDropDown.SelectedItem = regionList.FirstOrDefault(r => r.RegionId == selectedManufacturer.RegionId);
+                }
+
+                var selectedModel = AddCar_ModelDropDown?.SelectedItem as CarInfoDto;
+                if (selectedModel != null)
+                {
+                    AddCar_RegionDropDown.SelectedItem = regionList.FirstOrDefault(r => r.RegionId == selectedModel.Region.RegionId);
+                }
+            }
+            else
+            {
+                AddCar_RegionDropDown.SelectedIndex = -1;
+                AddCar_RegionDropDown.Text = "";
+            }
         }
         private void AddCar_RegionDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -224,12 +215,16 @@ namespace GranTurismoApp
         {
             var manufacturerDao = new GranTurismoFramework.DataAccess.ManufacturerDao();
             var manufacturerList = manufacturerDao.GetManufacturers();
-            
+            var filteredList = new List<ManufacturerDto>();
+
+            AddCar_ManufacturerDropDown.DisplayMember = "Name";
+            AddCar_ManufacturerDropDown.ValueMember = "ManufacturerId";
+
             if (regionId > 0 || modelId > 0)
             {
                 if (regionId > 0)
                 {
-                    manufacturerList = manufacturerList.Where(m => m.RegionId == regionId).ToList();
+                    filteredList = manufacturerList.Where(m => m.RegionId == regionId).ToList();
                 }
                 if (modelId > 0)
                 {
@@ -237,18 +232,20 @@ namespace GranTurismoApp
 
                     if (selectedModel != null)
                     {
-                        manufacturerList = manufacturerList.Where(m => m.ManufacturerId == selectedModel.Manufacturer.ManufacturerId).ToList();
+                        filteredList = manufacturerList.Where(m => m.ManufacturerId == selectedModel.Manufacturer.ManufacturerId).ToList();
                     }
                 }
+
+                AddCar_ManufacturerDropDown.DataSource = filteredList;
+                AddCar_ManufacturerDropDown.SelectedItem = filteredList.FirstOrDefault();
             }
-
-            AddCar_ManufacturerDropDown.DataSource = manufacturerList;
-
-            AddCar_ManufacturerDropDown.DisplayMember = "Name";
-            AddCar_ManufacturerDropDown.ValueMember = "ManufacturerId";
-
-            AddCar_ManufacturerDropDown.SelectedIndex = -1;
-            AddCar_ManufacturerDropDown.Text = "";
+            else
+            {
+                AddCar_ManufacturerDropDown.DataSource = manufacturerList;
+                AddCar_ManufacturerDropDown.SelectedIndex = -1;
+                AddCar_ManufacturerDropDown.SelectedItem = null;
+                AddCar_ManufacturerDropDown.Text = "";
+            }
         }
         private void AddCar_ManufacturerDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -264,31 +261,36 @@ namespace GranTurismoApp
             }
         }
 
-
-
         private void LoadCarModelList(int regionId = 0, int manufacturerId = 0)
         {
             var carDao = new CarDao();
             var carList = carDao.GetAllCarInfo();
+            var filteredList = new List<CarInfoDto>();
+
+            AddCar_ModelDropDown.DisplayMember = "CarName";
+            AddCar_ModelDropDown.ValueMember = "CarId";
 
             if (regionId > 0 || manufacturerId > 0)
             {
                 if (regionId > 0)
                 {
-                    carList = carList.Where(c => c.Region.RegionId == regionId).ToList();
+                    filteredList = carList.Where(c => c.Region.RegionId == regionId).ToList();
                 }
                 if (manufacturerId > 0)
                 {
-                    carList = carList.Where(c => c.Manufacturer.ManufacturerId == manufacturerId).ToList();
+                    filteredList = carList.Where(c => c.Manufacturer.ManufacturerId == manufacturerId).ToList();
                 }
+
+                AddCar_ModelDropDown.DataSource = filteredList;
+                AddCar_ModelDropDown.SelectedItem = filteredList.FirstOrDefault();
             }
-
-            AddCar_ModelDropDown.DataSource = carList;
-            AddCar_ModelDropDown.DisplayMember = "CarName";
-            AddCar_ModelDropDown.ValueMember = "CarId";
-
-            AddCar_ModelDropDown.SelectedIndex = -1;
-            AddCar_ModelDropDown.Text = "";
+            else
+            {
+                AddCar_ModelDropDown.DataSource = carList;
+                AddCar_ModelDropDown.SelectedIndex = -1;
+                AddCar_ModelDropDown.SelectedItem = null;
+                AddCar_ModelDropDown.Text = "";
+            }
         }
         private void AddCar_ModelDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -304,7 +306,9 @@ namespace GranTurismoApp
             }
         }
 
-        // Add Tune
+
+
+        // Add Tune Panel
 
         private void LoadTireLists()
         {
