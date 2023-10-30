@@ -98,14 +98,14 @@
             BLTime13 = new Label();
             BLTime14 = new Label();
             BLTime15 = new Label();
-            NewRecord = new TabPage();
+            NewRecordTab = new TabPage();
             NewRecordLayout = new TableLayoutPanel();
             TrackInputLayout = new TableLayoutPanel();
             CourseSelectDropDown = new ComboBox();
             CourseSelectLabel = new Label();
             TrackSelectLabel = new Label();
             TrackSelectDropDown = new ComboBox();
-            Inventory = new TabPage();
+            InventoryTab = new TabPage();
             InventoryLayout = new TableLayoutPanel();
             OwnedCarGrid = new DataGridView();
             carIdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -146,31 +146,31 @@
             AddCar_SaveButton = new Button();
             AddCar_ImageLabel = new Label();
             AddTune_Panel = new Panel();
-            AddTune_HeaderLabel = new Label();
             AddTune_Layout = new TableLayoutPanel();
-            carInfoBindingSource1 = new BindingSource(components);
-            carInfoBindingSource = new BindingSource(components);
-            tuneInfoBindingSource = new BindingSource(components);
-            AddTune_SheetName = new Label();
+            AddTune_PPTextBox = new TextBox();
+            AddTune_PPLabel = new Label();
             AddTune_AssociatedCarLabel = new Label();
+            AddTune_HeaderLabel = new Label();
+            AddTune_SheetName = new Label();
             AddTune_AssociatedCarDropDown = new ComboBox();
             AddTune_SheetNameTextBox = new TextBox();
-            AddTune_PPLabel = new Label();
-            AddTune_PPTextBox = new TextBox();
             AddTune_HPLabel = new Label();
             AddTune_HPTextBox = new TextBox();
             AddTune_WeightLabel = new Label();
             AddTune_WeightTextBox = new TextBox();
             AddTune_NotesLabel = new Label();
-            AddTune_NotesTextBox = new TextBox();
             AddTune_TiresFrontLabel = new Label();
             AddTune_TiresRearLabel = new Label();
             AddTune_TiresFrontDropDown = new ComboBox();
-            comboBox1 = new ComboBox();
+            AddTune_TiresRearDropDown = new ComboBox();
             AddTune_SaveButton = new Button();
+            AddTune_NotesTextBox = new TextBox();
             AddTune_EditDetailsButton = new Button();
             AddTune_DetailsFilledLabel = new Label();
-            EditTuneDetails = new TabPage();
+            EditTuneDetailsTab = new TabPage();
+            carInfoBindingSource1 = new BindingSource(components);
+            carInfoBindingSource = new BindingSource(components);
+            tuneInfoBindingSource = new BindingSource(components);
             TabControl.SuspendLayout();
             LoadingTab.SuspendLayout();
             LoadingLayout.SuspendLayout();
@@ -195,10 +195,10 @@
             ((System.ComponentModel.ISupportInitialize)BLImage13).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BLImage14).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BLImage15).BeginInit();
-            NewRecord.SuspendLayout();
+            NewRecordTab.SuspendLayout();
             NewRecordLayout.SuspendLayout();
             TrackInputLayout.SuspendLayout();
-            Inventory.SuspendLayout();
+            InventoryTab.SuspendLayout();
             InventoryLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ownedCarInfoBindingSource).BeginInit();
@@ -218,15 +218,16 @@
             // 
             TabControl.Controls.Add(LoadingTab);
             TabControl.Controls.Add(BlacklistTab);
-            TabControl.Controls.Add(NewRecord);
-            TabControl.Controls.Add(Inventory);
-            TabControl.Controls.Add(EditTuneDetails);
+            TabControl.Controls.Add(NewRecordTab);
+            TabControl.Controls.Add(InventoryTab);
+            TabControl.Controls.Add(EditTuneDetailsTab);
             TabControl.Dock = DockStyle.Fill;
             TabControl.Location = new Point(0, 0);
             TabControl.Name = "TabControl";
             TabControl.SelectedIndex = 0;
             TabControl.Size = new Size(1904, 1041);
             TabControl.TabIndex = 0;
+            TabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
             // 
             // LoadingTab
             // 
@@ -302,7 +303,7 @@
             TabBackground.Controls.Add(TabLayout);
             TabBackground.Location = new Point(0, 0);
             TabBackground.Name = "TabBackground";
-            TabBackground.Size = new Size(1539, 3000);
+            TabBackground.Size = new Size(1369, 3000);
             TabBackground.TabIndex = 0;
             // 
             // TabLayout
@@ -318,7 +319,7 @@
             TabLayout.Name = "TabLayout";
             TabLayout.RowCount = 1;
             TabLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TabLayout.Size = new Size(1539, 3000);
+            TabLayout.Size = new Size(1369, 3000);
             TabLayout.TabIndex = 1;
             // 
             // BlacklistLayout
@@ -389,7 +390,7 @@
             BlacklistLayout.Controls.Add(BLTime14, 3, 13);
             BlacklistLayout.Controls.Add(BLTime15, 3, 14);
             BlacklistLayout.Dock = DockStyle.Fill;
-            BlacklistLayout.Location = new Point(194, 3);
+            BlacklistLayout.Location = new Point(98, 3);
             BlacklistLayout.Name = "BlacklistLayout";
             BlacklistLayout.RowCount = 15;
             BlacklistLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
@@ -1131,16 +1132,16 @@
             BLTime15.Text = "time";
             BLTime15.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // NewRecord
+            // NewRecordTab
             // 
-            NewRecord.BackColor = Color.FromArgb(32, 32, 32);
-            NewRecord.Controls.Add(NewRecordLayout);
-            NewRecord.Location = new Point(4, 24);
-            NewRecord.Name = "NewRecord";
-            NewRecord.Padding = new Padding(3);
-            NewRecord.Size = new Size(1896, 1013);
-            NewRecord.TabIndex = 2;
-            NewRecord.Text = "New Record";
+            NewRecordTab.BackColor = Color.FromArgb(32, 32, 32);
+            NewRecordTab.Controls.Add(NewRecordLayout);
+            NewRecordTab.Location = new Point(4, 24);
+            NewRecordTab.Name = "NewRecordTab";
+            NewRecordTab.Padding = new Padding(3);
+            NewRecordTab.Size = new Size(1896, 1013);
+            NewRecordTab.TabIndex = 2;
+            NewRecordTab.Text = "New Record";
             // 
             // NewRecordLayout
             // 
@@ -1223,16 +1224,16 @@
             TrackSelectDropDown.Size = new Size(268, 23);
             TrackSelectDropDown.TabIndex = 3;
             // 
-            // Inventory
+            // InventoryTab
             // 
-            Inventory.BackColor = Color.FromArgb(32, 32, 32);
-            Inventory.Controls.Add(InventoryLayout);
-            Inventory.Location = new Point(4, 24);
-            Inventory.Name = "Inventory";
-            Inventory.Padding = new Padding(3);
-            Inventory.Size = new Size(1896, 1013);
-            Inventory.TabIndex = 3;
-            Inventory.Text = "Inventory";
+            InventoryTab.BackColor = Color.FromArgb(32, 32, 32);
+            InventoryTab.Controls.Add(InventoryLayout);
+            InventoryTab.Location = new Point(4, 24);
+            InventoryTab.Name = "InventoryTab";
+            InventoryTab.Padding = new Padding(3);
+            InventoryTab.Size = new Size(1896, 1013);
+            InventoryTab.TabIndex = 3;
+            InventoryTab.Text = "Inventory";
             // 
             // InventoryLayout
             // 
@@ -1306,7 +1307,7 @@
             fullNameDataGridViewTextBoxColumn.HeaderText = "Model";
             fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
             fullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            fullNameDataGridViewTextBoxColumn.Width = 300;
+            fullNameDataGridViewTextBoxColumn.Width = 260;
             // 
             // primaryDriverIdDataGridViewTextBoxColumn
             // 
@@ -1492,6 +1493,7 @@
             AddCar_RegionDropDown.Name = "AddCar_RegionDropDown";
             AddCar_RegionDropDown.Size = new Size(254, 23);
             AddCar_RegionDropDown.TabIndex = 8;
+            AddCar_RegionDropDown.SelectedIndexChanged += AddCar_RegionDropDown_SelectedIndexChanged;
             // 
             // AddCar_RegionLabel
             // 
@@ -1560,6 +1562,7 @@
             AddCar_ModelDropDown.Name = "AddCar_ModelDropDown";
             AddCar_ModelDropDown.Size = new Size(254, 23);
             AddCar_ModelDropDown.TabIndex = 4;
+            AddCar_ModelDropDown.SelectedIndexChanged += AddCar_ModelDropDown_SelectedIndexChanged;
             // 
             // AddCar_ManufacturerLabel
             // 
@@ -1581,6 +1584,7 @@
             AddCar_ManufacturerDropDown.Name = "AddCar_ManufacturerDropDown";
             AddCar_ManufacturerDropDown.Size = new Size(254, 23);
             AddCar_ManufacturerDropDown.TabIndex = 3;
+            AddCar_ManufacturerDropDown.SelectedIndexChanged += AddCar_ManufacturerDropDown_SelectedIndexChanged;
             // 
             // AddCar_ImageDisplay
             // 
@@ -1647,20 +1651,6 @@
             AddTune_Panel.Size = new Size(853, 398);
             AddTune_Panel.TabIndex = 3;
             // 
-            // AddTune_HeaderLabel
-            // 
-            AddTune_HeaderLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddTune_HeaderLabel.AutoSize = true;
-            AddTune_Layout.SetColumnSpan(AddTune_HeaderLabel, 5);
-            AddTune_HeaderLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            AddTune_HeaderLabel.ForeColor = SystemColors.ControlText;
-            AddTune_HeaderLabel.Location = new Point(3, 0);
-            AddTune_HeaderLabel.Name = "AddTune_HeaderLabel";
-            AddTune_HeaderLabel.Size = new Size(678, 30);
-            AddTune_HeaderLabel.TabIndex = 1;
-            AddTune_HeaderLabel.Text = "Add Tune";
-            AddTune_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // AddTune_Layout
             // 
             AddTune_Layout.ColumnCount = 8;
@@ -1687,7 +1677,7 @@
             AddTune_Layout.Controls.Add(AddTune_TiresFrontLabel, 4, 4);
             AddTune_Layout.Controls.Add(AddTune_TiresRearLabel, 4, 5);
             AddTune_Layout.Controls.Add(AddTune_TiresFrontDropDown, 5, 4);
-            AddTune_Layout.Controls.Add(comboBox1, 5, 5);
+            AddTune_Layout.Controls.Add(AddTune_TiresRearDropDown, 5, 5);
             AddTune_Layout.Controls.Add(AddTune_SaveButton, 0, 6);
             AddTune_Layout.Controls.Add(AddTune_NotesTextBox, 1, 4);
             AddTune_Layout.Controls.Add(AddTune_EditDetailsButton, 2, 6);
@@ -1706,28 +1696,26 @@
             AddTune_Layout.Size = new Size(847, 392);
             AddTune_Layout.TabIndex = 0;
             // 
-            // carInfoBindingSource1
+            // AddTune_PPTextBox
             // 
-            carInfoBindingSource1.DataSource = typeof(GranTurismoLibrary.Models.OwnedCarInfo);
+            AddTune_PPTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddTune_Layout.SetColumnSpan(AddTune_PPTextBox, 2);
+            AddTune_PPTextBox.Location = new Point(687, 43);
+            AddTune_PPTextBox.Margin = new Padding(3, 3, 9, 3);
+            AddTune_PPTextBox.Name = "AddTune_PPTextBox";
+            AddTune_PPTextBox.Size = new Size(158, 23);
+            AddTune_PPTextBox.TabIndex = 13;
             // 
-            // carInfoBindingSource
+            // AddTune_PPLabel
             // 
-            carInfoBindingSource.DataSource = tuneInfoBindingSource1;
-            // 
-            // tuneInfoBindingSource
-            // 
-            tuneInfoBindingSource.DataSource = typeof(GranTurismoLibrary.Models.TuneInfo);
-            // 
-            // AddTune_SheetName
-            // 
-            AddTune_SheetName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            AddTune_SheetName.AutoSize = true;
-            AddTune_SheetName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_SheetName.Location = new Point(42, 85);
-            AddTune_SheetName.Name = "AddTune_SheetName";
-            AddTune_SheetName.Size = new Size(111, 45);
-            AddTune_SheetName.TabIndex = 8;
-            AddTune_SheetName.Text = "Sheet Name: ";
+            AddTune_PPLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            AddTune_PPLabel.AutoSize = true;
+            AddTune_PPLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            AddTune_PPLabel.Location = new Point(513, 40);
+            AddTune_PPLabel.Name = "AddTune_PPLabel";
+            AddTune_PPLabel.Size = new Size(168, 45);
+            AddTune_PPLabel.TabIndex = 12;
+            AddTune_PPLabel.Text = "Performance Points: ";
             // 
             // AddTune_AssociatedCarLabel
             // 
@@ -1739,6 +1727,31 @@
             AddTune_AssociatedCarLabel.Size = new Size(130, 45);
             AddTune_AssociatedCarLabel.TabIndex = 9;
             AddTune_AssociatedCarLabel.Text = "Associated Car: ";
+            // 
+            // AddTune_HeaderLabel
+            // 
+            AddTune_HeaderLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddTune_HeaderLabel.AutoSize = true;
+            AddTune_Layout.SetColumnSpan(AddTune_HeaderLabel, 5);
+            AddTune_HeaderLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            AddTune_HeaderLabel.ForeColor = SystemColors.ControlText;
+            AddTune_HeaderLabel.Location = new Point(3, 0);
+            AddTune_HeaderLabel.Name = "AddTune_HeaderLabel";
+            AddTune_HeaderLabel.Size = new Size(678, 30);
+            AddTune_HeaderLabel.TabIndex = 1;
+            AddTune_HeaderLabel.Text = "Add Tune";
+            AddTune_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // AddTune_SheetName
+            // 
+            AddTune_SheetName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            AddTune_SheetName.AutoSize = true;
+            AddTune_SheetName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            AddTune_SheetName.Location = new Point(42, 85);
+            AddTune_SheetName.Name = "AddTune_SheetName";
+            AddTune_SheetName.Size = new Size(111, 45);
+            AddTune_SheetName.TabIndex = 8;
+            AddTune_SheetName.Text = "Sheet Name: ";
             // 
             // AddTune_AssociatedCarDropDown
             // 
@@ -1758,27 +1771,6 @@
             AddTune_SheetNameTextBox.Name = "AddTune_SheetNameTextBox";
             AddTune_SheetNameTextBox.Size = new Size(283, 23);
             AddTune_SheetNameTextBox.TabIndex = 11;
-            // 
-            // AddTune_PPLabel
-            // 
-            AddTune_PPLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            AddTune_PPLabel.AutoSize = true;
-            AddTune_PPLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_PPLabel.Location = new Point(513, 40);
-            AddTune_PPLabel.Name = "AddTune_PPLabel";
-            AddTune_PPLabel.Size = new Size(168, 45);
-            AddTune_PPLabel.TabIndex = 12;
-            AddTune_PPLabel.Text = "Performance Points: ";
-            // 
-            // AddTune_PPTextBox
-            // 
-            AddTune_PPTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddTune_Layout.SetColumnSpan(AddTune_PPTextBox, 2);
-            AddTune_PPTextBox.Location = new Point(687, 43);
-            AddTune_PPTextBox.Margin = new Padding(3, 3, 9, 3);
-            AddTune_PPTextBox.Name = "AddTune_PPTextBox";
-            AddTune_PPTextBox.Size = new Size(158, 23);
-            AddTune_PPTextBox.TabIndex = 13;
             // 
             // AddTune_HPLabel
             // 
@@ -1833,17 +1825,6 @@
             AddTune_NotesLabel.TabIndex = 18;
             AddTune_NotesLabel.Text = "Notes: ";
             // 
-            // AddTune_NotesTextBox
-            // 
-            AddTune_NotesTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddTune_Layout.SetColumnSpan(AddTune_NotesTextBox, 3);
-            AddTune_NotesTextBox.Location = new Point(159, 227);
-            AddTune_NotesTextBox.Multiline = true;
-            AddTune_NotesTextBox.Name = "AddTune_NotesTextBox";
-            AddTune_Layout.SetRowSpan(AddTune_NotesTextBox, 2);
-            AddTune_NotesTextBox.Size = new Size(283, 113);
-            AddTune_NotesTextBox.TabIndex = 19;
-            // 
             // AddTune_TiresFrontLabel
             // 
             AddTune_TiresFrontLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -1875,29 +1856,42 @@
             AddTune_TiresFrontDropDown.Size = new Size(115, 23);
             AddTune_TiresFrontDropDown.TabIndex = 22;
             // 
-            // comboBox1
+            // AddTune_TiresRearDropDown
             // 
-            comboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(687, 272);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(115, 23);
-            comboBox1.TabIndex = 23;
+            AddTune_TiresRearDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddTune_TiresRearDropDown.FormattingEnabled = true;
+            AddTune_TiresRearDropDown.Location = new Point(687, 272);
+            AddTune_TiresRearDropDown.Name = "AddTune_TiresRearDropDown";
+            AddTune_TiresRearDropDown.Size = new Size(115, 23);
+            AddTune_TiresRearDropDown.TabIndex = 23;
             // 
             // AddTune_SaveButton
             // 
             AddTune_SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AddTune_SaveButton.Location = new Point(53, 365);
+            AddTune_SaveButton.Location = new Point(53, 362);
+            AddTune_SaveButton.Margin = new Padding(3, 3, 3, 6);
             AddTune_SaveButton.Name = "AddTune_SaveButton";
             AddTune_SaveButton.Size = new Size(100, 25);
             AddTune_SaveButton.TabIndex = 24;
             AddTune_SaveButton.Text = "Save";
             AddTune_SaveButton.UseVisualStyleBackColor = true;
             // 
+            // AddTune_NotesTextBox
+            // 
+            AddTune_NotesTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AddTune_Layout.SetColumnSpan(AddTune_NotesTextBox, 3);
+            AddTune_NotesTextBox.Location = new Point(159, 227);
+            AddTune_NotesTextBox.Multiline = true;
+            AddTune_NotesTextBox.Name = "AddTune_NotesTextBox";
+            AddTune_Layout.SetRowSpan(AddTune_NotesTextBox, 2);
+            AddTune_NotesTextBox.Size = new Size(283, 113);
+            AddTune_NotesTextBox.TabIndex = 19;
+            // 
             // AddTune_EditDetailsButton
             // 
             AddTune_EditDetailsButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            AddTune_EditDetailsButton.Location = new Point(179, 365);
+            AddTune_EditDetailsButton.Location = new Point(179, 362);
+            AddTune_EditDetailsButton.Margin = new Padding(3, 3, 3, 6);
             AddTune_EditDetailsButton.Name = "AddTune_EditDetailsButton";
             AddTune_EditDetailsButton.Size = new Size(100, 25);
             AddTune_EditDetailsButton.TabIndex = 25;
@@ -1909,22 +1903,34 @@
             AddTune_DetailsFilledLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             AddTune_DetailsFilledLabel.AutoSize = true;
             AddTune_DetailsFilledLabel.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_DetailsFilledLabel.Location = new Point(286, 372);
+            AddTune_DetailsFilledLabel.Location = new Point(286, 369);
             AddTune_DetailsFilledLabel.Name = "AddTune_DetailsFilledLabel";
-            AddTune_DetailsFilledLabel.Padding = new Padding(0, 0, 0, 8);
-            AddTune_DetailsFilledLabel.Size = new Size(21, 21);
+            AddTune_DetailsFilledLabel.Padding = new Padding(0, 0, 0, 11);
+            AddTune_DetailsFilledLabel.Size = new Size(21, 24);
             AddTune_DetailsFilledLabel.TabIndex = 26;
             AddTune_DetailsFilledLabel.Text = "- X";
             // 
-            // EditTuneDetails
+            // EditTuneDetailsTab
             // 
-            EditTuneDetails.BackColor = Color.FromArgb(32, 32, 32);
-            EditTuneDetails.Location = new Point(4, 24);
-            EditTuneDetails.Name = "EditTuneDetails";
-            EditTuneDetails.Padding = new Padding(3);
-            EditTuneDetails.Size = new Size(1896, 1013);
-            EditTuneDetails.TabIndex = 4;
-            EditTuneDetails.Text = "Edit Tune";
+            EditTuneDetailsTab.BackColor = Color.FromArgb(32, 32, 32);
+            EditTuneDetailsTab.Location = new Point(4, 24);
+            EditTuneDetailsTab.Name = "EditTuneDetailsTab";
+            EditTuneDetailsTab.Padding = new Padding(3);
+            EditTuneDetailsTab.Size = new Size(1896, 1013);
+            EditTuneDetailsTab.TabIndex = 4;
+            EditTuneDetailsTab.Text = "Edit Tune";
+            // 
+            // carInfoBindingSource1
+            // 
+            carInfoBindingSource1.DataSource = typeof(GranTurismoLibrary.Models.OwnedCarInfo);
+            // 
+            // carInfoBindingSource
+            // 
+            carInfoBindingSource.DataSource = tuneInfoBindingSource1;
+            // 
+            // tuneInfoBindingSource
+            // 
+            tuneInfoBindingSource.DataSource = typeof(GranTurismoLibrary.Models.TuneInfo);
             // 
             // Main
             // 
@@ -1961,11 +1967,11 @@
             ((System.ComponentModel.ISupportInitialize)BLImage13).EndInit();
             ((System.ComponentModel.ISupportInitialize)BLImage14).EndInit();
             ((System.ComponentModel.ISupportInitialize)BLImage15).EndInit();
-            NewRecord.ResumeLayout(false);
+            NewRecordTab.ResumeLayout(false);
             NewRecordLayout.ResumeLayout(false);
             TrackInputLayout.ResumeLayout(false);
             TrackInputLayout.PerformLayout();
-            Inventory.ResumeLayout(false);
+            InventoryTab.ResumeLayout(false);
             InventoryLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).EndInit();
             ((System.ComponentModel.ISupportInitialize)ownedCarInfoBindingSource).EndInit();
@@ -2057,14 +2063,14 @@
         private Label BLTime14;
         private Label BLTime15;
         private Label BLTime6;
-        private TabPage NewRecord;
+        private TabPage NewRecordTab;
         private TableLayoutPanel NewRecordLayout;
         private TableLayoutPanel TrackInputLayout;
         private ComboBox CourseSelectDropDown;
         private Label CourseSelectLabel;
         private Label TrackSelectLabel;
         private ComboBox TrackSelectDropDown;
-        private TabPage Inventory;
+        private TabPage InventoryTab;
         private TableLayoutPanel InventoryLayout;
         private DataGridView OwnedCarGrid;
         private BindingSource carInfoBindingSource;
@@ -2089,15 +2095,6 @@
         private ComboBox AddCar_ModelDropDown;
         private BindingSource carInfoBindingSource1;
         private BindingSource ownedCarInfoBindingSource;
-        private DataGridViewTextBoxColumn carIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn regionIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn manufacturerIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn primaryDriverIdDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn primaryDriverNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn manufacturerNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn regionNameDataGridViewTextBoxColumn;
-        private DataGridViewImageColumn imageNameDataGridViewTextBoxColumn;
         private ComboBox AddCar_RegionDropDown;
         private Label AddCar_RegionLabel;
         private Label AddCar_PrimaryDriverLabel;
@@ -2125,10 +2122,19 @@
         private Label AddTune_TiresFrontLabel;
         private Label AddTune_TiresRearLabel;
         private ComboBox AddTune_TiresFrontDropDown;
-        private ComboBox comboBox1;
+        private ComboBox AddTune_TiresRearDropDown;
         private Button AddTune_SaveButton;
         private Button AddTune_EditDetailsButton;
         private Label AddTune_DetailsFilledLabel;
-        private TabPage EditTuneDetails;
+        private TabPage EditTuneDetailsTab;
+        private DataGridViewTextBoxColumn carIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn regionIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn manufacturerIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn primaryDriverIdDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn primaryDriverNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn manufacturerNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn regionNameDataGridViewTextBoxColumn;
+        private DataGridViewImageColumn imageNameDataGridViewTextBoxColumn;
     }
 }

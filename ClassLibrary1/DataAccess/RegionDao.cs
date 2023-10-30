@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,17 @@ namespace GranTurismoFramework.DataAccess
 {
     public class RegionDao
     {
-        public List<Region> GetRegions()
+        public List<RegionDto> GetRegions()
         {
-            var regions = new List<Region>();
+            var mappedList = new List<RegionDto>();
 
             using (var context = new GranTurismoDb())
             {
-                regions = context.Regions.ToList();
+                var list = context.Regions.ToList();
+                mappedList = FwMapper.MapList<Region, RegionDto>(list);
             }
 
-            return regions;
+            return mappedList;
         }
     }
 }

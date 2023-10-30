@@ -4,14 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Car">
           <Key>
             <PropertyRef Name="CarId" />
           </Key>
           <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ImageName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ManufacturerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Course">
@@ -21,6 +20,13 @@
           <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RegionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DriverName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -47,6 +53,15 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
           <Property Name="minor_version" Type="int" Nullable="false" />
           <Property Name="revision" Type="int" Nullable="false" />
           <Property Name="install_failures" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OwnedCar">
+          <Key>
+            <PropertyRef Name="OwnedCarId" />
+          </Key>
+          <Property Name="OwnedCarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CarId" Type="int" Nullable="false" />
+          <Property Name="PrimaryDriverId" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="nvarchar" MaxLength="350" Nullable="false" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -160,6 +175,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="CarId" Type="int" Nullable="false" />
           <Property Name="TuneId" Type="int" Nullable="false" />
           <Property Name="Time" Type="time" Precision="3" Nullable="false" />
+          <Property Name="DriverId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TireType">
           <Key>
@@ -184,14 +200,19 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="TuneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CarId" Type="int" Nullable="false" />
           <Property Name="PerformancePoints" Type="float" Nullable="false" />
+          <Property Name="HorsePower" Type="float" Nullable="false" />
+          <Property Name="Weight" Type="float" Nullable="false" />
           <Property Name="TiresFrontId" Type="int" Nullable="false" />
           <Property Name="TiresRearId" Type="int" Nullable="false" />
           <Property Name="SheetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="1000" Nullable="false" />
         </EntityType>
         <EntityContainer Name="masterModelStoreContainer">
           <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OwnedCar" EntityType="Self.OwnedCar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeTrial" EntityType="Self.TimeTrial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TireType" EntityType="Self.TireType" Schema="dbo" store:Type="Tables" />
@@ -262,20 +283,10 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
     FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Car">
-          <Key>
-            <PropertyRef Name="CarId" />
-          </Key>
-          <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Course">
           <Key>
             <PropertyRef Name="CourseId" />
@@ -308,6 +319,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="TuneId" Type="Int32" Nullable="false" />
           <Property Name="Time" Type="Time" Nullable="false" Precision="3" />
+          <Property Name="DriverId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TireType">
           <Key>
@@ -335,6 +347,9 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="TiresFrontId" Type="Int32" Nullable="false" />
           <Property Name="TiresRearId" Type="Int32" Nullable="false" />
           <Property Name="SheetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HorsePower" Type="Double" Nullable="false" />
+          <Property Name="Weight" Type="Double" Nullable="false" />
+          <Property Name="Notes" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="MSreplication_options">
           <Key>
@@ -441,7 +456,6 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="total_errors" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="GranTurismoDb" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cars" EntityType="Self.Car" />
           <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
           <EntitySet Name="Regions" EntityType="Self.Region" />
@@ -454,23 +468,40 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
           <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
           <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+          <EntitySet Name="Drivers" EntityType="masterModel.Driver" />
+          <EntitySet Name="OwnedCars" EntityType="masterModel.OwnedCar" />
+          <EntitySet Name="Cars" EntityType="masterModel.Car" />
         </EntityContainer>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverId" />
+          </Key>
+          <Property Name="DriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DriverName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OwnedCar">
+          <Key>
+            <PropertyRef Name="OwnedCarId" />
+          </Key>
+          <Property Name="OwnedCarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarId" Type="Int32" Nullable="false" />
+          <Property Name="PrimaryDriverId" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="GranTurismoDb">
-          <EntitySetMapping Name="Cars">
-            <EntityTypeMapping TypeName="masterModel.Car">
-              <MappingFragment StoreEntitySet="Car">
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="masterModel.Course">
               <MappingFragment StoreEntitySet="Course">
@@ -500,6 +531,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySetMapping Name="TimeTrials">
             <EntityTypeMapping TypeName="masterModel.TimeTrial">
               <MappingFragment StoreEntitySet="TimeTrial">
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="TimeTrialId" ColumnName="TimeTrialId" />
                 <ScalarProperty Name="TrackId" ColumnName="TrackId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
@@ -529,6 +561,9 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySetMapping Name="Tunes">
             <EntityTypeMapping TypeName="masterModel.Tune">
               <MappingFragment StoreEntitySet="Tune">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="HorsePower" ColumnName="HorsePower" />
                 <ScalarProperty Name="TuneId" ColumnName="TuneId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PerformancePoints" ColumnName="PerformancePoints" />
@@ -609,6 +644,33 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
                 <ScalarProperty Name="total_read" ColumnName="total_read" />
                 <ScalarProperty Name="total_write" ColumnName="total_write" />
                 <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="masterModel.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OwnedCars">
+            <EntityTypeMapping TypeName="masterModel.OwnedCar">
+              <MappingFragment StoreEntitySet="OwnedCar">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="PrimaryDriverId" ColumnName="PrimaryDriverId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="masterModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

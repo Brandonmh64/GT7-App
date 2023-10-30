@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,13 @@ namespace GranTurismoFramework.DataTransfer
 {
     public class CarInfoDto
     {
-        public Car Car { get; set; }
+        public string CarName { get => Car.FullName; }
+        public int CarId { get => Car.CarId; }
 
-        public Manufacturer Manufacturer { get; set; }
+        public CarDto Car { get; set; }
 
-        public Region Region { get; set; }
+        public ManufacturerDto Manufacturer { get; set; }
+
+        public RegionDto Region { get; set; }
     }
 }

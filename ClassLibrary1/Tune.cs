@@ -20,5 +20,8 @@ namespace GranTurismoFramework
         public int TiresFrontId { get; set; }
         public int TiresRearId { get; set; }
         public string SheetName { get; set; }
+        public double HorsePower { get; set; }
+        public double Weight { get; set; }
+        public string Notes { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,16 @@ namespace GranTurismoFramework.DataAccess
 {
     public class TuneDao
     {
-        public List<Tune> GetTunes()
+        public List<TuneDto> GetTunes()
         {
-            var tunes = new List<Tune>();
+            var tunes = new List<TuneDto>();
 
             using (var context = new GranTurismoDb())
             {
-                tunes = context.Tunes.ToList();
+                var tuneList = context.Tunes.ToList();
+                var mappedList = FwMapper.MapList<Tune, TuneDto>(tuneList);
+
+                tunes.AddRange(mappedList);
             }
 
             return tunes;

@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="masterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Car">
-    <Key>
-      <PropertyRef Name="CarId" />
-    </Key>
-    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="Course">
     <Key>
       <PropertyRef Name="CourseId" />
@@ -41,6 +32,7 @@
     <Property Name="CarId" Type="Int32" Nullable="false" />
     <Property Name="TuneId" Type="Int32" Nullable="false" />
     <Property Name="Time" Type="Time" Nullable="false" Precision="3" />
+    <Property Name="DriverId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="TireType">
     <Key>
@@ -68,6 +60,9 @@
     <Property Name="TiresFrontId" Type="Int32" Nullable="false" />
     <Property Name="TiresRearId" Type="Int32" Nullable="false" />
     <Property Name="SheetName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HorsePower" Type="Double" Nullable="false" />
+    <Property Name="Weight" Type="Double" Nullable="false" />
+    <Property Name="Notes" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="MSreplication_options">
     <Key>
@@ -174,7 +169,6 @@
     <Property Name="total_errors" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityContainer Name="GranTurismoDb" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Cars" EntityType="Self.Car" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
     <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
     <EntitySet Name="Regions" EntityType="Self.Region" />
@@ -187,5 +181,32 @@
     <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" />
     <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" />
     <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" />
+    <EntitySet Name="Drivers" EntityType="masterModel.Driver" />
+    <EntitySet Name="OwnedCars" EntityType="masterModel.OwnedCar" />
+    <EntitySet Name="Cars" EntityType="masterModel.Car" />
   </EntityContainer>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverId" />
+    </Key>
+    <Property Name="DriverId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DriverName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OwnedCar">
+    <Key>
+      <PropertyRef Name="OwnedCarId" />
+    </Key>
+    <Property Name="OwnedCarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarId" Type="Int32" Nullable="false" />
+    <Property Name="PrimaryDriverId" Type="Int32" Nullable="false" />
+    <Property Name="ImageName" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarId" />
+    </Key>
+    <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

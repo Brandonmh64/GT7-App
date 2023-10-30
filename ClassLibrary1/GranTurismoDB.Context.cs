@@ -25,7 +25,6 @@ namespace GranTurismoFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
@@ -38,5 +37,8 @@ namespace GranTurismoFramework
         public virtual DbSet<spt_fallback_dev> spt_fallback_dev { get; set; }
         public virtual DbSet<spt_fallback_usg> spt_fallback_usg { get; set; }
         public virtual DbSet<spt_monitor> spt_monitor { get; set; }
+        public virtual DbSet<Driver> Drivers { get; set; }
+        public virtual DbSet<OwnedCar> OwnedCars { get; set; }
+        public virtual DbSet<Car> Cars { get; set; }
     }
 }

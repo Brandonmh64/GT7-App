@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework.DataTransfer;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,23 @@ namespace GranTurismoFramework.DataAccess
                             join region in db.Regions on manufacturer.RegionId equals region.RegionId
                             select new CarInfoDto
                             {
-                                Car = car,
-                                Manufacturer = manufacturer,
-                                Region = region,
+                                Car = new CarDto()
+                                {
+                                    CarId = car.CarId,
+                                    ManufacturerId = manufacturer.ManufacturerId,
+                                    FullName = car.FullName,
+                                },
+                                Manufacturer = new ManufacturerDto()
+                                {
+                                    ManufacturerId = manufacturer.ManufacturerId,
+                                    Name = manufacturer.Name,
+                                    RegionId = region.RegionId,
+                                },
+                                Region = new RegionDto()
+                                {
+                                    RegionId = region.RegionId,
+                                    Name = region.Name,
+                                }
                             };
                 cars = query.ToList();
             }

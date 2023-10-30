@@ -1,4 +1,4 @@
-﻿using GranTurismoFramework;
+﻿using GranTurismoFramework.DataTransfer.Simple;
 using GranTurismoFramework.DataTransfer;
 using System;
 using System.Collections.Generic;
@@ -34,8 +34,23 @@ namespace GranTurismoFramework.DataAccess
                                  },
                                  CarInfo = new CarInfoDto()
                                  {
-                                     Car = c,
-                                     Manufacturer = m,
+                                     Car = new CarDto()
+                                     {
+                                         CarId = tt.CarId,
+                                         FullName = c.FullName,
+                                         ManufacturerId = c.ManufacturerId,
+                                     },
+                                     Manufacturer = new ManufacturerDto()
+                                     {
+                                         ManufacturerId = m.ManufacturerId,
+                                         Name = m.Name,
+                                         RegionId = region.RegionId,
+                                     },
+                                     Region = new RegionDto()
+                                     {
+                                         RegionId = region.RegionId,
+                                         Name = region.Name,
+                                     }
                                  },
                                  Tune = tune,
                              });

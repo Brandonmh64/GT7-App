@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -64,14 +67,25 @@
     <Compile Include="DataAccess\CarDao.cs" />
     <Compile Include="DataAccess\CourseDao.cs" />
     <Compile Include="DataAccess\ManufacturerDao.cs" />
+    <Compile Include="DataAccess\OwnedCarDao.cs" />
     <Compile Include="DataAccess\RegionDao.cs" />
     <Compile Include="DataAccess\TimeTrialDao.cs" />
     <Compile Include="DataAccess\TireTypeDao.cs" />
     <Compile Include="DataAccess\TrackDao.cs" />
     <Compile Include="DataAccess\TuneDao.cs" />
     <Compile Include="DataTransfer\CarInfoDto.cs" />
+    <Compile Include="DataTransfer\OwnedCarInfoDto.cs" />
+    <Compile Include="DataTransfer\Simple\CarDto.cs" />
+    <Compile Include="DataTransfer\Simple\ManufacturerDto.cs" />
+    <Compile Include="DataTransfer\Simple\RegionDto.cs" />
+    <Compile Include="DataTransfer\Simple\TireTypeDto.cs" />
+    <Compile Include="DataTransfer\Simple\TuneDto.cs" />
     <Compile Include="DataTransfer\TimeTrialInfoDto.cs" />
     <Compile Include="DataTransfer\TrackInfoDto.cs" />
+    <Compile Include="Driver.cs">
+      <DependentUpon>GranTurismoDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FwMapper.cs" />
     <Compile Include="GranTurismoDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,6 +105,9 @@
       <DependentUpon>GranTurismoDb.tt</DependentUpon>
     </Compile>
     <Compile Include="MSreplication_options.cs">
+      <DependentUpon>GranTurismoDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OwnedCar.cs">
       <DependentUpon>GranTurismoDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

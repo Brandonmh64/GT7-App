@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,16 @@ namespace GranTurismoFramework.DataAccess
 {
     public class ManufacturerDao
     {
-        public List<Manufacturer> GetManufacturers()
+        public List<ManufacturerDto> GetManufacturers()
         {
-            var manufacturers = new List<Manufacturer>();
+            var manufacturers = new List<ManufacturerDto>();
 
             using (var context = new GranTurismoDb())
             {
-                manufacturers = context.Manufacturers.ToList();
+                var manufacturerList = context.Manufacturers.ToList();
+                var mappedList = FwMapper.MapList<Manufacturer, ManufacturerDto>(manufacturerList);
+
+                manufacturers.AddRange(mappedList);
             }
 
             return manufacturers;

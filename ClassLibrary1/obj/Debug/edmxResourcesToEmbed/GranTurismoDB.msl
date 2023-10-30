@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="GranTurismoDb">
-    <EntitySetMapping Name="Cars">
-      <EntityTypeMapping TypeName="masterModel.Car">
-        <MappingFragment StoreEntitySet="Car">
-          <ScalarProperty Name="CarId" ColumnName="CarId" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Courses">
       <EntityTypeMapping TypeName="masterModel.Course">
         <MappingFragment StoreEntitySet="Course">
@@ -40,6 +30,7 @@
     <EntitySetMapping Name="TimeTrials">
       <EntityTypeMapping TypeName="masterModel.TimeTrial">
         <MappingFragment StoreEntitySet="TimeTrial">
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
           <ScalarProperty Name="TimeTrialId" ColumnName="TimeTrialId" />
           <ScalarProperty Name="TrackId" ColumnName="TrackId" />
           <ScalarProperty Name="CarId" ColumnName="CarId" />
@@ -69,6 +60,9 @@
     <EntitySetMapping Name="Tunes">
       <EntityTypeMapping TypeName="masterModel.Tune">
         <MappingFragment StoreEntitySet="Tune">
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="HorsePower" ColumnName="HorsePower" />
           <ScalarProperty Name="TuneId" ColumnName="TuneId" />
           <ScalarProperty Name="CarId" ColumnName="CarId" />
           <ScalarProperty Name="PerformancePoints" ColumnName="PerformancePoints" />
@@ -149,6 +143,33 @@
           <ScalarProperty Name="total_read" ColumnName="total_read" />
           <ScalarProperty Name="total_write" ColumnName="total_write" />
           <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="masterModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnedCars">
+      <EntityTypeMapping TypeName="masterModel.OwnedCar">
+        <MappingFragment StoreEntitySet="OwnedCar">
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="PrimaryDriverId" ColumnName="PrimaryDriverId" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
+          <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="masterModel.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

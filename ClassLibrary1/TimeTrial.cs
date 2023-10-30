@@ -19,5 +19,6 @@ namespace GranTurismoFramework
         public int CarId { get; set; }
         public int TuneId { get; set; }
         public System.TimeSpan Time { get; set; }
+        public int DriverId { get; set; }
     }
 }

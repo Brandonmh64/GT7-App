@@ -6,7 +6,6 @@
     </Key>
     <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="ImageName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="ManufacturerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Course">
@@ -16,6 +15,13 @@
     <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="RegionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverId" />
+    </Key>
+    <Property Name="DriverId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DriverName" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Manufacturer">
     <Key>
@@ -42,6 +48,15 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
     <Property Name="minor_version" Type="int" Nullable="false" />
     <Property Name="revision" Type="int" Nullable="false" />
     <Property Name="install_failures" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OwnedCar">
+    <Key>
+      <PropertyRef Name="OwnedCarId" />
+    </Key>
+    <Property Name="OwnedCarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarId" Type="int" Nullable="false" />
+    <Property Name="PrimaryDriverId" Type="int" Nullable="false" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="350" Nullable="false" />
   </EntityType>
   <EntityType Name="Region">
     <Key>
@@ -155,6 +170,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
     <Property Name="CarId" Type="int" Nullable="false" />
     <Property Name="TuneId" Type="int" Nullable="false" />
     <Property Name="Time" Type="time" Precision="3" Nullable="false" />
+    <Property Name="DriverId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TireType">
     <Key>
@@ -179,14 +195,19 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
     <Property Name="TuneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CarId" Type="int" Nullable="false" />
     <Property Name="PerformancePoints" Type="float" Nullable="false" />
+    <Property Name="HorsePower" Type="float" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="false" />
     <Property Name="TiresFrontId" Type="int" Nullable="false" />
     <Property Name="TiresRearId" Type="int" Nullable="false" />
     <Property Name="SheetName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" Nullable="false" />
   </EntityType>
   <EntityContainer Name="masterModelStoreContainer">
     <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OwnedCar" EntityType="Self.OwnedCar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeTrial" EntityType="Self.TimeTrial" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TireType" EntityType="Self.TireType" Schema="dbo" store:Type="Tables" />

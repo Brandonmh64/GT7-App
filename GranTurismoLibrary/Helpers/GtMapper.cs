@@ -17,10 +17,10 @@ namespace GranTurismoLibrary.Helpers
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<GranTurismoFramework.DataTransfer.CarInfoDto, OwnedCarInfo>()
+                cfg.CreateMap<GranTurismoFramework.DataTransfer.OwnedCarInfoDto, OwnedCarInfo>()
                     .ForMember(dest => dest.CarId, opt => opt.MapFrom(src => src.Car.CarId))
                     .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Car.FullName))
-                    .ForMember(dest => dest.ImageName, opt => opt.MapFrom(src => src.Car.ImageName))
+                    .ForMember(dest => dest.ImageName, opt => opt.MapFrom(src => src.ImageName))
 
                     .ForMember(dest => dest.ManufacturerId, opt => opt.MapFrom(src => src.Manufacturer.ManufacturerId))
                     .ForMember(dest => dest.ManufacturerName, opt => opt.MapFrom(src => src.Manufacturer.Name))

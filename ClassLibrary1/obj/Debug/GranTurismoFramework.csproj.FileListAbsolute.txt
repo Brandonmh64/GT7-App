@@ -11,3 +11,5 @@ C:\repos\GT7-App\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\repos\GT7-App\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\repos\GT7-App\ClassLibrary1\bin\Debug\System.Drawing.Common.dll
 C:\repos\GT7-App\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+C:\repos\GT7-App\ClassLibrary1\bin\Debug\AutoMapper.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Debug\AutoMapper.xml
