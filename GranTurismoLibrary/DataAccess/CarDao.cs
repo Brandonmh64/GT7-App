@@ -1,6 +1,7 @@
 ﻿using GranTurismoFramework;
 using GranTurismoFramework.DataAccess;
 using GranTurismoFramework.DataTransfer;
+using GranTurismoFramework.DataTransfer.Simple;
 using GranTurismoLibrary.Helpers;
 using GranTurismoLibrary.Models;
 using System;
@@ -36,8 +37,20 @@ namespace GranTurismoLibrary.DataAccess
             return GtMapper.MapList<OwnedCarInfoDto, OwnedCarInfo>(ownedCars);
         }
 
+        public void SaveNewOwnedcar(OwnedCarInfo ownedCar)
+        {
+            var dto = GtMapper.Map<OwnedCarInfo, OwnedCarInfoDto>(ownedCar);
+            _ownedCarDao.SaveOwnedCar(dto);
+        }
+
 
         /* Car Properties */
+
+        public List<DriverDto> GetAllDrivers()
+        {
+            var driverDao = new DriverDao();
+            return driverDao.GetDrivers();
+        }
 
         public List<GranTurismoFramework.DataTransfer.Simple.TireTypeDto> GetTireTypes()
         {
@@ -46,5 +59,7 @@ namespace GranTurismoLibrary.DataAccess
 
             return GtMapper.MapList<TireType, GranTurismoFramework.DataTransfer.Simple.TireTypeDto>(typeList);
         }
+
+
     }
 }

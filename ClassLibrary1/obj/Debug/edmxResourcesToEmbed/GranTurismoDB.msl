@@ -157,6 +157,7 @@
     <EntitySetMapping Name="OwnedCars">
       <EntityTypeMapping TypeName="masterModel.OwnedCar">
         <MappingFragment StoreEntitySet="OwnedCar">
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
           <ScalarProperty Name="ImageName" ColumnName="ImageName" />
           <ScalarProperty Name="PrimaryDriverId" ColumnName="PrimaryDriverId" />
           <ScalarProperty Name="CarId" ColumnName="CarId" />

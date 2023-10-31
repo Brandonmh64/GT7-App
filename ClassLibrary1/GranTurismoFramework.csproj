@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -50,6 +50,9 @@
     <Reference Include="System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +69,7 @@
     </Compile>
     <Compile Include="DataAccess\CarDao.cs" />
     <Compile Include="DataAccess\CourseDao.cs" />
+    <Compile Include="DataAccess\DriverDao.cs" />
     <Compile Include="DataAccess\ManufacturerDao.cs" />
     <Compile Include="DataAccess\OwnedCarDao.cs" />
     <Compile Include="DataAccess\RegionDao.cs" />
@@ -76,6 +80,7 @@
     <Compile Include="DataTransfer\CarInfoDto.cs" />
     <Compile Include="DataTransfer\OwnedCarInfoDto.cs" />
     <Compile Include="DataTransfer\Simple\CarDto.cs" />
+    <Compile Include="DataTransfer\Simple\DriverDto.cs" />
     <Compile Include="DataTransfer\Simple\ManufacturerDto.cs" />
     <Compile Include="DataTransfer\Simple\RegionDto.cs" />
     <Compile Include="DataTransfer\Simple\TireTypeDto.cs" />

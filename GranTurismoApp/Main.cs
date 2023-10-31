@@ -137,20 +137,29 @@ namespace GranTurismoApp
 
         /* Inventory Tab */
 
+
         private async Task LoadInventoryTab()
         {
             await Task.Run(() =>
             {
                 LoadOwnedCarList();
 
-                LoadRegionList();
-                LoadManufacturerList();
-                LoadCarModelList();
+                // Add Car Panel
+                AddCar_RegionDropDown.Invoke(() => LoadRegionList());
+                AddCar_ManufacturerDropDown.Invoke(() => LoadManufacturerList());
+                AddCar_ModelDropDown.Invoke(() => LoadCarModelList());
 
+                AddCar_DriverDropDown.Invoke(LoadDriverList);
+
+
+                // Add Tune Panel
+                AddTune_AssociatedCarDropDown.Invoke(() => LoadOwnedCarDropDown());
                 LoadTireLists();
             });
         }
 
+
+        // Owned Car Grid
         private void LoadOwnedCarList()
         {
             var carDao = new CarDao();
@@ -158,16 +167,37 @@ namespace GranTurismoApp
 
             OwnedCarGrid.Invoke(() => OwnedCarGrid.DataSource = ownedCars);
         }
-
-        private void LoadTuneList(int carId)
+        private void OwnedCarGrid_SelectionChanged(object sender, EventArgs e)
         {
-            var tuneDao = new GranTurismoLibrary.DataAccess.TuneDao();
+            var currentSelection = OwnedCarGrid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            if (currentSelection > -1)
+            {
+                var ownedCarSelection = OwnedCarGrid.Rows[currentSelection].DataBoundItem as OwnedCarInfo;
 
+                var ownedCarId = ownedCarSelection != null ? ownedCarSelection.OwnedCarId : 0;
+                LoadTuneList(ownedCarId);
+                AddTune_AssociatedCarDropDown.Invoke(() => LoadOwnedCarDropDown());
+            }
+        }
+
+
+        // Tune Grid
+        private void LoadTuneList(int ownedCarId)
+        {
+            if (ownedCarId > 0)
+            {
+                var tuneDao = new GranTurismoLibrary.DataAccess.TuneDao();
+                var carTunes = tuneDao.GetTunes(ownedCarId);
+                TuneGrid.Invoke(() => TuneGrid.DataSource = carTunes);
+            }
+            else
+            {
+                TuneGrid.Invoke(() => TuneGrid.DataSource = null);
+            }
         }
 
 
         // Add Car Panel
-
         private void LoadRegionList(int manufacturerId = 0, int modelId = 0)
         {
             var regionDao = new RegionDao();
@@ -306,28 +336,150 @@ namespace GranTurismoApp
             }
         }
 
+        private void LoadDriverList()
+        {
+            var driverDao = new CarDao();
+            var drivers = driverDao.GetAllDrivers();
+
+            AddCar_DriverDropDown.DataSource = drivers;
+            AddCar_DriverDropDown.ValueMember = "DriverId";
+            AddCar_DriverDropDown.DisplayMember = "DriverName";
+        }
+
+        private void AddCar_SaveButton_Click(object sender, EventArgs e)
+        {
+            var region = AddCar_RegionDropDown.SelectedItem as RegionDto;
+            var manufacturer = AddCar_ManufacturerDropDown.SelectedItem as ManufacturerDto;
+            var carModel = AddCar_ModelDropDown.SelectedItem as CarInfoDto;
+            var driver = AddCar_DriverDropDown.SelectedItem as DriverDto;
+
+            var carInfoToSave = new OwnedCarInfo()
+            {
+                CarId = carModel.CarId,
+                FullName = carModel.CarName,
+                Nickname = AddCar_NicknameTextBox?.Text ?? "",
+                ImageName = "",
+                PrimaryDriverId = driver.DriverId,
+                PrimaryDriverName = driver.DriverName,
+                ManufacturerId = manufacturer.ManufacturerId,
+                ManufacturerName = manufacturer.Name,
+                RegionId = region.RegionId,
+                RegionName = region.Name,
+            };
+
+            var carDao = new CarDao();
+            carDao.SaveNewOwnedcar(carInfoToSave);
+
+            AddCar_RegionDropDown.SelectedItem = null;
+            LoadManufacturerList(0, 0);
+            LoadCarModelList(0, 0);
+            LoadDriverList();
+            AddCar_NicknameLabel.Text = "";
+
+            LoadOwnedCarList();
+        }
 
 
         // Add Tune Panel
+        private void LoadOwnedCarDropDown()
+        {
+            var carDao = new CarDao();
+            var ownedCars = carDao.GetAllOwnedCars();
+
+            AddTune_AssociatedCarDropDown.DataSource = ownedCars;
+            AddTune_AssociatedCarDropDown.DisplayMember = "Nickname";
+            AddTune_AssociatedCarDropDown.ValueMember = "OwnedCarId";
+
+            AddTune_AssociatedCarDropDown.SelectedItem = null;
+            AddTune_AssociatedCarDropDown.Text = "";
+        }
 
         private void LoadTireLists()
         {
             var tireDao = new CarDao();
             var typeList = tireDao.GetTireTypes().OrderBy(tire => tire.TireId).ToList();
+            var typeList2 = new List<TireTypeDto>();
 
-            AddTune_TiresFrontDropDown.DataSource = typeList;
-            AddTune_TiresFrontDropDown.DisplayMember = "Name";
-            AddTune_TiresFrontDropDown.ValueMember = "TireId";
-            AddTune_TiresFrontDropDown.SelectedIndex = -1;
-            AddTune_TiresFrontDropDown.Text = "";
+            foreach (var tireType in typeList)
+            {
+                typeList2.Add(new TireTypeDto()
+                {
+                    TireId = tireType.TireId,
+                    Abreviation = tireType.Abreviation,
+                    Name = tireType.Name,
+                });
+            }
 
-            AddTune_TiresRearDropDown.DataSource = typeList;
-            AddTune_TiresRearDropDown.DisplayMember = "Name";
-            AddTune_TiresRearDropDown.ValueMember = "TireId";
-            AddTune_TiresFrontDropDown.SelectedIndex = -1;
-            AddTune_TiresFrontDropDown.Text = "";
+            AddTune_TiresFrontDropDown.Invoke(() =>
+            {
+                AddTune_TiresFrontDropDown.DataSource = typeList;
+                AddTune_TiresFrontDropDown.DisplayMember = "TireInfo";
+                AddTune_TiresFrontDropDown.ValueMember = "TireId";
+                AddTune_TiresFrontDropDown.SelectedIndex = -1;
+                AddTune_TiresFrontDropDown.Text = "";
+            });
+
+            AddTune_TiresRearDropDown.Invoke(() =>
+            {
+                AddTune_TiresRearDropDown.DataSource = typeList2;
+                AddTune_TiresRearDropDown.DisplayMember = "TireInfo";
+                AddTune_TiresRearDropDown.ValueMember = "TireId";
+                AddTune_TiresRearDropDown.SelectedIndex = -1;
+                AddTune_TiresRearDropDown.Text = "";
+            });
         }
 
 
+        private void AddTune_SaveButton_Click(object sender, EventArgs e)
+        {
+            var associatedOwnedCar = AddTune_AssociatedCarDropDown.SelectedItem as OwnedCarInfo;
+            var tiresF = AddTune_TiresFrontDropDown.SelectedItem as TireTypeDto;
+            var tiresR = AddTune_TiresRearDropDown.SelectedItem as TireTypeDto;
+
+            float.TryParse(AddTune_PPTextBox.Text, out float performancePoints);
+            float.TryParse(AddTune_HPTextBox.Text, out float horsePower);
+            float.TryParse(AddTune_WeightTextBox.Text, out float weight);
+
+            var tune = new TuneDto()
+            {
+                CarId = associatedOwnedCar.CarId,
+                PerformancePoints = performancePoints,
+                HorsePower = horsePower,
+                Weight = weight,
+                TiresFrontId = tiresF.TireId,
+                TiresFront = tiresF.Abreviation,
+                TiresRearId = tiresR.TireId,
+                TiresRear = tiresR.Abreviation,
+                SheetName = AddTune_SheetNameTextBox.Text,
+                Notes = AddTune_NotesTextBox.Text,
+            };
+
+            var tuneDao = new TuneDao();
+            tuneDao.SaveTune(tune);
+
+            AddTune_SheetNameTextBox.Text = "";
+            AddTune_PPTextBox.Text = "";
+            AddTune_HPTextBox.Text = "";
+            AddTune_WeightTextBox.Text = "";
+            AddTune_NotesTextBox.Text = "";
+
+            AddTune_AssociatedCarDropDown.SelectedItem = null;
+            AddTune_TiresFrontDropDown.SelectedItem = null;
+            AddTune_TiresRearDropDown.SelectedItem = null;
+
+            var currentSelection = OwnedCarGrid.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+            if (currentSelection > -1)
+            {
+                var ownedCarSelection = OwnedCarGrid.Rows[currentSelection].DataBoundItem as OwnedCarInfo;
+
+                var ownedCarId = ownedCarSelection != null ? ownedCarSelection.OwnedCarId : 0;
+                LoadTuneList(ownedCarId);
+            }
+        }
+
+        private void TuneGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -62,6 +62,7 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
           <Property Name="CarId" Type="int" Nullable="false" />
           <Property Name="PrimaryDriverId" Type="int" Nullable="false" />
           <Property Name="ImageName" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="150" Nullable="false" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -487,6 +488,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="PrimaryDriverId" Type="Int32" Nullable="false" />
           <Property Name="ImageName" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Nickname" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Car">
           <Key>
@@ -658,6 +660,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySetMapping Name="OwnedCars">
             <EntityTypeMapping TypeName="masterModel.OwnedCar">
               <MappingFragment StoreEntitySet="OwnedCar">
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
                 <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="PrimaryDriverId" ColumnName="PrimaryDriverId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />

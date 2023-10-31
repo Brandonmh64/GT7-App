@@ -10,13 +10,15 @@ namespace GranTurismoFramework
 {
     public static class FwMapper
     {
-        private static AutoMapper.Mapper _mapper { get; set; }
+        private static AutoMapper.Mapper mapper { get; set; }
 
         static FwMapper()
         {
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Car, CarDto>();
+
+                cfg.CreateMap<Driver, DriverDto>();
 
                 cfg.CreateMap<Manufacturer, ManufacturerDto>();
                 
@@ -25,12 +27,19 @@ namespace GranTurismoFramework
                 cfg.CreateMap<TireType, TireTypeDto>();
                 
                 cfg.CreateMap<Tune, TuneDto>();
+                cfg.CreateMap<TuneDto, Tune>();
+
+
+                cfg.CreateMap<DataTransfer.OwnedCarInfoDto, OwnedCar>();
             });
 
-            _mapper = new Mapper(config);
+            mapper = new Mapper(config);
         }
 
-
+        public static TDest Map<TSource, TDest>(TSource source)
+        {
+            return mapper.Map<TDest>(source);
+        }
 
         public static List<TDest> MapList<TSource, TDest>(List<TSource> sourceList)
         {
@@ -38,7 +47,7 @@ namespace GranTurismoFramework
 
             foreach (var source in sourceList)
             {
-                var mapped = _mapper.Map<TSource, TDest>(source);
+                var mapped = mapper.Map<TSource, TDest>(source);
                 mappedList.Add(mapped);
             }
 

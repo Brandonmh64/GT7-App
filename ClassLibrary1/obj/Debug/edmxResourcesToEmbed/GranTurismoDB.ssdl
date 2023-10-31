@@ -57,6 +57,7 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
     <Property Name="CarId" Type="int" Nullable="false" />
     <Property Name="PrimaryDriverId" Type="int" Nullable="false" />
     <Property Name="ImageName" Type="nvarchar" MaxLength="350" Nullable="false" />
+    <Property Name="Nickname" Type="nvarchar" MaxLength="150" Nullable="false" />
   </EntityType>
   <EntityType Name="Region">
     <Key>

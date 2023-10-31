@@ -200,6 +200,7 @@
     <Property Name="CarId" Type="Int32" Nullable="false" />
     <Property Name="PrimaryDriverId" Type="Int32" Nullable="false" />
     <Property Name="ImageName" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="Nickname" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Car">
     <Key>

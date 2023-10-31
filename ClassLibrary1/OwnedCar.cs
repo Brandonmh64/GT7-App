@@ -18,5 +18,6 @@ namespace GranTurismoFramework
         public int CarId { get; set; }
         public int PrimaryDriverId { get; set; }
         public string ImageName { get; set; }
+        public string Nickname { get; set; }
     }
 }

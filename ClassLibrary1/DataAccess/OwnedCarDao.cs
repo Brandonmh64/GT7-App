@@ -26,9 +26,11 @@ namespace GranTurismoFramework.DataAccess
                             join all in db.Cars on owned.CarId equals all.CarId
                             select new OwnedCarInfoDto
                             {
+                                OwnedCarId = owned.CarId,
                                 PrimaryDriverId = driver.DriverId,
                                 PrimaryDriverName = driver.DriverName,
                                 ImageName = owned.ImageName,
+                                Nickname = owned.Nickname,
                                 Car = new CarDto()
                                 {
                                     CarId = owned.CarId,
@@ -51,6 +53,17 @@ namespace GranTurismoFramework.DataAccess
             }
 
             return ownedCarList;
+        }
+
+        public void SaveOwnedCar(OwnedCarInfoDto ownedcarInfo)
+        {
+            var ownedCar = FwMapper.Map<OwnedCarInfoDto, OwnedCar>(ownedcarInfo);
+
+            using (var db = new GranTurismoDb())
+            {
+                db.OwnedCars.Add(ownedCar);
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -8,9 +8,11 @@ namespace GranTurismoLibrary.Models
 {
     public class OwnedCarInfo
     {
+        public int OwnedCarId { get; set; } 
         public int CarId { get; set; }
         public string FullName { get; set; }
         public string ImageName { get; set; }
+        public string Nickname { get; set; }
 
         public int PrimaryDriverId {  get; set; }
         public string PrimaryDriverName { get; set; }
@@ -19,10 +21,5 @@ namespace GranTurismoLibrary.Models
         public string ManufacturerName { get; set; }
         public int RegionId { get; set; }
         public string RegionName { get; set; }
-
-        public OwnedCarInfo()
-        {
-                
-        }
     }
 }

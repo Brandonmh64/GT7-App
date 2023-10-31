@@ -11,5 +11,7 @@ namespace GranTurismoFramework.DataTransfer.Simple
         public int TireId { get; set; }
         public string Name { get; set; }
         public string Abreviation { get; set; }
+
+        public string TireInfo { get => $"{Abreviation.Trim()} - {Name}"; }
     }
 }
