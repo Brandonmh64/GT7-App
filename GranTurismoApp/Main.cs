@@ -415,6 +415,34 @@ namespace GranTurismoApp
         }
 
 
+        // Time Entry
+        private void NewRecord_TimeEntryMinutesUpDown_Click(object sender, EventArgs e)
+        {
+            NewRecord_TimeEntryMinutesUpDown.Select(0, NewRecord_TimeEntryMinutesUpDown.Value.ToString().Length);
+        }
+        private void NewRecord_TimeEntryMinutesUpDown_Enter(object sender, EventArgs e)
+        {
+            NewRecord_TimeEntryMinutesUpDown.Select(0, NewRecord_TimeEntryMinutesUpDown.Value.ToString().Length);
+        }
+
+        private void NewRecord_TimeEntrySecondsUpDown_Enter(object sender, EventArgs e)
+        {
+            NewRecord_TimeEntrySecondsUpDown.Select(0, NewRecord_TimeEntrySecondsUpDown.Value.ToString().Length);
+        }
+        private void NewRecord_TimeEntrySecondsUpDown_Click(object sender, EventArgs e)
+        {
+            NewRecord_TimeEntrySecondsUpDown.Select(0, NewRecord_TimeEntrySecondsUpDown.Value.ToString().Length);
+
+        }
+
+        private void NewRecord_TimeEntryMillisecondsUpDown_Enter(object sender, EventArgs e)
+        {
+            NewRecord_TimeEntryMillisecondsUpDown.Select(0, NewRecord_TimeEntryMillisecondsUpDown.Value.ToString().Length);
+        }
+        private void NewRecord_TimeEntryMillisecondsUpDown_Click(object sender, EventArgs e)
+        {
+            NewRecord_TimeEntryMillisecondsUpDown.Select(0, NewRecord_TimeEntryMillisecondsUpDown.Value.ToString().Length);
+        }
 
 
         /* ===== Inventory Tab ===== */
@@ -768,5 +796,7 @@ namespace GranTurismoApp
         #endregion InventoryTab
 
 
+
+        
     }
 }

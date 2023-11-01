@@ -327,7 +327,7 @@
             TabBackground.Controls.Add(TabLayout);
             TabBackground.Location = new Point(0, 0);
             TabBackground.Name = "TabBackground";
-            TabBackground.Size = new Size(825, 3000);
+            TabBackground.Size = new Size(774, 3000);
             TabBackground.TabIndex = 0;
             // 
             // TabLayout
@@ -343,7 +343,7 @@
             TabLayout.Name = "TabLayout";
             TabLayout.RowCount = 1;
             TabLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TabLayout.Size = new Size(825, 3000);
+            TabLayout.Size = new Size(774, 3000);
             TabLayout.TabIndex = 1;
             // 
             // BlacklistLayout
@@ -414,7 +414,7 @@
             BlacklistLayout.Controls.Add(BLTime14, 3, 13);
             BlacklistLayout.Controls.Add(BLTime15, 3, 14);
             BlacklistLayout.Dock = DockStyle.Fill;
-            BlacklistLayout.Location = new Point(-208, 3);
+            BlacklistLayout.Location = new Point(-237, 3);
             BlacklistLayout.Name = "BlacklistLayout";
             BlacklistLayout.RowCount = 15;
             BlacklistLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
@@ -1434,6 +1434,8 @@
             NewRecord_TimeEntryMillisecondsUpDown.Name = "NewRecord_TimeEntryMillisecondsUpDown";
             NewRecord_TimeEntryMillisecondsUpDown.Size = new Size(60, 23);
             NewRecord_TimeEntryMillisecondsUpDown.TabIndex = 27;
+            NewRecord_TimeEntryMillisecondsUpDown.Click += NewRecord_TimeEntryMillisecondsUpDown_Click;
+            NewRecord_TimeEntryMillisecondsUpDown.Enter += NewRecord_TimeEntryMillisecondsUpDown_Enter;
             // 
             // NewRecord_SecondMilliSecondSeparatorLabel
             // 
@@ -1456,6 +1458,8 @@
             NewRecord_TimeEntrySecondsUpDown.Name = "NewRecord_TimeEntrySecondsUpDown";
             NewRecord_TimeEntrySecondsUpDown.Size = new Size(42, 23);
             NewRecord_TimeEntrySecondsUpDown.TabIndex = 24;
+            NewRecord_TimeEntrySecondsUpDown.Click += NewRecord_TimeEntrySecondsUpDown_Click;
+            NewRecord_TimeEntrySecondsUpDown.Enter += NewRecord_TimeEntrySecondsUpDown_Enter;
             // 
             // NewRecord_MinuteSecondSeparatorLabel
             // 
@@ -1490,6 +1494,8 @@
             NewRecord_TimeEntryMinutesUpDown.Name = "NewRecord_TimeEntryMinutesUpDown";
             NewRecord_TimeEntryMinutesUpDown.Size = new Size(42, 23);
             NewRecord_TimeEntryMinutesUpDown.TabIndex = 21;
+            NewRecord_TimeEntryMinutesUpDown.Click += NewRecord_TimeEntryMinutesUpDown_Click;
+            NewRecord_TimeEntryMinutesUpDown.Enter += NewRecord_TimeEntryMinutesUpDown_Enter;
             // 
             // NewRecord_TimeEntryMinutesLabel
             // 
