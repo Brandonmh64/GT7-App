@@ -10,7 +10,7 @@
             <PropertyRef Name="CarId" />
           </Key>
           <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="350" Nullable="false" />
           <Property Name="ManufacturerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Course">
@@ -70,6 +70,14 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
           </Key>
           <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2000" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -173,10 +181,11 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           </Key>
           <Property Name="TimeTrialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TrackId" Type="int" Nullable="false" />
-          <Property Name="CarId" Type="int" Nullable="false" />
+          <Property Name="OwnedCarId" Type="int" Nullable="false" />
           <Property Name="TuneId" Type="int" Nullable="false" />
           <Property Name="Time" Type="time" Precision="3" Nullable="false" />
           <Property Name="DriverId" Type="int" Nullable="false" />
+          <Property Name="SessionId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TireType">
           <Key>
@@ -215,6 +224,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OwnedCar" EntityType="Self.OwnedCar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimeTrial" EntityType="Self.TimeTrial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TireType" EntityType="Self.TireType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />
@@ -317,10 +327,11 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           </Key>
           <Property Name="TimeTrialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TrackId" Type="Int32" Nullable="false" />
-          <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="TuneId" Type="Int32" Nullable="false" />
           <Property Name="Time" Type="Time" Nullable="false" Precision="3" />
           <Property Name="DriverId" Type="Int32" Nullable="false" />
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="OwnedCarId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="TireType">
           <Key>
@@ -472,6 +483,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySet Name="Drivers" EntityType="masterModel.Driver" />
           <EntitySet Name="OwnedCars" EntityType="masterModel.OwnedCar" />
           <EntitySet Name="Cars" EntityType="masterModel.Car" />
+          <EntitySet Name="Sessions" EntityType="masterModel.Session" />
         </EntityContainer>
         <EntityType Name="Driver">
           <Key>
@@ -495,8 +507,16 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             <PropertyRef Name="CarId" />
           </Key>
           <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
           <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -533,10 +553,11 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySetMapping Name="TimeTrials">
             <EntityTypeMapping TypeName="masterModel.TimeTrial">
               <MappingFragment StoreEntitySet="TimeTrial">
+                <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="TimeTrialId" ColumnName="TimeTrialId" />
                 <ScalarProperty Name="TrackId" ColumnName="TrackId" />
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="TuneId" ColumnName="TuneId" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
               </MappingFragment>
@@ -674,6 +695,15 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
                 <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="masterModel.Session">
+              <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

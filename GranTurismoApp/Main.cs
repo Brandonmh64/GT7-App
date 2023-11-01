@@ -31,6 +31,7 @@ namespace GranTurismoApp
             _carImages = new ImageList();
 
             TabControl.SelectedIndex = 0;
+            _sessionTimeTrials = new List<TimeTrialInfo>();
         }
         private void Main_Load(object sender, EventArgs e)
         {
@@ -362,24 +363,55 @@ namespace GranTurismoApp
                 NewRecord_CarSelectDropDown.Enabled = true;
 
                 NewRecord_SaveRecordButton.Enabled = false;
+
+                var timeTrialDao = new TimeTrialDao();
+                timeTrialDao.SaveTimeTrials(_sessionTimeTrials);
+                _sessionTimeTrials.Clear();
             }
         }
 
         private void NewRecord_SaveRecordButton_Click(object sender, EventArgs e)
         {
+            var min = NewRecord_TimeEntryMinutesUpDown.Value.ToString();
+            var sec = NewRecord_TimeEntrySecondsUpDown.Value.ToString();
+            var milli = NewRecord_TimeEntryMillisecondsUpDown.Value.ToString();
+            var milliString = milli;
+
+            if (milli.Length != 3)
+            {
+                if (milli.Length == 1)
+                {
+                    milliString = $"00{milli}";
+                }
+                else if (milli.Length == 2)
+                {
+                    milliString = $"0{milli}";
+                }
+            }
+
+            var time = $"0:{min}:{sec}.{milliString}";
+            var parsedTime = TimeSpan.Parse(time);
+
             var timeTrial = new TimeTrialInfo()
             {
                 Region = NewRecord_RegionSelectDropDown.SelectedItem as RegionDto,
                 Course = NewRecord_CourseSelectDropDown.SelectedItem as CourseDto,
                 Track = NewRecord_TrackSelectDropDown.SelectedItem as TrackInfo,
 
-                Time = NewRecord_TimeSpanPicker.Value,
+                Time = parsedTime,
                 OwnedCarInfo = NewRecord_CarSelectDropDown.SelectedItem as OwnedCarInfo,
                 TuneInfo = NewRecord_TuneSelectDropDown.SelectedItem as TuneInfo,
-                Driver = NewRecord_DriverSelectDropDown.SelectedItem as DriverDto                
+                Driver = NewRecord_DriverSelectDropDown.SelectedItem as DriverDto
             };
 
             _sessionTimeTrials.Add(timeTrial);
+
+            NewRecord_RecordSavedLabel.Visible = true;
+            Task.Run(() =>
+            {
+                Task.Delay(3000).Wait();
+                NewRecord_RecordSavedLabel.Invoke(() => NewRecord_RecordSavedLabel.Visible = false);
+            });
         }
 
 

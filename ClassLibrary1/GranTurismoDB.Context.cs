@@ -40,5 +40,6 @@ namespace GranTurismoFramework
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<OwnedCar> OwnedCars { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }

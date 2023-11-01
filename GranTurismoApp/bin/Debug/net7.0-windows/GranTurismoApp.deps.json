@@ -9,7 +9,8 @@
       "GranTurismoApp/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
-          "GranTurismoLibrary": "1.0.0"
+          "GranTurismoLibrary": "1.0.0",
+          "TimeSpan2": "2.4.3"
         },
         "runtime": {
           "GranTurismoApp.dll": {}
@@ -145,6 +146,78 @@
       "System.Windows.Extensions/4.7.0": {
         "dependencies": {
           "System.Drawing.Common": "7.0.0"
+        }
+      },
+      "TimeSpan2/2.4.3": {
+        "dependencies": {
+          "TimeSpan2.Core": "2.4.3"
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/TimeSpan2.dll": {
+            "assemblyVersion": "2.4.3.0",
+            "fileVersion": "2.4.3.0"
+          }
+        }
+      },
+      "TimeSpan2.Core/2.4.3": {
+        "runtime": {
+          "lib/net7.0/TimeSpan2.Core.dll": {
+            "assemblyVersion": "2.4.3.0",
+            "fileVersion": "2.4.3.0"
+          }
+        },
+        "resources": {
+          "lib/net7.0/ar/TimeSpan2.Core.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net7.0/da/TimeSpan2.Core.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net7.0/de/TimeSpan2.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net7.0/es/TimeSpan2.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net7.0/fr/TimeSpan2.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net7.0/it/TimeSpan2.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net7.0/ja/TimeSpan2.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net7.0/ko/TimeSpan2.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net7.0/nl/TimeSpan2.Core.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net7.0/pl/TimeSpan2.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net7.0/pt/TimeSpan2.Core.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net7.0/ru/TimeSpan2.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net7.0/se/TimeSpan2.Core.resources.dll": {
+            "locale": "se"
+          },
+          "lib/net7.0/sv/TimeSpan2.Core.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net7.0/tr/TimeSpan2.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net7.0/zh-CN/TimeSpan2.Core.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/net7.0/zh-Hant/TimeSpan2.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
         }
       },
       "GranTurismoFramework/1.0.0": {
@@ -309,6 +382,20 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "TimeSpan2/2.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KRcICqE77lSHi77oXptKhGiiQDzMyferaE7DPvFl4nlwvFhTml9tOisO/cG/912nmGIPJcaHQQKtfzas2nkOwg==",
+      "path": "timespan2/2.4.3",
+      "hashPath": "timespan2.2.4.3.nupkg.sha512"
+    },
+    "TimeSpan2.Core/2.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CZKek+7SErrApgIbjW5nnB5Y5uznEoc9Z/DJRg9z3mPKh2GcxWyAjdLunol5m2Af0h+gJRt5rTS3VF1Z9NKpfw==",
+      "path": "timespan2.core/2.4.3",
+      "hashPath": "timespan2.core.2.4.3.nupkg.sha512"
     },
     "GranTurismoFramework/1.0.0": {
       "type": "project",

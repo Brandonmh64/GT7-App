@@ -73,6 +73,7 @@
     <Compile Include="DataAccess\ManufacturerDao.cs" />
     <Compile Include="DataAccess\OwnedCarDao.cs" />
     <Compile Include="DataAccess\RegionDao.cs" />
+    <Compile Include="DataAccess\SessionDao.cs" />
     <Compile Include="DataAccess\TimeTrialDao.cs" />
     <Compile Include="DataAccess\TireTypeDao.cs" />
     <Compile Include="DataAccess\TrackDao.cs" />
@@ -118,6 +119,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Region.cs">
+      <DependentUpon>GranTurismoDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Session.cs">
       <DependentUpon>GranTurismoDb.tt</DependentUpon>
     </Compile>
     <Compile Include="spt_fallback_db.cs">

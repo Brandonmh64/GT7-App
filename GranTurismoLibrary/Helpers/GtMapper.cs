@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer;
 using GranTurismoFramework.DataTransfer.Simple;
 using GranTurismoLibrary.Models;
 using System;
@@ -50,6 +51,31 @@ namespace GranTurismoLibrary.Helpers
                         Name = src.RegionName
                     }));
 
+                cfg.CreateMap<TimeTrialInfo, TimeTrialInfoDto>()
+                    .ForMember(dest => dest.TrackInfo, opt => opt.MapFrom(src => new TrackInfoDto()
+                    {
+                        Track = new Track()
+                        {
+                            TrackId = src.Track.TrackId,
+                            CourseId = src.Course.CourseId,
+                            Name = src.Track.TrackName
+                        },
+                        Course = new Course()
+                        {
+                            CourseId = src.Course.CourseId,
+                            Name = src.Course.Name,
+                            RegionId = src.Region.RegionId
+                        },
+                        Region = new Region()
+                        {
+                            RegionId = src.Region.RegionId,
+                            Name = src.Region.Name,
+                        }
+                    }))
+                    .ForMember(dest => dest.OwnedCarInfo, opt => opt.MapFrom(src => Map<OwnedCarInfo, OwnedCarInfoDto>(src.OwnedCarInfo)))
+                    .ForMember(dest => dest.Tune, opt => opt.MapFrom(src => Map<TuneInfo, Tune>(src.TuneInfo)))
+                    .ForMember(dest => dest.DriverId, opt => opt.MapFrom(src => src.Driver.DriverId));
+                cfg.CreateMap<TimeTrialInfoDto, TimeTrialInfo>();
 
                 cfg.CreateMap<TireType, TireTypeDto>();
                 cfg.CreateMap<TireTypeDto, TireType>();
@@ -58,10 +84,14 @@ namespace GranTurismoLibrary.Helpers
                     .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.Region.RegionId))
                     .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.Course.CourseId))
                     .ForMember(dest => dest.TrackId, opt => opt.MapFrom(src => src.Track.TrackId));
-                    
-
+                cfg.CreateMap<TrackInfo, TrackInfoDto>()
+                    .ForMember(dest => dest.Region, opt => opt.MapFrom(src => new RegionDto() { Name = src.RegionName, RegionId = src.RegionId }))
+                    .ForMember(dest => dest.Course, opt => opt.MapFrom(src => new CourseDto() { Name = src.CourseName, RegionId = src.RegionId, CourseId = src.CourseId }))
+                    .ForMember(dest => dest.Track, opt => opt.MapFrom(src => new Track() { Name = src.TrackName, TrackId = src.TrackId, CourseId = src.CourseId }));                    
+                
                 cfg.CreateMap<TuneDto, TuneInfo>();
                 cfg.CreateMap<TuneInfo, TuneDto>();
+                cfg.CreateMap<TuneInfo, Tune>();
             });
 
             _mapper = new Mapper(config);

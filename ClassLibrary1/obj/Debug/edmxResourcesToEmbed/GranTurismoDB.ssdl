@@ -5,7 +5,7 @@
       <PropertyRef Name="CarId" />
     </Key>
     <Property Name="CarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="350" Nullable="false" />
     <Property Name="ManufacturerId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Course">
@@ -65,6 +65,14 @@ warning 6002: The table/view 'master.dbo.MSreplication_options' does not have a 
     </Key>
     <Property Name="RegionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="SessionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="2000" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'master.dbo.spt_fallback_db' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -168,10 +176,11 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
     </Key>
     <Property Name="TimeTrialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TrackId" Type="int" Nullable="false" />
-    <Property Name="CarId" Type="int" Nullable="false" />
+    <Property Name="OwnedCarId" Type="int" Nullable="false" />
     <Property Name="TuneId" Type="int" Nullable="false" />
     <Property Name="Time" Type="time" Precision="3" Nullable="false" />
     <Property Name="DriverId" Type="int" Nullable="false" />
+    <Property Name="SessionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TireType">
     <Key>
@@ -210,6 +219,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
     <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OwnedCar" EntityType="Self.OwnedCar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimeTrial" EntityType="Self.TimeTrial" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TireType" EntityType="Self.TireType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Track" EntityType="Self.Track" Schema="dbo" store:Type="Tables" />

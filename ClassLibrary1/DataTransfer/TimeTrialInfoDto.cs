@@ -10,10 +10,15 @@ namespace GranTurismoFramework.DataTransfer
 {
     public class TimeTrialInfoDto
     {
-        public TimeTrial TimeTrial { get; set; }
+        public int TimeTrialId { get; set; }
+        public int SessionId { get; set; }
+
+        public System.TimeSpan Time { get; set; }
+
         public TrackInfoDto TrackInfo { get; set; }
 
-        public CarInfoDto CarInfo { get; set; }
+        public OwnedCarInfoDto OwnedCarInfo { get; set; }
         public Tune Tune { get; set; }
+        public int DriverId { get; set; }
     }
 }

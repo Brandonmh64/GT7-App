@@ -8,8 +8,6 @@ namespace GranTurismoApp
         [STAThread]
         static void Main()
         {
-            //var x = typeof(System.Data.Entity.SqlServer.SqlProviderServices);
-
             ApplicationConfiguration.Initialize();
             Application.Run(new Main());
         }

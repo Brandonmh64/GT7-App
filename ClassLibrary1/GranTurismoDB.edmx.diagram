@@ -20,6 +20,7 @@
         <EntityTypeShape EntityType="masterModel.Driver" Width="1.5" PointX="9.375" PointY="4.75" />
         <EntityTypeShape EntityType="masterModel.OwnedCar" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="masterModel.Car" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="masterModel.Session" Width="1.5" PointX="9.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

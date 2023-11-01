@@ -16,9 +16,10 @@ namespace GranTurismoFramework
     {
         public int TimeTrialId { get; set; }
         public int TrackId { get; set; }
-        public int CarId { get; set; }
         public int TuneId { get; set; }
         public System.TimeSpan Time { get; set; }
         public int DriverId { get; set; }
+        public int SessionId { get; set; }
+        public int OwnedCarId { get; set; }
     }
 }

@@ -17,7 +17,9 @@ namespace GranTurismoFramework.DataAccess
             using (var context = new GranTurismoDb())
             {
                 var query = from tt in context.TimeTrials
-                             join c in context.Cars on tt.CarId equals c.CarId
+                             join ownedCar in context.OwnedCars on tt.OwnedCarId equals ownedCar.CarId
+                             join d in context.Drivers on ownedCar.PrimaryDriverId equals d.DriverId
+                             join c in context.Cars on ownedCar.CarId equals c.CarId
                              join m in context.Manufacturers on c.ManufacturerId equals m.ManufacturerId
                              join tune in context.Tunes on tt.TuneId equals tune.TuneId
                              join track in context.Tracks on tt.TrackId equals track.TrackId
@@ -25,18 +27,21 @@ namespace GranTurismoFramework.DataAccess
                              join region in context.Regions on course.RegionId equals region.RegionId
                              select (new TimeTrialInfoDto
                              {
-                                 TimeTrial = tt,
                                  TrackInfo = new TrackInfoDto()
                                  {
                                      Track = track,
                                      Course = course,
                                      Region = region,
                                  },
-                                 CarInfo = new CarInfoDto()
+                                 OwnedCarInfo = new OwnedCarInfoDto()
                                  {
+                                     PrimaryDriverId = ownedCar.PrimaryDriverId,
+                                     PrimaryDriverName = d.DriverName,
+                                     ImageName = ownedCar.ImageName,
+                                     Nickname = ownedCar.Nickname,
                                      Car = new CarDto()
                                      {
-                                         CarId = tt.CarId,
+                                         CarId = tt.OwnedCarId,
                                          FullName = c.FullName,
                                          ManufacturerId = c.ManufacturerId,
                                      },
@@ -59,6 +64,42 @@ namespace GranTurismoFramework.DataAccess
             }
 
             return timeTrials;
+        }
+
+        /// <summary>
+        /// Save all time trials in the provided list under the same new Session
+        /// </summary>
+        /// <param name="timeTrials"></param>
+        public void SaveTimeTrials(List<TimeTrialInfoDto> timeTrials)
+        {
+            var sessionDao = new SessionDao();
+            var sessionId = sessionDao.NewSession();
+            var timeTrialObjects = new List<TimeTrial>();
+
+            foreach (var timeTrialInfo in timeTrials)
+            {
+                var timeTrial = new TimeTrial()
+                {
+                    SessionId = sessionId,
+                    OwnedCarId = timeTrialInfo.OwnedCarInfo.OwnedCarId,
+                    TuneId = timeTrialInfo.Tune.TuneId,
+                    DriverId = timeTrialInfo.DriverId,
+                    TrackId = timeTrialInfo.TrackInfo.Track.TrackId,
+                    Time = timeTrialInfo.Time,
+                };
+
+                timeTrialObjects.Add(timeTrial);
+            }
+
+            using (var db = new GranTurismoDb())
+            {
+                foreach (var tt in timeTrialObjects)
+                {
+                    db.TimeTrials.Add(tt);
+                }
+
+                db.SaveChanges();
+            }
         }
     }
 }

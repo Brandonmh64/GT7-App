@@ -29,10 +29,11 @@
     </Key>
     <Property Name="TimeTrialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TrackId" Type="Int32" Nullable="false" />
-    <Property Name="CarId" Type="Int32" Nullable="false" />
     <Property Name="TuneId" Type="Int32" Nullable="false" />
     <Property Name="Time" Type="Time" Nullable="false" Precision="3" />
     <Property Name="DriverId" Type="Int32" Nullable="false" />
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="OwnedCarId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="TireType">
     <Key>
@@ -184,6 +185,7 @@
     <EntitySet Name="Drivers" EntityType="masterModel.Driver" />
     <EntitySet Name="OwnedCars" EntityType="masterModel.OwnedCar" />
     <EntitySet Name="Cars" EntityType="masterModel.Car" />
+    <EntitySet Name="Sessions" EntityType="masterModel.Session" />
   </EntityContainer>
   <EntityType Name="Driver">
     <Key>
@@ -207,7 +209,15 @@
       <PropertyRef Name="CarId" />
     </Key>
     <Property Name="CarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
     <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="SessionId" />
+    </Key>
+    <Property Name="SessionId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

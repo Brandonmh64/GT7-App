@@ -30,10 +30,11 @@
     <EntitySetMapping Name="TimeTrials">
       <EntityTypeMapping TypeName="masterModel.TimeTrial">
         <MappingFragment StoreEntitySet="TimeTrial">
+          <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
           <ScalarProperty Name="DriverId" ColumnName="DriverId" />
           <ScalarProperty Name="TimeTrialId" ColumnName="TimeTrialId" />
           <ScalarProperty Name="TrackId" ColumnName="TrackId" />
-          <ScalarProperty Name="CarId" ColumnName="CarId" />
           <ScalarProperty Name="TuneId" ColumnName="TuneId" />
           <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
@@ -171,6 +172,15 @@
           <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="CarId" ColumnName="CarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="masterModel.Session">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
