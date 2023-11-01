@@ -18,6 +18,8 @@ namespace GranTurismoFramework
             {
                 cfg.CreateMap<Car, CarDto>();
 
+                cfg.CreateMap<Course, CourseDto>();
+
                 cfg.CreateMap<Driver, DriverDto>();
 
                 cfg.CreateMap<Manufacturer, ManufacturerDto>();

@@ -67,6 +67,10 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "TimeSpan2": {
+              "target": "Package",
+              "version": "[2.4.3, )"
             }
           },
           "imports": [

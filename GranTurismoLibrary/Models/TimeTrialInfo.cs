@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace GranTurismoLibrary.Models
 {
-    internal class TimeTrialInfo
+    public class TimeTrialInfo
     {
         public System.TimeSpan Time { get; set; }
 
-        public string TrackName { get; set; }
+        public TrackInfo Track { get; set; }
 
-        public string CourseName { get; set; }
+        public CourseDto Course { get; set; }
 
-        public string RegionName { get; set; }
+        public RegionDto Region { get; set; }
 
-        OwnedCarInfo CarInfo { get; set; }
+
+        public OwnedCarInfo OwnedCarInfo { get; set; }
+
+        public TuneInfo TuneInfo { get; set; }
+
+        public DriverDto Driver { get; set; }
     }
 }

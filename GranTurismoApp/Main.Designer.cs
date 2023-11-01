@@ -102,18 +102,23 @@
             NewRecordLayout = new TableLayoutPanel();
             TimeTrial_SelectTrackPanel = new Panel();
             TrackInputLayout = new TableLayoutPanel();
-            NewRecord_RegionSelectDropDown = new ComboBox();
-            NewRecord_TrackSelectLabel = new Label();
-            NewRecord_CourseSelectLabel = new Label();
+            NewRecord_HeaderLabel = new Label();
+            NewRecord_StartSessionButton = new Button();
             NewRecord_RegionSelectLabel = new Label();
-            NewRecord_CourseSelectDropDown = new ComboBox();
+            NewRecord_RegionSelectDropDown = new ComboBox();
             NewRecord_CarSelectLabel = new Label();
-            NewRecord_TuneSelectLabel = new Label();
             NewRecord_CarSelectDropDown = new ComboBox();
+            NewRecord_CourseSelectDropDown = new ComboBox();
+            NewRecord_CourseSelectLabel = new Label();
+            NewRecord_TrackSelectLabel = new Label();
+            NewRecord_TrackSelectDropDown = new ComboBox();
+            NewRecord_TuneSelectLabel = new Label();
             NewRecord_TuneSelectDropDown = new ComboBox();
             NewRecord_DriverSelectLabel = new Label();
             NewRecord_DriverSelectDropDown = new ComboBox();
-            NewRecord_HeaderLabel = new Label();
+            NewRecord_SaveRecordButton = new Button();
+            NewRecord_TimeEntryLayout = new TableLayoutPanel();
+            NewRecord_TimeEntryLabel = new Label();
             InventoryTab = new TabPage();
             InventoryLayout = new TableLayoutPanel();
             OwnedCarGrid = new DataGridView();
@@ -174,8 +179,7 @@
             AddTune_EditDetailsButton = new Button();
             AddTune_DetailsFilledLabel = new Label();
             EditTuneDetailsTab = new TabPage();
-            NewRecord_TrackSelectDropDown = new ComboBox();
-            NewRecord_StartSessionButton = new Button();
+            NewRecord_TimeSpanPicker = new TimeSpanPicker();
             TabControl.SuspendLayout();
             LoadingTab.SuspendLayout();
             LoadingLayout.SuspendLayout();
@@ -204,6 +208,7 @@
             NewRecordLayout.SuspendLayout();
             TimeTrial_SelectTrackPanel.SuspendLayout();
             TrackInputLayout.SuspendLayout();
+            NewRecord_TimeEntryLayout.SuspendLayout();
             InventoryTab.SuspendLayout();
             InventoryLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).BeginInit();
@@ -306,7 +311,7 @@
             TabBackground.Controls.Add(TabLayout);
             TabBackground.Location = new Point(0, 0);
             TabBackground.Name = "TabBackground";
-            TabBackground.Size = new Size(978, 3000);
+            TabBackground.Size = new Size(893, 3000);
             TabBackground.TabIndex = 0;
             // 
             // TabLayout
@@ -322,7 +327,7 @@
             TabLayout.Name = "TabLayout";
             TabLayout.RowCount = 1;
             TabLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TabLayout.Size = new Size(978, 3000);
+            TabLayout.Size = new Size(893, 3000);
             TabLayout.TabIndex = 1;
             // 
             // BlacklistLayout
@@ -393,7 +398,7 @@
             BlacklistLayout.Controls.Add(BLTime14, 3, 13);
             BlacklistLayout.Controls.Add(BLTime15, 3, 14);
             BlacklistLayout.Dock = DockStyle.Fill;
-            BlacklistLayout.Location = new Point(-122, 3);
+            BlacklistLayout.Location = new Point(-170, 3);
             BlacklistLayout.Name = "BlacklistLayout";
             BlacklistLayout.RowCount = 15;
             BlacklistLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
@@ -1149,8 +1154,8 @@
             // NewRecordLayout
             // 
             NewRecordLayout.ColumnCount = 2;
-            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.5555573F));
-            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.4444427F));
+            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.7671967F));
+            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.2328033F));
             NewRecordLayout.Controls.Add(TimeTrial_SelectTrackPanel, 0, 0);
             NewRecordLayout.Dock = DockStyle.Fill;
             NewRecordLayout.Location = new Point(3, 3);
@@ -1168,7 +1173,7 @@
             TimeTrial_SelectTrackPanel.Dock = DockStyle.Fill;
             TimeTrial_SelectTrackPanel.Location = new Point(3, 3);
             TimeTrial_SelectTrackPanel.Name = "TimeTrial_SelectTrackPanel";
-            TimeTrial_SelectTrackPanel.Size = new Size(855, 374);
+            TimeTrial_SelectTrackPanel.Size = new Size(859, 374);
             TimeTrial_SelectTrackPanel.TabIndex = 4;
             // 
             // TrackInputLayout
@@ -1193,136 +1198,21 @@
             TrackInputLayout.Controls.Add(NewRecord_TuneSelectDropDown, 3, 2);
             TrackInputLayout.Controls.Add(NewRecord_DriverSelectLabel, 2, 3);
             TrackInputLayout.Controls.Add(NewRecord_DriverSelectDropDown, 3, 3);
+            TrackInputLayout.Controls.Add(NewRecord_SaveRecordButton, 3, 5);
+            TrackInputLayout.Controls.Add(NewRecord_TimeEntryLayout, 3, 4);
             TrackInputLayout.Dock = DockStyle.Fill;
             TrackInputLayout.Location = new Point(0, 0);
             TrackInputLayout.Name = "TrackInputLayout";
             TrackInputLayout.RowCount = 6;
-            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 41F));
-            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 37F));
-            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
-            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
-            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
+            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
+            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 131F));
             TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TrackInputLayout.Size = new Size(855, 374);
+            TrackInputLayout.Size = new Size(859, 374);
             TrackInputLayout.TabIndex = 0;
-            // 
-            // NewRecord_RegionSelectDropDown
-            // 
-            NewRecord_RegionSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NewRecord_RegionSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            NewRecord_RegionSelectDropDown.FormattingEnabled = true;
-            NewRecord_RegionSelectDropDown.Location = new Point(130, 44);
-            NewRecord_RegionSelectDropDown.Name = "NewRecord_RegionSelectDropDown";
-            NewRecord_RegionSelectDropDown.Size = new Size(233, 23);
-            NewRecord_RegionSelectDropDown.TabIndex = 1;
-            // 
-            // NewRecord_TrackSelectLabel
-            // 
-            NewRecord_TrackSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_TrackSelectLabel.AutoSize = true;
-            NewRecord_TrackSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_TrackSelectLabel.Location = new Point(65, 136);
-            NewRecord_TrackSelectLabel.Name = "NewRecord_TrackSelectLabel";
-            NewRecord_TrackSelectLabel.Size = new Size(59, 52);
-            NewRecord_TrackSelectLabel.TabIndex = 10;
-            NewRecord_TrackSelectLabel.Text = "Track: ";
-            // 
-            // NewRecord_CourseSelectLabel
-            // 
-            NewRecord_CourseSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_CourseSelectLabel.AutoSize = true;
-            NewRecord_CourseSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_CourseSelectLabel.Location = new Point(54, 78);
-            NewRecord_CourseSelectLabel.Name = "NewRecord_CourseSelectLabel";
-            NewRecord_CourseSelectLabel.Size = new Size(70, 58);
-            NewRecord_CourseSelectLabel.TabIndex = 9;
-            NewRecord_CourseSelectLabel.Text = "Course: ";
-            // 
-            // NewRecord_RegionSelectLabel
-            // 
-            NewRecord_RegionSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_RegionSelectLabel.AutoSize = true;
-            NewRecord_RegionSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_RegionSelectLabel.Location = new Point(52, 41);
-            NewRecord_RegionSelectLabel.Name = "NewRecord_RegionSelectLabel";
-            NewRecord_RegionSelectLabel.Size = new Size(72, 37);
-            NewRecord_RegionSelectLabel.TabIndex = 8;
-            NewRecord_RegionSelectLabel.Text = "Region: ";
-            // 
-            // NewRecord_CourseSelectDropDown
-            // 
-            NewRecord_CourseSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NewRecord_CourseSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            NewRecord_CourseSelectDropDown.FormattingEnabled = true;
-            NewRecord_CourseSelectDropDown.Location = new Point(130, 81);
-            NewRecord_CourseSelectDropDown.Name = "NewRecord_CourseSelectDropDown";
-            NewRecord_CourseSelectDropDown.Size = new Size(233, 23);
-            NewRecord_CourseSelectDropDown.TabIndex = 0;
-            // 
-            // NewRecord_CarSelectLabel
-            // 
-            NewRecord_CarSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_CarSelectLabel.AutoSize = true;
-            NewRecord_CarSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_CarSelectLabel.Location = new Point(439, 41);
-            NewRecord_CarSelectLabel.Name = "NewRecord_CarSelectLabel";
-            NewRecord_CarSelectLabel.Size = new Size(44, 37);
-            NewRecord_CarSelectLabel.TabIndex = 11;
-            NewRecord_CarSelectLabel.Text = "Car: ";
-            // 
-            // NewRecord_TuneSelectLabel
-            // 
-            NewRecord_TuneSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_TuneSelectLabel.AutoSize = true;
-            NewRecord_TuneSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_TuneSelectLabel.Location = new Point(428, 78);
-            NewRecord_TuneSelectLabel.Name = "NewRecord_TuneSelectLabel";
-            NewRecord_TuneSelectLabel.Size = new Size(55, 58);
-            NewRecord_TuneSelectLabel.TabIndex = 12;
-            NewRecord_TuneSelectLabel.Text = "Tune: ";
-            // 
-            // NewRecord_CarSelectDropDown
-            // 
-            NewRecord_CarSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NewRecord_CarSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            NewRecord_CarSelectDropDown.FormattingEnabled = true;
-            NewRecord_CarSelectDropDown.Location = new Point(489, 44);
-            NewRecord_CarSelectDropDown.Name = "NewRecord_CarSelectDropDown";
-            NewRecord_CarSelectDropDown.Size = new Size(303, 23);
-            NewRecord_CarSelectDropDown.TabIndex = 13;
-            // 
-            // NewRecord_TuneSelectDropDown
-            // 
-            NewRecord_TuneSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NewRecord_TuneSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            NewRecord_TuneSelectDropDown.FormattingEnabled = true;
-            NewRecord_TuneSelectDropDown.Location = new Point(489, 81);
-            NewRecord_TuneSelectDropDown.Name = "NewRecord_TuneSelectDropDown";
-            NewRecord_TuneSelectDropDown.Size = new Size(303, 23);
-            NewRecord_TuneSelectDropDown.TabIndex = 14;
-            // 
-            // NewRecord_DriverSelectLabel
-            // 
-            NewRecord_DriverSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_DriverSelectLabel.AutoSize = true;
-            NewRecord_DriverSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_DriverSelectLabel.Location = new Point(417, 136);
-            NewRecord_DriverSelectLabel.Name = "NewRecord_DriverSelectLabel";
-            NewRecord_DriverSelectLabel.Size = new Size(66, 52);
-            NewRecord_DriverSelectLabel.TabIndex = 15;
-            NewRecord_DriverSelectLabel.Text = "Driver: ";
-            // 
-            // NewRecord_DriverSelectDropDown
-            // 
-            NewRecord_DriverSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NewRecord_DriverSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            NewRecord_DriverSelectDropDown.FormattingEnabled = true;
-            NewRecord_DriverSelectDropDown.Location = new Point(489, 139);
-            NewRecord_DriverSelectDropDown.Name = "NewRecord_DriverSelectDropDown";
-            NewRecord_DriverSelectDropDown.Size = new Size(303, 23);
-            NewRecord_DriverSelectDropDown.TabIndex = 16;
             // 
             // NewRecord_HeaderLabel
             // 
@@ -1333,10 +1223,196 @@
             NewRecord_HeaderLabel.ForeColor = SystemColors.ControlText;
             NewRecord_HeaderLabel.Location = new Point(3, 0);
             NewRecord_HeaderLabel.Name = "NewRecord_HeaderLabel";
-            NewRecord_HeaderLabel.Size = new Size(849, 30);
+            NewRecord_HeaderLabel.Size = new Size(853, 30);
             NewRecord_HeaderLabel.TabIndex = 17;
             NewRecord_HeaderLabel.Text = "New Time Trial";
             NewRecord_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // NewRecord_StartSessionButton
+            // 
+            NewRecord_StartSessionButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_StartSessionButton.AutoSize = true;
+            NewRecord_StartSessionButton.Location = new Point(41, 346);
+            NewRecord_StartSessionButton.Name = "NewRecord_StartSessionButton";
+            NewRecord_StartSessionButton.Size = new Size(83, 25);
+            NewRecord_StartSessionButton.TabIndex = 19;
+            NewRecord_StartSessionButton.Text = "Start Session";
+            NewRecord_StartSessionButton.UseVisualStyleBackColor = true;
+            NewRecord_StartSessionButton.Click += NewRecord_StartSessionButton_Click;
+            // 
+            // NewRecord_RegionSelectLabel
+            // 
+            NewRecord_RegionSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_RegionSelectLabel.AutoSize = true;
+            NewRecord_RegionSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_RegionSelectLabel.Location = new Point(52, 50);
+            NewRecord_RegionSelectLabel.Name = "NewRecord_RegionSelectLabel";
+            NewRecord_RegionSelectLabel.Size = new Size(72, 45);
+            NewRecord_RegionSelectLabel.TabIndex = 8;
+            NewRecord_RegionSelectLabel.Text = "Region: ";
+            // 
+            // NewRecord_RegionSelectDropDown
+            // 
+            NewRecord_RegionSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_RegionSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            NewRecord_RegionSelectDropDown.FormattingEnabled = true;
+            NewRecord_RegionSelectDropDown.Location = new Point(130, 53);
+            NewRecord_RegionSelectDropDown.Name = "NewRecord_RegionSelectDropDown";
+            NewRecord_RegionSelectDropDown.Size = new Size(233, 23);
+            NewRecord_RegionSelectDropDown.TabIndex = 1;
+            NewRecord_RegionSelectDropDown.SelectedIndexChanged += NewRecord_RegionSelectDropDown_SelectedIndexChanged;
+            // 
+            // NewRecord_CarSelectLabel
+            // 
+            NewRecord_CarSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_CarSelectLabel.AutoSize = true;
+            NewRecord_CarSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_CarSelectLabel.Location = new Point(439, 50);
+            NewRecord_CarSelectLabel.Name = "NewRecord_CarSelectLabel";
+            NewRecord_CarSelectLabel.Size = new Size(44, 45);
+            NewRecord_CarSelectLabel.TabIndex = 11;
+            NewRecord_CarSelectLabel.Text = "Car: ";
+            // 
+            // NewRecord_CarSelectDropDown
+            // 
+            NewRecord_CarSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_CarSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            NewRecord_CarSelectDropDown.FormattingEnabled = true;
+            NewRecord_CarSelectDropDown.Location = new Point(489, 53);
+            NewRecord_CarSelectDropDown.Name = "NewRecord_CarSelectDropDown";
+            NewRecord_CarSelectDropDown.Size = new Size(303, 23);
+            NewRecord_CarSelectDropDown.TabIndex = 13;
+            NewRecord_CarSelectDropDown.SelectedIndexChanged += NewRecord_CarSelectDropDown_SelectedIndexChanged;
+            // 
+            // NewRecord_CourseSelectDropDown
+            // 
+            NewRecord_CourseSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_CourseSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            NewRecord_CourseSelectDropDown.FormattingEnabled = true;
+            NewRecord_CourseSelectDropDown.Location = new Point(130, 98);
+            NewRecord_CourseSelectDropDown.Name = "NewRecord_CourseSelectDropDown";
+            NewRecord_CourseSelectDropDown.Size = new Size(233, 23);
+            NewRecord_CourseSelectDropDown.TabIndex = 0;
+            NewRecord_CourseSelectDropDown.SelectedIndexChanged += NewRecord_CourseSelectDropDown_SelectedIndexChanged;
+            // 
+            // NewRecord_CourseSelectLabel
+            // 
+            NewRecord_CourseSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_CourseSelectLabel.AutoSize = true;
+            NewRecord_CourseSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_CourseSelectLabel.Location = new Point(54, 95);
+            NewRecord_CourseSelectLabel.Name = "NewRecord_CourseSelectLabel";
+            NewRecord_CourseSelectLabel.Size = new Size(70, 45);
+            NewRecord_CourseSelectLabel.TabIndex = 9;
+            NewRecord_CourseSelectLabel.Text = "Course: ";
+            // 
+            // NewRecord_TrackSelectLabel
+            // 
+            NewRecord_TrackSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_TrackSelectLabel.AutoSize = true;
+            NewRecord_TrackSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_TrackSelectLabel.Location = new Point(65, 140);
+            NewRecord_TrackSelectLabel.Name = "NewRecord_TrackSelectLabel";
+            NewRecord_TrackSelectLabel.Size = new Size(59, 45);
+            NewRecord_TrackSelectLabel.TabIndex = 10;
+            NewRecord_TrackSelectLabel.Text = "Track: ";
+            // 
+            // NewRecord_TrackSelectDropDown
+            // 
+            NewRecord_TrackSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_TrackSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            NewRecord_TrackSelectDropDown.FormattingEnabled = true;
+            NewRecord_TrackSelectDropDown.Location = new Point(130, 143);
+            NewRecord_TrackSelectDropDown.Name = "NewRecord_TrackSelectDropDown";
+            NewRecord_TrackSelectDropDown.Size = new Size(233, 23);
+            NewRecord_TrackSelectDropDown.TabIndex = 18;
+            NewRecord_TrackSelectDropDown.SelectedIndexChanged += NewRecord_TrackSelectDropDown_SelectedIndexChanged;
+            // 
+            // NewRecord_TuneSelectLabel
+            // 
+            NewRecord_TuneSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_TuneSelectLabel.AutoSize = true;
+            NewRecord_TuneSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_TuneSelectLabel.Location = new Point(428, 95);
+            NewRecord_TuneSelectLabel.Name = "NewRecord_TuneSelectLabel";
+            NewRecord_TuneSelectLabel.Size = new Size(55, 45);
+            NewRecord_TuneSelectLabel.TabIndex = 12;
+            NewRecord_TuneSelectLabel.Text = "Tune: ";
+            // 
+            // NewRecord_TuneSelectDropDown
+            // 
+            NewRecord_TuneSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_TuneSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            NewRecord_TuneSelectDropDown.FormattingEnabled = true;
+            NewRecord_TuneSelectDropDown.Location = new Point(489, 98);
+            NewRecord_TuneSelectDropDown.Name = "NewRecord_TuneSelectDropDown";
+            NewRecord_TuneSelectDropDown.Size = new Size(303, 23);
+            NewRecord_TuneSelectDropDown.TabIndex = 14;
+            // 
+            // NewRecord_DriverSelectLabel
+            // 
+            NewRecord_DriverSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_DriverSelectLabel.AutoSize = true;
+            NewRecord_DriverSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_DriverSelectLabel.Location = new Point(417, 140);
+            NewRecord_DriverSelectLabel.Name = "NewRecord_DriverSelectLabel";
+            NewRecord_DriverSelectLabel.Size = new Size(66, 45);
+            NewRecord_DriverSelectLabel.TabIndex = 15;
+            NewRecord_DriverSelectLabel.Text = "Driver: ";
+            // 
+            // NewRecord_DriverSelectDropDown
+            // 
+            NewRecord_DriverSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_DriverSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            NewRecord_DriverSelectDropDown.FormattingEnabled = true;
+            NewRecord_DriverSelectDropDown.Location = new Point(489, 143);
+            NewRecord_DriverSelectDropDown.Name = "NewRecord_DriverSelectDropDown";
+            NewRecord_DriverSelectDropDown.Size = new Size(303, 23);
+            NewRecord_DriverSelectDropDown.TabIndex = 16;
+            // 
+            // NewRecord_SaveRecordButton
+            // 
+            NewRecord_SaveRecordButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_SaveRecordButton.AutoSize = true;
+            NewRecord_SaveRecordButton.Location = new Point(709, 346);
+            NewRecord_SaveRecordButton.Name = "NewRecord_SaveRecordButton";
+            NewRecord_SaveRecordButton.Size = new Size(83, 25);
+            NewRecord_SaveRecordButton.TabIndex = 22;
+            NewRecord_SaveRecordButton.Text = "Save Record";
+            NewRecord_SaveRecordButton.UseVisualStyleBackColor = true;
+            NewRecord_SaveRecordButton.Click += NewRecord_SaveRecordButton_Click;
+            // 
+            // NewRecord_TimeEntryLayout
+            // 
+            NewRecord_TimeEntryLayout.ColumnCount = 2;
+            NewRecord_TimeEntryLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            NewRecord_TimeEntryLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 71F));
+            NewRecord_TimeEntryLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            NewRecord_TimeEntryLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            NewRecord_TimeEntryLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            NewRecord_TimeEntryLayout.Controls.Add(NewRecord_TimeEntryLabel, 0, 0);
+            NewRecord_TimeEntryLayout.Controls.Add(NewRecord_TimeSpanPicker, 1, 0);
+            NewRecord_TimeEntryLayout.Dock = DockStyle.Fill;
+            NewRecord_TimeEntryLayout.Location = new Point(489, 188);
+            NewRecord_TimeEntryLayout.Name = "NewRecord_TimeEntryLayout";
+            NewRecord_TimeEntryLayout.RowCount = 2;
+            NewRecord_TimeEntryLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
+            NewRecord_TimeEntryLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            NewRecord_TimeEntryLayout.Size = new Size(303, 125);
+            NewRecord_TimeEntryLayout.TabIndex = 23;
+            // 
+            // NewRecord_TimeEntryLabel
+            // 
+            NewRecord_TimeEntryLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_TimeEntryLabel.AutoSize = true;
+            NewRecord_TimeEntryLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            NewRecord_TimeEntryLabel.Location = new Point(11, 0);
+            NewRecord_TimeEntryLabel.Name = "NewRecord_TimeEntryLabel";
+            NewRecord_TimeEntryLabel.Padding = new Padding(0, 0, 0, 3);
+            NewRecord_TimeEntryLabel.Size = new Size(56, 83);
+            NewRecord_TimeEntryLabel.TabIndex = 20;
+            NewRecord_TimeEntryLabel.Text = "Time: ";
+            NewRecord_TimeEntryLabel.TextAlign = ContentAlignment.BottomLeft;
             // 
             // InventoryTab
             // 
@@ -2035,26 +2111,13 @@
             EditTuneDetailsTab.TabIndex = 4;
             EditTuneDetailsTab.Text = "Edit Tune";
             // 
-            // NewRecord_TrackSelectDropDown
+            // NewRecord_TimeSpanPicker
             // 
-            NewRecord_TrackSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            NewRecord_TrackSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            NewRecord_TrackSelectDropDown.FormattingEnabled = true;
-            NewRecord_TrackSelectDropDown.Location = new Point(130, 139);
-            NewRecord_TrackSelectDropDown.Name = "NewRecord_TrackSelectDropDown";
-            NewRecord_TrackSelectDropDown.Size = new Size(233, 23);
-            NewRecord_TrackSelectDropDown.TabIndex = 18;
-            // 
-            // NewRecord_StartSessionButton
-            // 
-            NewRecord_StartSessionButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_StartSessionButton.AutoSize = true;
-            NewRecord_StartSessionButton.Location = new Point(41, 346);
-            NewRecord_StartSessionButton.Name = "NewRecord_StartSessionButton";
-            NewRecord_StartSessionButton.Size = new Size(83, 25);
-            NewRecord_StartSessionButton.TabIndex = 19;
-            NewRecord_StartSessionButton.Text = "Start Session";
-            NewRecord_StartSessionButton.UseVisualStyleBackColor = true;
+            NewRecord_TimeSpanPicker.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            NewRecord_TimeSpanPicker.Location = new Point(73, 57);
+            NewRecord_TimeSpanPicker.Name = "NewRecord_TimeSpanPicker";
+            NewRecord_TimeSpanPicker.Size = new Size(227, 23);
+            NewRecord_TimeSpanPicker.TabIndex = 22;
             // 
             // Main
             // 
@@ -2096,6 +2159,8 @@
             TimeTrial_SelectTrackPanel.ResumeLayout(false);
             TrackInputLayout.ResumeLayout(false);
             TrackInputLayout.PerformLayout();
+            NewRecord_TimeEntryLayout.ResumeLayout(false);
+            NewRecord_TimeEntryLayout.PerformLayout();
             InventoryTab.ResumeLayout(false);
             InventoryLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).EndInit();
@@ -2266,5 +2331,9 @@
         private Label NewRecord_HeaderLabel;
         private Button NewRecord_StartSessionButton;
         private ComboBox NewRecord_TrackSelectDropDown;
+        private Label NewRecord_TimeEntryLabel;
+        private Button NewRecord_SaveRecordButton;
+        private TableLayoutPanel NewRecord_TimeEntryLayout;
+        private TimeSpanPicker NewRecord_TimeSpanPicker;
     }
 }

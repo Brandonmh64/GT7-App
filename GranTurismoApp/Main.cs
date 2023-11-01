@@ -11,6 +11,8 @@ namespace GranTurismoApp
     {
         private TabPage _loadingTab { get; set; }
         private bool _initialLoad { get; set; }
+        private bool _sessionStarted { get; set; }
+        private List<TimeTrialInfo> _sessionTimeTrials { get; set; }
 
         private ImageList _carImages { get; set; }
 
@@ -37,10 +39,18 @@ namespace GranTurismoApp
             //var loadScreenCountdown = ShowLoadingTab(BlacklistTab);
             //allLoadTasks.Add(loadScreenCountdown);
 
-
+            // Blacklist
             var loadBlacklistTask = LoadBlacklistTab();
             allLoadTasks.Add(loadBlacklistTask);
 
+            // Track
+            var loadTrackTabTasks = Task.Run(() =>
+            {
+                LoadTimeTrialLocationDropDowns();
+                LoadTimeTrialCarOptions();
+            });
+
+            // Inventory
             var loadInventoryTask = LoadInventoryTab();
             allLoadTasks.Add(loadInventoryTask);
 
@@ -89,7 +99,7 @@ namespace GranTurismoApp
 
 
 
-        /* Blacklist Tab */
+        /* ===== Blacklist Tab ===== */
 
         private async Task LoadBlacklistTab()
         {
@@ -135,8 +145,249 @@ namespace GranTurismoApp
 
 
 
-        /* Inventory Tab */
 
+
+
+        /* ===== Track Tab ===== */
+
+
+        // Location Info
+        private void LoadTimeTrialLocationDropDowns()
+        {
+            LoadTimeTrialRegionList();
+            LoadTimeTrialCourseList();
+            LoadTimeTrialTrackList();
+
+
+        }
+
+        private void LoadTimeTrialRegionList(int regionId = 0)
+        {
+            var regionDao = new RegionDao();
+            var regionList = regionDao.GetRegions();
+
+            NewRecord_RegionSelectDropDown.DataSource = regionList;
+            NewRecord_RegionSelectDropDown.DisplayMember = "Name";
+            NewRecord_RegionSelectDropDown.ValueMember = "RegionId";
+
+            if (regionId > 0)
+            {
+                var matchingRegion = regionList.FirstOrDefault(r => r.RegionId == regionId);
+                NewRecord_RegionSelectDropDown.SelectedItem = matchingRegion;
+            }
+            else
+            {
+                NewRecord_RegionSelectDropDown.SelectedIndex = -1;
+                NewRecord_RegionSelectDropDown.Text = "";
+            }
+
+        }
+        private void NewRecord_RegionSelectDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NewRecord_RegionSelectDropDown.ContainsFocus)
+            {
+                var selectedRegion = NewRecord_RegionSelectDropDown.SelectedItem as RegionDto;
+
+                LoadTimeTrialCourseList(selectedRegion.RegionId);
+            }
+        }
+
+        private void LoadTimeTrialCourseList(int regionId = 0, int trackId = 0)
+        {
+            var courseDao = new GranTurismoFramework.DataAccess.CourseDao();
+            var courseList = courseDao.GetCourses();
+            var filteredList = new List<CourseDto>();
+
+            NewRecord_CourseSelectDropDown.DisplayMember = "Name";
+            NewRecord_CourseSelectDropDown.ValueMember = "CourseId";
+
+            if (regionId > 0 || trackId > 0)
+            {
+                var selectedRegion = NewRecord_RegionSelectDropDown.SelectedItem as RegionDto;
+                if (selectedRegion != null)
+                {
+                    filteredList = courseList.Where(course => course.RegionId == selectedRegion.RegionId).ToList();
+                    NewRecord_CourseSelectDropDown.SelectedItem = courseList.FirstOrDefault(c => c.RegionId == selectedRegion.RegionId);
+                }
+
+                if (trackId > 0)
+                {
+                    filteredList = courseList.Where(course => course.CourseId == trackId).ToList();
+                }
+
+                NewRecord_CourseSelectDropDown.DataSource = filteredList;
+            }
+            else
+            {
+                NewRecord_CourseSelectDropDown.DataSource = courseList;
+
+                NewRecord_CourseSelectDropDown.SelectedIndex = -1;
+                NewRecord_CourseSelectDropDown.Text = "";
+            }
+        }
+        private void NewRecord_CourseSelectDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NewRecord_CourseSelectDropDown.ContainsFocus)
+            {
+                var selectedCourse = NewRecord_CourseSelectDropDown.SelectedItem as CourseDto;
+
+                LoadTimeTrialRegionList(selectedCourse.RegionId);
+                LoadTimeTrialTrackList(selectedCourse.CourseId);
+            }
+        }
+
+        private void LoadTimeTrialTrackList(int courseId = 0)
+        {
+            var trackDao = new GranTurismoLibrary.DataAccess.TrackDao();
+            var trackList = trackDao.GetAllTrackInfo();
+            var filteredList = new List<TrackInfo>();
+
+            NewRecord_TrackSelectDropDown.DisplayMember = "TrackName";
+            NewRecord_TrackSelectDropDown.ValueMember = "TrackId";
+
+            if (courseId > 0)
+            {
+                filteredList = trackList.Where(track => track.CourseId == courseId).ToList();
+
+                NewRecord_TrackSelectDropDown.DataSource = filteredList;
+            }
+            else
+            {
+                NewRecord_TrackSelectDropDown.DataSource = null;
+
+                NewRecord_TrackSelectDropDown.SelectedIndex = -1;
+                NewRecord_TrackSelectDropDown.Text = "";
+            }
+        }
+        private void NewRecord_TrackSelectDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NewRecord_TrackSelectDropDown.ContainsFocus)
+            {
+                var selectedTrack = NewRecord_TrackSelectDropDown.SelectedItem as TrackInfo;
+
+                LoadInventoryRegionList(selectedTrack.RegionId);
+                LoadTimeTrialCourseList(0, selectedTrack.TrackId);
+            }
+        }
+
+
+        // Car Info
+        private void LoadTimeTrialCarOptions()
+        {
+            LoadTimeTrialOwnedCars();
+            LoadTimeTrialTunes();
+            LoadTimeTrialDrivers();
+        }
+
+        private void LoadTimeTrialOwnedCars()
+        {
+            var ownedCarDao = new GranTurismoLibrary.DataAccess.CarDao();
+            var ownedCars = ownedCarDao.GetAllOwnedCars();
+
+            NewRecord_CarSelectDropDown.DataSource = ownedCars;
+            NewRecord_CarSelectDropDown.DisplayMember = "Nickname";
+            NewRecord_CarSelectDropDown.ValueMember = "OwnedCarId";
+
+            NewRecord_CarSelectDropDown.SelectedIndex = -1;
+            NewRecord_CarSelectDropDown.Text = "";
+        }
+        private void NewRecord_CarSelectDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NewRecord_CarSelectDropDown.SelectedItem != null)
+            {
+                var selectedCar = NewRecord_CarSelectDropDown.SelectedItem as OwnedCarInfo;
+
+                if (selectedCar != null)
+                {
+                    LoadTimeTrialTunes(selectedCar.OwnedCarId);
+                }
+            }
+        }
+
+        private void LoadTimeTrialTunes(int carId = 0)
+        {
+            var tuneDao = new TuneDao();
+            var tunes = tuneDao.GetTunes(carId);
+
+            NewRecord_TuneSelectDropDown.DataSource = tunes;
+            NewRecord_TuneSelectDropDown.DisplayMember = "SheetName";
+            NewRecord_TuneSelectDropDown.ValueMember = "TuneId";
+
+            NewRecord_TuneSelectDropDown.SelectedIndex = -1;
+            NewRecord_TuneSelectDropDown.Text = "";
+        }
+        private void LoadTimeTrialDrivers()
+        {
+            var driverDao = new GranTurismoFramework.DataAccess.DriverDao();
+            var driverList = driverDao.GetDrivers();
+
+            NewRecord_DriverSelectDropDown.DataSource = driverList;
+            NewRecord_DriverSelectDropDown.DisplayMember = "DriverName";
+            NewRecord_DriverSelectDropDown.ValueMember = "DriverId";
+
+            NewRecord_DriverSelectDropDown.SelectedIndex = -1;
+            NewRecord_DriverSelectDropDown.Text = "";
+        }
+
+
+        // Buttons
+        private void NewRecord_StartSessionButton_Click(object sender, EventArgs e)
+        {
+            if (!_sessionStarted)
+            {
+                // Start Session
+
+                _sessionStarted = true;
+                NewRecord_StartSessionButton.Text = "End Session";
+
+                NewRecord_RegionSelectDropDown.Enabled = false;
+                NewRecord_CourseSelectDropDown.Enabled = false;
+                NewRecord_TrackSelectDropDown.Enabled = false;
+                NewRecord_CarSelectDropDown.Enabled = false;
+
+                NewRecord_SaveRecordButton.Enabled = true;
+
+                _sessionTimeTrials = new List<TimeTrialInfo>();
+            }
+            else
+            {
+                // End Session
+
+                _sessionStarted = false;
+                NewRecord_StartSessionButton.Text = "Start Session";
+
+                NewRecord_RegionSelectDropDown.Enabled = true;
+                NewRecord_CourseSelectDropDown.Enabled = true;
+                NewRecord_TrackSelectDropDown.Enabled = true;
+                NewRecord_CarSelectDropDown.Enabled = true;
+
+                NewRecord_SaveRecordButton.Enabled = false;
+            }
+        }
+
+        private void NewRecord_SaveRecordButton_Click(object sender, EventArgs e)
+        {
+            var timeTrial = new TimeTrialInfo()
+            {
+                Region = NewRecord_RegionSelectDropDown.SelectedItem as RegionDto,
+                Course = NewRecord_CourseSelectDropDown.SelectedItem as CourseDto,
+                Track = NewRecord_TrackSelectDropDown.SelectedItem as TrackInfo,
+
+                Time = NewRecord_TimeSpanPicker.Value,
+                OwnedCarInfo = NewRecord_CarSelectDropDown.SelectedItem as OwnedCarInfo,
+                TuneInfo = NewRecord_TuneSelectDropDown.SelectedItem as TuneInfo,
+                Driver = NewRecord_DriverSelectDropDown.SelectedItem as DriverDto                
+            };
+
+            _sessionTimeTrials.Add(timeTrial);
+        }
+
+
+
+
+        /* ===== Inventory Tab ===== */
+
+        #region InventoryTab
 
         private async Task LoadInventoryTab()
         {
@@ -145,7 +396,7 @@ namespace GranTurismoApp
                 LoadOwnedCarList();
 
                 // Add Car Panel
-                AddCar_RegionDropDown.Invoke(() => LoadRegionList());
+                AddCar_RegionDropDown.Invoke(() => LoadInventoryRegionList());
                 AddCar_ManufacturerDropDown.Invoke(() => LoadManufacturerList());
                 AddCar_ModelDropDown.Invoke(() => LoadCarModelList());
 
@@ -198,7 +449,7 @@ namespace GranTurismoApp
 
 
         // Add Car Panel
-        private void LoadRegionList(int manufacturerId = 0, int modelId = 0)
+        private void LoadInventoryRegionList(int manufacturerId = 0, int modelId = 0)
         {
             var regionDao = new RegionDao();
             var regionList = regionDao.GetRegions();
@@ -285,7 +536,7 @@ namespace GranTurismoApp
                 {
                     int.TryParse(AddCar_ManufacturerDropDown?.SelectedValue?.ToString(), out int selectedManufacturer);
 
-                    LoadRegionList(selectedManufacturer, 0);
+                    LoadInventoryRegionList(selectedManufacturer, 0);
                     LoadCarModelList(0, selectedManufacturer);
                 }
             }
@@ -330,7 +581,7 @@ namespace GranTurismoApp
                 {
                     int.TryParse(AddCar_ModelDropDown?.SelectedValue?.ToString(), out int selectedCarInfo);
 
-                    LoadRegionList(0, selectedCarInfo);
+                    LoadInventoryRegionList(0, selectedCarInfo);
                     LoadManufacturerList(0, selectedCarInfo);
                 }
             }
@@ -481,5 +732,9 @@ namespace GranTurismoApp
         {
 
         }
+
+        #endregion InventoryTab
+
+
     }
 }

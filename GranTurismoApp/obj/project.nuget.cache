@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iOuNJofEb8ojoMcHLj74KgHRE/ITlLGaPL6zds2+PD49bRAzgjwz4uMuyDBxRePNt94DQu9YRAIRvOxastdh0w==",
+  "dgSpecHash": "wXeCr/fsqy9SieZgeB1Gvjn1+jPsEYC5Xxp/izHzoq6BxkbxK/fu4B+NqzO+2y4rLHQJ9zlgeQA9JrcA1RggzQ==",
   "success": true,
   "projectFilePath": "C:\\repos\\GT7-App\\GranTurismoApp\\GranTurismoApp.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,9 @@
     "C:\\Users\\brand\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.7.0\\system.security.cryptography.protecteddata.4.7.0.nupkg.sha512",
     "C:\\Users\\brand\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\brand\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\brand\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\brand\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\brand\\.nuget\\packages\\timespan2\\2.4.3\\timespan2.2.4.3.nupkg.sha512",
+    "C:\\Users\\brand\\.nuget\\packages\\timespan2.core\\2.4.3\\timespan2.core.2.4.3.nupkg.sha512"
   ],
   "logs": []
 }

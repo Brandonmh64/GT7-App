@@ -350,6 +350,91 @@
           }
         }
       },
+      "TimeSpan2/2.4.3": {
+        "type": "package",
+        "dependencies": {
+          "TimeSpan2.Core": "2.4.3"
+        },
+        "compile": {
+          "lib/net7.0-windows7.0/TimeSpan2.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows7.0/TimeSpan2.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WindowsForms"
+        ]
+      },
+      "TimeSpan2.Core/2.4.3": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/TimeSpan2.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/TimeSpan2.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "resource": {
+          "lib/net7.0/ar/TimeSpan2.Core.resources.dll": {
+            "locale": "ar"
+          },
+          "lib/net7.0/da/TimeSpan2.Core.resources.dll": {
+            "locale": "da"
+          },
+          "lib/net7.0/de/TimeSpan2.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/net7.0/es/TimeSpan2.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/net7.0/fr/TimeSpan2.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/net7.0/it/TimeSpan2.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/net7.0/ja/TimeSpan2.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/net7.0/ko/TimeSpan2.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/net7.0/nl/TimeSpan2.Core.resources.dll": {
+            "locale": "nl"
+          },
+          "lib/net7.0/pl/TimeSpan2.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/net7.0/pt/TimeSpan2.Core.resources.dll": {
+            "locale": "pt"
+          },
+          "lib/net7.0/ru/TimeSpan2.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/net7.0/se/TimeSpan2.Core.resources.dll": {
+            "locale": "se"
+          },
+          "lib/net7.0/sv/TimeSpan2.Core.resources.dll": {
+            "locale": "sv"
+          },
+          "lib/net7.0/tr/TimeSpan2.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/net7.0/zh-CN/TimeSpan2.Core.resources.dll": {
+            "locale": "zh-CN"
+          },
+          "lib/net7.0/zh-Hant/TimeSpan2.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
       "GranTurismoFramework/1.0.0": {
         "type": "project",
         "compile": {
@@ -1127,6 +1212,194 @@
         "version.txt"
       ]
     },
+    "TimeSpan2/2.4.3": {
+      "sha512": "KRcICqE77lSHi77oXptKhGiiQDzMyferaE7DPvFl4nlwvFhTml9tOisO/cG/912nmGIPJcaHQQKtfzas2nkOwg==",
+      "type": "package",
+      "path": "timespan2/2.4.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/TimeSpan2.dll",
+        "lib/net20/TimeSpan2.xml",
+        "lib/net35/TimeSpan2.dll",
+        "lib/net35/TimeSpan2.xml",
+        "lib/net462/TimeSpan2.dll",
+        "lib/net462/TimeSpan2.xml",
+        "lib/net48/TimeSpan2.dll",
+        "lib/net48/TimeSpan2.xml",
+        "lib/net6.0-windows7.0/TimeSpan2.dll",
+        "lib/net6.0-windows7.0/TimeSpan2.xml",
+        "lib/net7.0-windows7.0/TimeSpan2.dll",
+        "lib/net7.0-windows7.0/TimeSpan2.xml",
+        "stopwatch.png",
+        "timespan2.2.4.3.nupkg.sha512",
+        "timespan2.nuspec"
+      ]
+    },
+    "TimeSpan2.Core/2.4.3": {
+      "sha512": "CZKek+7SErrApgIbjW5nnB5Y5uznEoc9Z/DJRg9z3mPKh2GcxWyAjdLunol5m2Af0h+gJRt5rTS3VF1Z9NKpfw==",
+      "type": "package",
+      "path": "timespan2.core/2.4.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/TimeSpan2.Core.dll",
+        "lib/net20/TimeSpan2.Core.xml",
+        "lib/net20/ar/TimeSpan2.Core.resources.dll",
+        "lib/net20/da/TimeSpan2.Core.resources.dll",
+        "lib/net20/de/TimeSpan2.Core.resources.dll",
+        "lib/net20/es/TimeSpan2.Core.resources.dll",
+        "lib/net20/fr/TimeSpan2.Core.resources.dll",
+        "lib/net20/it/TimeSpan2.Core.resources.dll",
+        "lib/net20/ja/TimeSpan2.Core.resources.dll",
+        "lib/net20/ko/TimeSpan2.Core.resources.dll",
+        "lib/net20/nl/TimeSpan2.Core.resources.dll",
+        "lib/net20/pl/TimeSpan2.Core.resources.dll",
+        "lib/net20/pt/TimeSpan2.Core.resources.dll",
+        "lib/net20/ru/TimeSpan2.Core.resources.dll",
+        "lib/net20/se/TimeSpan2.Core.resources.dll",
+        "lib/net20/sv/TimeSpan2.Core.resources.dll",
+        "lib/net20/tr/TimeSpan2.Core.resources.dll",
+        "lib/net20/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/net20/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/net35/TimeSpan2.Core.dll",
+        "lib/net35/TimeSpan2.Core.xml",
+        "lib/net35/ar/TimeSpan2.Core.resources.dll",
+        "lib/net35/da/TimeSpan2.Core.resources.dll",
+        "lib/net35/de/TimeSpan2.Core.resources.dll",
+        "lib/net35/es/TimeSpan2.Core.resources.dll",
+        "lib/net35/fr/TimeSpan2.Core.resources.dll",
+        "lib/net35/it/TimeSpan2.Core.resources.dll",
+        "lib/net35/ja/TimeSpan2.Core.resources.dll",
+        "lib/net35/ko/TimeSpan2.Core.resources.dll",
+        "lib/net35/nl/TimeSpan2.Core.resources.dll",
+        "lib/net35/pl/TimeSpan2.Core.resources.dll",
+        "lib/net35/pt/TimeSpan2.Core.resources.dll",
+        "lib/net35/ru/TimeSpan2.Core.resources.dll",
+        "lib/net35/se/TimeSpan2.Core.resources.dll",
+        "lib/net35/sv/TimeSpan2.Core.resources.dll",
+        "lib/net35/tr/TimeSpan2.Core.resources.dll",
+        "lib/net35/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/net35/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/net462/TimeSpan2.Core.dll",
+        "lib/net462/TimeSpan2.Core.xml",
+        "lib/net462/ar/TimeSpan2.Core.resources.dll",
+        "lib/net462/da/TimeSpan2.Core.resources.dll",
+        "lib/net462/de/TimeSpan2.Core.resources.dll",
+        "lib/net462/es/TimeSpan2.Core.resources.dll",
+        "lib/net462/fr/TimeSpan2.Core.resources.dll",
+        "lib/net462/it/TimeSpan2.Core.resources.dll",
+        "lib/net462/ja/TimeSpan2.Core.resources.dll",
+        "lib/net462/ko/TimeSpan2.Core.resources.dll",
+        "lib/net462/nl/TimeSpan2.Core.resources.dll",
+        "lib/net462/pl/TimeSpan2.Core.resources.dll",
+        "lib/net462/pt/TimeSpan2.Core.resources.dll",
+        "lib/net462/ru/TimeSpan2.Core.resources.dll",
+        "lib/net462/se/TimeSpan2.Core.resources.dll",
+        "lib/net462/sv/TimeSpan2.Core.resources.dll",
+        "lib/net462/tr/TimeSpan2.Core.resources.dll",
+        "lib/net462/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/net462/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/net48/TimeSpan2.Core.dll",
+        "lib/net48/TimeSpan2.Core.xml",
+        "lib/net48/ar/TimeSpan2.Core.resources.dll",
+        "lib/net48/da/TimeSpan2.Core.resources.dll",
+        "lib/net48/de/TimeSpan2.Core.resources.dll",
+        "lib/net48/es/TimeSpan2.Core.resources.dll",
+        "lib/net48/fr/TimeSpan2.Core.resources.dll",
+        "lib/net48/it/TimeSpan2.Core.resources.dll",
+        "lib/net48/ja/TimeSpan2.Core.resources.dll",
+        "lib/net48/ko/TimeSpan2.Core.resources.dll",
+        "lib/net48/nl/TimeSpan2.Core.resources.dll",
+        "lib/net48/pl/TimeSpan2.Core.resources.dll",
+        "lib/net48/pt/TimeSpan2.Core.resources.dll",
+        "lib/net48/ru/TimeSpan2.Core.resources.dll",
+        "lib/net48/se/TimeSpan2.Core.resources.dll",
+        "lib/net48/sv/TimeSpan2.Core.resources.dll",
+        "lib/net48/tr/TimeSpan2.Core.resources.dll",
+        "lib/net48/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/net48/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/TimeSpan2.Core.dll",
+        "lib/net6.0/TimeSpan2.Core.xml",
+        "lib/net6.0/ar/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/da/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/de/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/es/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/fr/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/it/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/ja/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/ko/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/nl/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/pl/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/pt/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/ru/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/se/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/sv/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/tr/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/net6.0/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/TimeSpan2.Core.dll",
+        "lib/net7.0/TimeSpan2.Core.xml",
+        "lib/net7.0/ar/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/da/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/de/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/es/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/fr/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/it/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/ja/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/ko/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/nl/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/pl/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/pt/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/ru/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/se/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/sv/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/tr/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/net7.0/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/TimeSpan2.Core.dll",
+        "lib/netstandard2.0/TimeSpan2.Core.xml",
+        "lib/netstandard2.0/ar/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/da/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/de/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/es/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/fr/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/it/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/ja/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/ko/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/nl/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/pl/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/pt/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/ru/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/se/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/sv/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/tr/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.0/zh-Hant/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/TimeSpan2.Core.dll",
+        "lib/netstandard2.1/TimeSpan2.Core.xml",
+        "lib/netstandard2.1/ar/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/da/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/de/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/es/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/fr/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/it/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/ja/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/ko/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/nl/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/pl/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/pt/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/ru/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/se/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/sv/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/tr/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/zh-CN/TimeSpan2.Core.resources.dll",
+        "lib/netstandard2.1/zh-Hant/TimeSpan2.Core.resources.dll",
+        "stopwatch.png",
+        "timespan2.core.2.4.3.nupkg.sha512",
+        "timespan2.core.nuspec"
+      ]
+    },
     "GranTurismoFramework/1.0.0": {
       "type": "project",
       "path": "../ClassLibrary1/GranTurismoFramework.csproj",
@@ -1141,7 +1414,8 @@
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
       "EntityFramework >= 6.4.4",
-      "GranTurismoLibrary >= 1.0.0"
+      "GranTurismoLibrary >= 1.0.0",
+      "TimeSpan2 >= 2.4.3"
     ]
   },
   "packageFolders": {
@@ -1196,6 +1470,10 @@
           "EntityFramework": {
             "target": "Package",
             "version": "[6.4.4, )"
+          },
+          "TimeSpan2": {
+            "target": "Package",
+            "version": "[2.4.3, )"
           }
         },
         "imports": [

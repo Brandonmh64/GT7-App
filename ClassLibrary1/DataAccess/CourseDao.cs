@@ -1,4 +1,5 @@
 ﻿using GranTurismoFramework;
+using GranTurismoFramework.DataTransfer.Simple;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,14 @@ namespace GranTurismoFramework.DataAccess
 {
     public class CourseDao
     {
-        public List<Course> GetCourses()
+        public List<CourseDto> GetCourses()
         {
-            var courses = new List<Course>();
+            var courses = new List<CourseDto>();
 
             using (var context = new GranTurismoDb())
             {
-                courses = context.Courses.ToList();
+                var courseList = context.Courses.ToList();
+                courses = FwMapper.MapList<Course, CourseDto>(courseList);
             }
 
             return courses;

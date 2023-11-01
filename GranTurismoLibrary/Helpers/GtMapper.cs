@@ -54,6 +54,12 @@ namespace GranTurismoLibrary.Helpers
                 cfg.CreateMap<TireType, TireTypeDto>();
                 cfg.CreateMap<TireTypeDto, TireType>();
 
+                cfg.CreateMap<GranTurismoFramework.DataTransfer.TrackInfoDto, TrackInfo>()
+                    .ForMember(dest => dest.RegionId, opt => opt.MapFrom(src => src.Region.RegionId))
+                    .ForMember(dest => dest.CourseId, opt => opt.MapFrom(src => src.Course.CourseId))
+                    .ForMember(dest => dest.TrackId, opt => opt.MapFrom(src => src.Track.TrackId));
+                    
+
                 cfg.CreateMap<TuneDto, TuneInfo>();
                 cfg.CreateMap<TuneInfo, TuneDto>();
             });

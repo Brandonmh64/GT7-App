@@ -80,6 +80,7 @@
     <Compile Include="DataTransfer\CarInfoDto.cs" />
     <Compile Include="DataTransfer\OwnedCarInfoDto.cs" />
     <Compile Include="DataTransfer\Simple\CarDto.cs" />
+    <Compile Include="DataTransfer\Simple\CourseDto.cs" />
     <Compile Include="DataTransfer\Simple\DriverDto.cs" />
     <Compile Include="DataTransfer\Simple\ManufacturerDto.cs" />
     <Compile Include="DataTransfer\Simple\RegionDto.cs" />
