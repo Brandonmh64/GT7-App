@@ -37,7 +37,7 @@ namespace GranTurismoFramework.DataAccess
                             select new TuneDto()
                             {
                                 TuneId = t.TuneId,
-                                CarId = t.CarId,
+                                OwnedCarId = t.OwnedCarId,
                                 PerformancePoints = t.PerformancePoints,
                                 HorsePower = t.HorsePower,
                                 Weight = t.Weight,

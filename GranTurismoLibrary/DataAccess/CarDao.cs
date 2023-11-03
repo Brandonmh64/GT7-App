@@ -25,7 +25,17 @@ namespace GranTurismoLibrary.DataAccess
             return _carDao.GetAllCarInfo();
         }
 
+        public CarDto GetCar(int carId)
+        {
+            var carMatch = GetAllCarInfo().FirstOrDefault(car => car.CarId == carId);
 
+            return new CarDto()
+            {
+                CarId = carId,
+                FullName = carMatch?.CarName ?? "",
+                ManufacturerId = carMatch?.Manufacturer.ManufacturerId ?? 0,
+            };
+        }
 
 
         /* Owned Cars */

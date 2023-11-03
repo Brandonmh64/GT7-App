@@ -14,19 +14,24 @@ namespace GranTurismoFramework.DataAccess
         {
             var timeTrials = new List<TimeTrialInfoDto>();
 
-            using (var context = new GranTurismoDb())
+            using (var db = new GranTurismoDb())
             {
-                var query = from tt in context.TimeTrials
-                             join ownedCar in context.OwnedCars on tt.OwnedCarId equals ownedCar.CarId
-                             join d in context.Drivers on ownedCar.PrimaryDriverId equals d.DriverId
-                             join c in context.Cars on ownedCar.CarId equals c.CarId
-                             join m in context.Manufacturers on c.ManufacturerId equals m.ManufacturerId
-                             join tune in context.Tunes on tt.TuneId equals tune.TuneId
-                             join track in context.Tracks on tt.TrackId equals track.TrackId
-                             join course in context.Courses on track.TrackId equals course.CourseId
-                             join region in context.Regions on course.RegionId equals region.RegionId
+                var query = from tt in db.TimeTrials
+                             join track in db.Tracks on tt.TrackId equals track.TrackId
+                             join course in db.Courses on track.CourseId equals course.CourseId
+                             join region in db.Regions on course.RegionId equals region.RegionId
+                             join ownedCar in db.OwnedCars on tt.OwnedCarId equals ownedCar.OwnedCarId
+                             join car in db.Cars on ownedCar.CarId equals car.CarId 
+                             join manufacturer in db.Manufacturers on car.ManufacturerId equals manufacturer.ManufacturerId
+                             join driver in db.Drivers on tt.DriverId equals driver.DriverId
+                             join tune in db.Tunes on tt.TuneId equals tune.TuneId
+                             join tiresF in db.TireTypes on tune.TiresFrontId equals tiresF.TireId
+                             join tiresR in db.TireTypes on tune.TiresRearId equals tiresR.TireId
                              select (new TimeTrialInfoDto
                              {
+                                 TimeTrialId = tt.TimeTrialId,
+                                 SessionId = tt.SessionId,
+                                 Time = tt.Time,
                                  TrackInfo = new TrackInfoDto()
                                  {
                                      Track = track,
@@ -36,19 +41,19 @@ namespace GranTurismoFramework.DataAccess
                                  OwnedCarInfo = new OwnedCarInfoDto()
                                  {
                                      PrimaryDriverId = ownedCar.PrimaryDriverId,
-                                     PrimaryDriverName = d.DriverName,
+                                     PrimaryDriverName = driver.DriverName,
                                      ImageName = ownedCar.ImageName,
                                      Nickname = ownedCar.Nickname,
                                      Car = new CarDto()
                                      {
                                          CarId = tt.OwnedCarId,
-                                         FullName = c.FullName,
-                                         ManufacturerId = c.ManufacturerId,
+                                         FullName = car.FullName,
+                                         ManufacturerId = car.ManufacturerId,
                                      },
                                      Manufacturer = new ManufacturerDto()
                                      {
-                                         ManufacturerId = m.ManufacturerId,
-                                         Name = m.Name,
+                                         ManufacturerId = manufacturer.ManufacturerId,
+                                         Name = manufacturer.Name,
                                          RegionId = region.RegionId,
                                      },
                                      Region = new RegionDto()
@@ -57,7 +62,21 @@ namespace GranTurismoFramework.DataAccess
                                          Name = region.Name,
                                      }
                                  },
-                                 Tune = tune,
+                                 Tune = new TuneInfoDto()
+                                 {
+                                     TuneId = tt.TuneId,
+                                     OwnedCarId = ownedCar.OwnedCarId,
+                                     SheetName = tune.SheetName,
+                                     Notes = tune.Notes,
+                                     PerformancePoints = tune.PerformancePoints,
+                                     HorsePower = tune.HorsePower,
+                                     Weight = tune.Weight,
+                                     TiresFrontId = tune.TiresFrontId,
+                                     TiresFront = tiresF.Name,
+                                     TiresRearId = tune.TiresRearId,
+                                     TiresRear = tiresR.Name
+                                 },
+                                 Driver = driver
                              });
 
                 timeTrials = query.ToList();
@@ -83,7 +102,7 @@ namespace GranTurismoFramework.DataAccess
                     SessionId = sessionId,
                     OwnedCarId = timeTrialInfo.OwnedCarInfo.OwnedCarId,
                     TuneId = timeTrialInfo.Tune.TuneId,
-                    DriverId = timeTrialInfo.DriverId,
+                    DriverId = timeTrialInfo.Driver.DriverId,
                     TrackId = timeTrialInfo.TrackInfo.Track.TrackId,
                     Time = timeTrialInfo.Time,
                 };

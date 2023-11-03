@@ -9,6 +9,10 @@ namespace GranTurismoApp
 {
     public partial class Main : Form
     {
+        private CarDao _carDao { get; set; }
+
+
+
         private TabPage _loadingTab { get; set; }
         private bool _initialLoad { get; set; }
         private bool _sessionStarted { get; set; }
@@ -26,6 +30,8 @@ namespace GranTurismoApp
 
         public Main()
         {
+            _carDao = new GranTurismoLibrary.DataAccess.CarDao();
+
             InitializeComponent();
             _loadingTab = LoadingTab;
             _carImages = new ImageList();
@@ -47,6 +53,7 @@ namespace GranTurismoApp
             // Track
             var loadTrackTabTasks = Task.Run(() =>
             {
+                InitializeTimeEntryEvents();
                 LoadTimeTrialLocationDropDowns();
                 LoadTimeTrialCarOptions();
             });
@@ -64,7 +71,11 @@ namespace GranTurismoApp
         }
 
 
-        /* Loading Tab */
+
+
+        /* ========== Loading Tab ========== */
+
+        #region LoadingTab
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -97,10 +108,13 @@ namespace GranTurismoApp
         }
 
 
+        #endregion LoadingTab
 
 
 
-        /* ===== Blacklist Tab ===== */
+        /* ========== Blacklist Tab ========== */
+
+        #region BlacklistTab 
 
         private async Task LoadBlacklistTab()
         {
@@ -145,12 +159,15 @@ namespace GranTurismoApp
         }
 
 
+        #endregion BlacklistTab 
 
 
 
+        /* ========== Track Tab ========== */
 
-        /* ===== Track Tab ===== */
+        #region TrackTab
 
+        /***** New Record *****/
 
         // Location Info
         private void LoadTimeTrialLocationDropDowns()
@@ -158,8 +175,6 @@ namespace GranTurismoApp
             LoadTimeTrialRegionList();
             LoadTimeTrialCourseList();
             LoadTimeTrialTrackList();
-
-
         }
 
         private void LoadTimeTrialRegionList(int regionId = 0)
@@ -211,12 +226,14 @@ namespace GranTurismoApp
                     NewRecord_CourseSelectDropDown.SelectedItem = courseList.FirstOrDefault(c => c.RegionId == selectedRegion.RegionId);
                 }
 
+                NewRecord_CourseSelectDropDown.DataSource = filteredList;
+
                 if (trackId > 0)
                 {
-                    filteredList = courseList.Where(course => course.CourseId == trackId).ToList();
+                    var track = new TrackDao().GetTrack(trackId);
+                    var itemToSelect = filteredList.FirstOrDefault(course => course.CourseId == track.CourseId);
+                    NewRecord_CourseSelectDropDown.SelectedItem = itemToSelect;
                 }
-
-                NewRecord_CourseSelectDropDown.DataSource = filteredList;
             }
             else
             {
@@ -262,12 +279,13 @@ namespace GranTurismoApp
         }
         private void NewRecord_TrackSelectDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var selectedTrack = NewRecord_TrackSelectDropDown.SelectedItem as TrackInfo;
+            LoadPastRecords(selectedTrack?.TrackId ?? 0);
+
             if (NewRecord_TrackSelectDropDown.ContainsFocus)
             {
-                var selectedTrack = NewRecord_TrackSelectDropDown.SelectedItem as TrackInfo;
-
-                LoadInventoryRegionList(selectedTrack.RegionId);
-                LoadTimeTrialCourseList(0, selectedTrack.TrackId);
+                LoadTimeTrialRegionList(selectedTrack?.RegionId ?? 0);
+                LoadTimeTrialCourseList(selectedTrack?.RegionId ?? 0, selectedTrack.TrackId);
             }
         }
 
@@ -305,12 +323,13 @@ namespace GranTurismoApp
             }
         }
 
-        private void LoadTimeTrialTunes(int carId = 0)
+        private void LoadTimeTrialTunes(int ownedCarId = 0)
         {
             var tuneDao = new TuneDao();
-            var tunes = tuneDao.GetTunes(carId);
+            var tunes = tuneDao.GetTunes(ownedCarId);
+            var filteredTunes = tunes.Where(t => t.OwnedCarId == ownedCarId).ToList();
 
-            NewRecord_TuneSelectDropDown.DataSource = tunes;
+            NewRecord_TuneSelectDropDown.DataSource = filteredTunes;
             NewRecord_TuneSelectDropDown.DisplayMember = "SheetName";
             NewRecord_TuneSelectDropDown.ValueMember = "TuneId";
 
@@ -367,6 +386,9 @@ namespace GranTurismoApp
                 var timeTrialDao = new TimeTrialDao();
                 timeTrialDao.SaveTimeTrials(_sessionTimeTrials);
                 _sessionTimeTrials.Clear();
+
+                var selectedTrack = NewRecord_TrackSelectDropDown.SelectedItem as TrackInfo;
+                LoadPastRecords(selectedTrack?.TrackId ?? 0);
             }
         }
 
@@ -416,36 +438,64 @@ namespace GranTurismoApp
 
 
         // Time Entry
-        private void NewRecord_TimeEntryMinutesUpDown_Click(object sender, EventArgs e)
+        private void InitializeTimeEntryEvents()
         {
-            NewRecord_TimeEntryMinutesUpDown.Select(0, NewRecord_TimeEntryMinutesUpDown.Value.ToString().Length);
-        }
-        private void NewRecord_TimeEntryMinutesUpDown_Enter(object sender, EventArgs e)
-        {
-            NewRecord_TimeEntryMinutesUpDown.Select(0, NewRecord_TimeEntryMinutesUpDown.Value.ToString().Length);
-        }
+            var activateMethod = new EventHandler((sender, e) => (sender as NumericUpDown).Select(0, (sender as NumericUpDown).Value.ToString().Length));
 
-        private void NewRecord_TimeEntrySecondsUpDown_Enter(object sender, EventArgs e)
-        {
-            NewRecord_TimeEntrySecondsUpDown.Select(0, NewRecord_TimeEntrySecondsUpDown.Value.ToString().Length);
-        }
-        private void NewRecord_TimeEntrySecondsUpDown_Click(object sender, EventArgs e)
-        {
-            NewRecord_TimeEntrySecondsUpDown.Select(0, NewRecord_TimeEntrySecondsUpDown.Value.ToString().Length);
+            NewRecord_TimeEntryMinutesUpDown.Click += activateMethod;
+            NewRecord_TimeEntryMinutesUpDown.Enter += activateMethod;
 
-        }
+            NewRecord_TimeEntrySecondsUpDown.Click += activateMethod;
+            NewRecord_TimeEntrySecondsUpDown.Enter += activateMethod;
 
-        private void NewRecord_TimeEntryMillisecondsUpDown_Enter(object sender, EventArgs e)
-        {
-            NewRecord_TimeEntryMillisecondsUpDown.Select(0, NewRecord_TimeEntryMillisecondsUpDown.Value.ToString().Length);
-        }
-        private void NewRecord_TimeEntryMillisecondsUpDown_Click(object sender, EventArgs e)
-        {
-            NewRecord_TimeEntryMillisecondsUpDown.Select(0, NewRecord_TimeEntryMillisecondsUpDown.Value.ToString().Length);
+            NewRecord_TimeEntryMillisecondsUpDown.Enter += activateMethod;
+            NewRecord_TimeEntryMillisecondsUpDown.Enter += activateMethod;
         }
 
 
-        /* ===== Inventory Tab ===== */
+        /***** Past Records *****/
+
+        private void LoadPastRecords(int trackId = 0)
+        {
+            if (trackId > 0)
+            {
+                var ttDao = new TimeTrialDao();
+                var pastRecords = ttDao.GetTrackTopTen(trackId);
+                var listViewItems = new List<ListViewItem>();
+
+                foreach (var timeTrial in pastRecords)
+                {
+                    var timeSpan = timeTrial.Time.ToString("c");
+                    var timeShort = timeSpan.Substring(3, timeSpan.Length - 7);
+                    var display = $"{timeShort} - {timeTrial.OwnedCarInfo.Nickname} - {timeTrial.Driver.DriverName}";
+
+                    var lvItem = new ListViewItem(display);
+
+
+                    if (timeTrial.Driver.DriverName == "Brandon")
+                    {
+                        lvItem.BackColor = Color.FromArgb(50, 115, 79, 149);
+                    }
+                    else if (timeTrial.Driver.DriverName == "Bryant")
+                    {
+                        lvItem.BackColor = Color.FromArgb(50, 0, 56, 167);
+                    }
+
+
+                    listViewItems.Add(lvItem);
+                }
+
+                PastTimes_ListView.Items.Clear();
+                PastTimes_ListView.Items.AddRange(listViewItems.ToArray());
+            }
+        }
+
+
+        #endregion TrackTab
+
+
+
+        /* ========== Inventory Tab ========== */
 
         #region InventoryTab
 
@@ -499,7 +549,9 @@ namespace GranTurismoApp
             {
                 var tuneDao = new GranTurismoLibrary.DataAccess.TuneDao();
                 var carTunes = tuneDao.GetTunes(ownedCarId);
-                TuneGrid.Invoke(() => TuneGrid.DataSource = carTunes);
+
+                var filtered = carTunes.Where(tune => tune.OwnedCarId == ownedCarId).ToList();
+                TuneGrid.Invoke(() => TuneGrid.DataSource = filtered);
             }
             else
             {
@@ -753,7 +805,7 @@ namespace GranTurismoApp
 
             var tune = new TuneDto()
             {
-                CarId = associatedOwnedCar.CarId,
+                OwnedCarId = associatedOwnedCar.OwnedCarId,
                 PerformancePoints = performancePoints,
                 HorsePower = horsePower,
                 Weight = weight,
@@ -794,9 +846,5 @@ namespace GranTurismoApp
         }
 
         #endregion InventoryTab
-
-
-
-        
     }
 }

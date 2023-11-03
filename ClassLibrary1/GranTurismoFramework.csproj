@@ -89,6 +89,7 @@
     <Compile Include="DataTransfer\Simple\TuneDto.cs" />
     <Compile Include="DataTransfer\TimeTrialInfoDto.cs" />
     <Compile Include="DataTransfer\TrackInfoDto.cs" />
+    <Compile Include="DataTransfer\TuneInfoDto.cs" />
     <Compile Include="Driver.cs">
       <DependentUpon>GranTurismoDb.tt</DependentUpon>
     </Compile>

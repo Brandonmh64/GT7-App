@@ -208,7 +208,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             <PropertyRef Name="TuneId" />
           </Key>
           <Property Name="TuneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CarId" Type="int" Nullable="false" />
+          <Property Name="OwnedCarId" Type="int" Nullable="false" />
           <Property Name="PerformancePoints" Type="float" Nullable="false" />
           <Property Name="HorsePower" Type="float" Nullable="false" />
           <Property Name="Weight" Type="float" Nullable="false" />
@@ -354,7 +354,6 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
             <PropertyRef Name="TuneId" />
           </Key>
           <Property Name="TuneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="PerformancePoints" Type="Double" Nullable="false" />
           <Property Name="TiresFrontId" Type="Int32" Nullable="false" />
           <Property Name="TiresRearId" Type="Int32" Nullable="false" />
@@ -362,6 +361,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <Property Name="HorsePower" Type="Double" Nullable="false" />
           <Property Name="Weight" Type="Double" Nullable="false" />
           <Property Name="Notes" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="OwnedCarId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="MSreplication_options">
           <Key>
@@ -584,11 +584,11 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
           <EntitySetMapping Name="Tunes">
             <EntityTypeMapping TypeName="masterModel.Tune">
               <MappingFragment StoreEntitySet="Tune">
+                <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="HorsePower" ColumnName="HorsePower" />
                 <ScalarProperty Name="TuneId" ColumnName="TuneId" />
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PerformancePoints" ColumnName="PerformancePoints" />
                 <ScalarProperty Name="TiresFrontId" ColumnName="TiresFrontId" />
                 <ScalarProperty Name="TiresRearId" ColumnName="TiresRearId" />

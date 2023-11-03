@@ -15,7 +15,6 @@ namespace GranTurismoFramework
     public partial class Tune
     {
         public int TuneId { get; set; }
-        public int CarId { get; set; }
         public double PerformancePoints { get; set; }
         public int TiresFrontId { get; set; }
         public int TiresRearId { get; set; }
@@ -23,5 +22,6 @@ namespace GranTurismoFramework
         public double HorsePower { get; set; }
         public double Weight { get; set; }
         public string Notes { get; set; }
+        public int OwnedCarId { get; set; }
     }
 }

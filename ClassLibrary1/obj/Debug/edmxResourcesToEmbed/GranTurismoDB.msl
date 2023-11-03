@@ -61,11 +61,11 @@
     <EntitySetMapping Name="Tunes">
       <EntityTypeMapping TypeName="masterModel.Tune">
         <MappingFragment StoreEntitySet="Tune">
+          <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="Weight" ColumnName="Weight" />
           <ScalarProperty Name="HorsePower" ColumnName="HorsePower" />
           <ScalarProperty Name="TuneId" ColumnName="TuneId" />
-          <ScalarProperty Name="CarId" ColumnName="CarId" />
           <ScalarProperty Name="PerformancePoints" ColumnName="PerformancePoints" />
           <ScalarProperty Name="TiresFrontId" ColumnName="TiresFrontId" />
           <ScalarProperty Name="TiresRearId" ColumnName="TiresRearId" />

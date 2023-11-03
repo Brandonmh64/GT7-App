@@ -56,7 +56,6 @@
       <PropertyRef Name="TuneId" />
     </Key>
     <Property Name="TuneId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CarId" Type="Int32" Nullable="false" />
     <Property Name="PerformancePoints" Type="Double" Nullable="false" />
     <Property Name="TiresFrontId" Type="Int32" Nullable="false" />
     <Property Name="TiresRearId" Type="Int32" Nullable="false" />
@@ -64,6 +63,7 @@
     <Property Name="HorsePower" Type="Double" Nullable="false" />
     <Property Name="Weight" Type="Double" Nullable="false" />
     <Property Name="Notes" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="OwnedCarId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="MSreplication_options">
     <Key>

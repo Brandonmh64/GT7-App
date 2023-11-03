@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            ListViewItem listViewItem1 = new ListViewItem("");
             TabControl = new TabControl();
             LoadingTab = new TabPage();
             LoadingLayout = new TableLayoutPanel();
@@ -128,6 +129,9 @@
             NewRecord_TimeEntrySecondsLabel = new Label();
             NewRecord_TimeEntryMillisecondsLabel = new Label();
             NewRecord_RecordSavedLabel = new Label();
+            PastRecords_Layout = new TableLayoutPanel();
+            PastTimes_ListView = new ListView();
+            PastRecords_HeaderLabel = new Label();
             InventoryTab = new TabPage();
             InventoryLayout = new TableLayoutPanel();
             OwnedCarGrid = new DataGridView();
@@ -223,6 +227,7 @@
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMillisecondsUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntrySecondsUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMinutesUpDown).BeginInit();
+            PastRecords_Layout.SuspendLayout();
             InventoryTab.SuspendLayout();
             InventoryLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).BeginInit();
@@ -327,7 +332,7 @@
             TabBackground.Controls.Add(TabLayout);
             TabBackground.Location = new Point(0, 0);
             TabBackground.Name = "TabBackground";
-            TabBackground.Size = new Size(774, 3000);
+            TabBackground.Size = new Size(706, 3000);
             TabBackground.TabIndex = 0;
             // 
             // TabLayout
@@ -343,7 +348,7 @@
             TabLayout.Name = "TabLayout";
             TabLayout.RowCount = 1;
             TabLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TabLayout.Size = new Size(774, 3000);
+            TabLayout.Size = new Size(706, 3000);
             TabLayout.TabIndex = 1;
             // 
             // BlacklistLayout
@@ -414,7 +419,7 @@
             BlacklistLayout.Controls.Add(BLTime14, 3, 13);
             BlacklistLayout.Controls.Add(BLTime15, 3, 14);
             BlacklistLayout.Dock = DockStyle.Fill;
-            BlacklistLayout.Location = new Point(-237, 3);
+            BlacklistLayout.Location = new Point(-276, 3);
             BlacklistLayout.Name = "BlacklistLayout";
             BlacklistLayout.RowCount = 15;
             BlacklistLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
@@ -1173,6 +1178,7 @@
             NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.7671967F));
             NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.2328033F));
             NewRecordLayout.Controls.Add(TimeTrial_SelectTrackPanel, 0, 0);
+            NewRecordLayout.Controls.Add(PastRecords_Layout, 1, 0);
             NewRecordLayout.Dock = DockStyle.Fill;
             NewRecordLayout.Location = new Point(3, 3);
             NewRecordLayout.Name = "NewRecordLayout";
@@ -1434,8 +1440,6 @@
             NewRecord_TimeEntryMillisecondsUpDown.Name = "NewRecord_TimeEntryMillisecondsUpDown";
             NewRecord_TimeEntryMillisecondsUpDown.Size = new Size(60, 23);
             NewRecord_TimeEntryMillisecondsUpDown.TabIndex = 27;
-            NewRecord_TimeEntryMillisecondsUpDown.Click += NewRecord_TimeEntryMillisecondsUpDown_Click;
-            NewRecord_TimeEntryMillisecondsUpDown.Enter += NewRecord_TimeEntryMillisecondsUpDown_Enter;
             // 
             // NewRecord_SecondMilliSecondSeparatorLabel
             // 
@@ -1458,8 +1462,6 @@
             NewRecord_TimeEntrySecondsUpDown.Name = "NewRecord_TimeEntrySecondsUpDown";
             NewRecord_TimeEntrySecondsUpDown.Size = new Size(42, 23);
             NewRecord_TimeEntrySecondsUpDown.TabIndex = 24;
-            NewRecord_TimeEntrySecondsUpDown.Click += NewRecord_TimeEntrySecondsUpDown_Click;
-            NewRecord_TimeEntrySecondsUpDown.Enter += NewRecord_TimeEntrySecondsUpDown_Enter;
             // 
             // NewRecord_MinuteSecondSeparatorLabel
             // 
@@ -1494,8 +1496,6 @@
             NewRecord_TimeEntryMinutesUpDown.Name = "NewRecord_TimeEntryMinutesUpDown";
             NewRecord_TimeEntryMinutesUpDown.Size = new Size(42, 23);
             NewRecord_TimeEntryMinutesUpDown.TabIndex = 21;
-            NewRecord_TimeEntryMinutesUpDown.Click += NewRecord_TimeEntryMinutesUpDown_Click;
-            NewRecord_TimeEntryMinutesUpDown.Enter += NewRecord_TimeEntryMinutesUpDown_Enter;
             // 
             // NewRecord_TimeEntryMinutesLabel
             // 
@@ -1535,6 +1535,53 @@
             NewRecord_RecordSavedLabel.TabIndex = 24;
             NewRecord_RecordSavedLabel.Text = "Saved!";
             NewRecord_RecordSavedLabel.Visible = false;
+            // 
+            // PastRecords_Layout
+            // 
+            PastRecords_Layout.ColumnCount = 3;
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 166F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 733F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
+            PastRecords_Layout.Controls.Add(PastTimes_ListView, 1, 1);
+            PastRecords_Layout.Controls.Add(PastRecords_HeaderLabel, 1, 0);
+            PastRecords_Layout.Dock = DockStyle.Fill;
+            PastRecords_Layout.Location = new Point(868, 3);
+            PastRecords_Layout.Name = "PastRecords_Layout";
+            PastRecords_Layout.RowCount = 4;
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            PastRecords_Layout.Size = new Size(1019, 374);
+            PastRecords_Layout.TabIndex = 5;
+            // 
+            // PastTimes_ListView
+            // 
+            PastTimes_ListView.BackColor = SystemColors.ControlLight;
+            PastTimes_ListView.Dock = DockStyle.Fill;
+            PastTimes_ListView.FullRowSelect = true;
+            PastTimes_ListView.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            PastTimes_ListView.Location = new Point(169, 52);
+            PastTimes_ListView.Name = "PastTimes_ListView";
+            PastRecords_Layout.SetRowSpan(PastTimes_ListView, 3);
+            PastTimes_ListView.Size = new Size(727, 319);
+            PastTimes_ListView.TabIndex = 0;
+            PastTimes_ListView.UseCompatibleStateImageBehavior = false;
+            PastTimes_ListView.View = View.List;
+            // 
+            // PastRecords_HeaderLabel
+            // 
+            PastRecords_HeaderLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            PastRecords_HeaderLabel.AutoSize = true;
+            PastRecords_HeaderLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            PastRecords_HeaderLabel.ForeColor = SystemColors.ControlLight;
+            PastRecords_HeaderLabel.Location = new Point(169, 0);
+            PastRecords_HeaderLabel.Name = "PastRecords_HeaderLabel";
+            PastRecords_HeaderLabel.Size = new Size(727, 30);
+            PastRecords_HeaderLabel.TabIndex = 18;
+            PastRecords_HeaderLabel.Text = "Past Records";
+            PastRecords_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // InventoryTab
             // 
@@ -2286,6 +2333,8 @@
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMillisecondsUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntrySecondsUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMinutesUpDown).EndInit();
+            PastRecords_Layout.ResumeLayout(false);
+            PastRecords_Layout.PerformLayout();
             InventoryTab.ResumeLayout(false);
             InventoryLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).EndInit();
@@ -2484,5 +2533,8 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewButtonColumn Details;
         private Label NewRecord_RecordSavedLabel;
+        private TableLayoutPanel PastRecords_Layout;
+        private ListView PastTimes_ListView;
+        private Label PastRecords_HeaderLabel;
     }
 }

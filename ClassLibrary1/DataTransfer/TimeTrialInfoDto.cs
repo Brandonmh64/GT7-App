@@ -18,7 +18,7 @@ namespace GranTurismoFramework.DataTransfer
         public TrackInfoDto TrackInfo { get; set; }
 
         public OwnedCarInfoDto OwnedCarInfo { get; set; }
-        public Tune Tune { get; set; }
-        public int DriverId { get; set; }
+        public TuneInfoDto Tune { get; set; }
+        public Driver Driver { get; set; }
     }
 }

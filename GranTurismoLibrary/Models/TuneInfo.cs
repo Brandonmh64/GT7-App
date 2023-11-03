@@ -9,7 +9,7 @@ namespace GranTurismoLibrary.Models
     public class TuneInfo
     {
         public int TuneId { get; set; }
-        public int CarId { get; set; }
+        public int OwnedCarId { get; set; }
         public string SheetName { get; set; }
         public string Notes { get; set; }
 

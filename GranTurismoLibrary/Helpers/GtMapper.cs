@@ -20,6 +20,12 @@ namespace GranTurismoLibrary.Helpers
         {
             var config = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<Course, CourseDto>();
+                cfg.CreateMap<CourseDto, Course>();
+
+                cfg.CreateMap<Driver, DriverDto>();
+                cfg.CreateMap<DriverDto, Driver>();
+
                 cfg.CreateMap<GranTurismoFramework.DataTransfer.OwnedCarInfoDto, OwnedCarInfo>()
                     .ForMember(dest => dest.CarId, opt => opt.MapFrom(src => src.Car.CarId))
                     .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Car.FullName))
@@ -51,6 +57,9 @@ namespace GranTurismoLibrary.Helpers
                         Name = src.RegionName
                     }));
 
+                cfg.CreateMap<Region, RegionDto>();
+                cfg.CreateMap<RegionDto, Region>();
+
                 cfg.CreateMap<TimeTrialInfo, TimeTrialInfoDto>()
                     .ForMember(dest => dest.TrackInfo, opt => opt.MapFrom(src => new TrackInfoDto()
                     {
@@ -73,9 +82,22 @@ namespace GranTurismoLibrary.Helpers
                         }
                     }))
                     .ForMember(dest => dest.OwnedCarInfo, opt => opt.MapFrom(src => Map<OwnedCarInfo, OwnedCarInfoDto>(src.OwnedCarInfo)))
-                    .ForMember(dest => dest.Tune, opt => opt.MapFrom(src => Map<TuneInfo, Tune>(src.TuneInfo)))
-                    .ForMember(dest => dest.DriverId, opt => opt.MapFrom(src => src.Driver.DriverId));
-                cfg.CreateMap<TimeTrialInfoDto, TimeTrialInfo>();
+                    .ForMember(dest => dest.Tune, opt => opt.MapFrom(src => Map<TuneInfo, TuneInfoDto>(src.TuneInfo)))
+                    .ForMember(dest => dest.Driver, opt => opt.MapFrom(src => Map<DriverDto, Driver>(src.Driver)));
+                cfg.CreateMap<TimeTrialInfoDto, TimeTrialInfo>()
+                    .ForMember(dest => dest.Track, opt => opt.MapFrom(src => new TrackInfo()
+                    {
+                        TrackId = src.TrackInfo.Track.TrackId,
+                        TrackName = src.TrackInfo.Track.Name,
+                        CourseId = src.TrackInfo.Course.CourseId,
+                        CourseName = src.TrackInfo.Course.Name,
+                        RegionId = src.TrackInfo.Region.RegionId,
+                        RegionName = src.TrackInfo.Region.Name,
+                    }))
+                    .ForMember(dest => dest.Course, opt => opt.MapFrom(src => Map<Course, CourseDto>(src.TrackInfo.Course)))
+                    .ForMember(dest => dest.Region, opt => opt.MapFrom(src => Map<Region, RegionDto>(src.TrackInfo.Region)))
+                    .ForMember(dest => dest.TuneInfo, opt => opt.MapFrom(src => Map<TuneInfoDto, TuneInfo>(src.Tune)))
+                    .ForMember(dest => dest.Driver, opt => opt.MapFrom(src => Map<Driver, DriverDto>(src.Driver)));
 
                 cfg.CreateMap<TireType, TireTypeDto>();
                 cfg.CreateMap<TireTypeDto, TireType>();
@@ -87,11 +109,13 @@ namespace GranTurismoLibrary.Helpers
                 cfg.CreateMap<TrackInfo, TrackInfoDto>()
                     .ForMember(dest => dest.Region, opt => opt.MapFrom(src => new RegionDto() { Name = src.RegionName, RegionId = src.RegionId }))
                     .ForMember(dest => dest.Course, opt => opt.MapFrom(src => new CourseDto() { Name = src.CourseName, RegionId = src.RegionId, CourseId = src.CourseId }))
-                    .ForMember(dest => dest.Track, opt => opt.MapFrom(src => new Track() { Name = src.TrackName, TrackId = src.TrackId, CourseId = src.CourseId }));                    
-                
+                    .ForMember(dest => dest.Track, opt => opt.MapFrom(src => new Track() { Name = src.TrackName, TrackId = src.TrackId, CourseId = src.CourseId }));
+
                 cfg.CreateMap<TuneDto, TuneInfo>();
                 cfg.CreateMap<TuneInfo, TuneDto>();
                 cfg.CreateMap<TuneInfo, Tune>();
+                cfg.CreateMap<TuneInfoDto, TuneInfo>();
+                cfg.CreateMap<TuneInfo, TuneInfoDto>();
             });
 
             _mapper = new Mapper(config);

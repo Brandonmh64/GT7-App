@@ -26,7 +26,7 @@ namespace GranTurismoFramework.DataAccess
                             join all in db.Cars on owned.CarId equals all.CarId
                             select new OwnedCarInfoDto
                             {
-                                OwnedCarId = owned.CarId,
+                                OwnedCarId = owned.OwnedCarId,
                                 PrimaryDriverId = driver.DriverId,
                                 PrimaryDriverName = driver.DriverName,
                                 ImageName = owned.ImageName,

@@ -203,7 +203,7 @@ warning 6002: The table/view 'master.dbo.spt_monitor' does not have a primary ke
       <PropertyRef Name="TuneId" />
     </Key>
     <Property Name="TuneId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CarId" Type="int" Nullable="false" />
+    <Property Name="OwnedCarId" Type="int" Nullable="false" />
     <Property Name="PerformancePoints" Type="float" Nullable="false" />
     <Property Name="HorsePower" Type="float" Nullable="false" />
     <Property Name="Weight" Type="float" Nullable="false" />
