@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            ListViewItem listViewItem1 = new ListViewItem("");
             TabControl = new TabControl();
             LoadingTab = new TabPage();
             LoadingLayout = new TableLayoutPanel();
@@ -130,8 +129,19 @@
             NewRecord_TimeEntryMillisecondsLabel = new Label();
             NewRecord_RecordSavedLabel = new Label();
             PastRecords_Layout = new TableLayoutPanel();
-            PastTimes_ListView = new ListView();
             PastRecords_HeaderLabel = new Label();
+            PastRecordsGrid = new DataGridView();
+            pastRecordBindingSource = new BindingSource(components);
+            CurrentSessionLayout = new TableLayoutPanel();
+            CurrentSessionGrid = new DataGridView();
+            timeStringDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ownedCarNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            carModelDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
+            pPDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            tireComboDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            driverNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            timeTrialInfoBindingSource = new BindingSource(components);
             InventoryTab = new TabPage();
             InventoryLayout = new TableLayoutPanel();
             OwnedCarGrid = new DataGridView();
@@ -193,8 +203,17 @@
             AddTune_EditDetailsButton = new Button();
             AddTune_DetailsFilledLabel = new Label();
             EditTuneDetailsTab = new TabPage();
+            timeTrialInfoBindingSource1 = new BindingSource(components);
             ownedCarInfoBindingSource = new BindingSource(components);
             tuneInfoBindingSource = new BindingSource(components);
+            timeStringDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            ownedCarNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            carModelDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            sheetNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pPDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            tireComboDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            driverNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            sessionDateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             TabControl.SuspendLayout();
             LoadingTab.SuspendLayout();
             LoadingLayout.SuspendLayout();
@@ -228,6 +247,11 @@
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntrySecondsUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMinutesUpDown).BeginInit();
             PastRecords_Layout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PastRecordsGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pastRecordBindingSource).BeginInit();
+            CurrentSessionLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CurrentSessionGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)timeTrialInfoBindingSource).BeginInit();
             InventoryTab.SuspendLayout();
             InventoryLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).BeginInit();
@@ -239,6 +263,7 @@
             ((System.ComponentModel.ISupportInitialize)AddCar_ImageDisplay).BeginInit();
             AddTune_Panel.SuspendLayout();
             AddTune_Layout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)timeTrialInfoBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ownedCarInfoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tuneInfoBindingSource).BeginInit();
             SuspendLayout();
@@ -332,7 +357,7 @@
             TabBackground.Controls.Add(TabLayout);
             TabBackground.Location = new Point(0, 0);
             TabBackground.Name = "TabBackground";
-            TabBackground.Size = new Size(706, 3000);
+            TabBackground.Size = new Size(485, 3000);
             TabBackground.TabIndex = 0;
             // 
             // TabLayout
@@ -348,7 +373,7 @@
             TabLayout.Name = "TabLayout";
             TabLayout.RowCount = 1;
             TabLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TabLayout.Size = new Size(706, 3000);
+            TabLayout.Size = new Size(485, 3000);
             TabLayout.TabIndex = 1;
             // 
             // BlacklistLayout
@@ -419,7 +444,7 @@
             BlacklistLayout.Controls.Add(BLTime14, 3, 13);
             BlacklistLayout.Controls.Add(BLTime15, 3, 14);
             BlacklistLayout.Dock = DockStyle.Fill;
-            BlacklistLayout.Location = new Point(-276, 3);
+            BlacklistLayout.Location = new Point(-400, 3);
             BlacklistLayout.Name = "BlacklistLayout";
             BlacklistLayout.RowCount = 15;
             BlacklistLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
@@ -1179,6 +1204,7 @@
             NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.2328033F));
             NewRecordLayout.Controls.Add(TimeTrial_SelectTrackPanel, 0, 0);
             NewRecordLayout.Controls.Add(PastRecords_Layout, 1, 0);
+            NewRecordLayout.Controls.Add(CurrentSessionLayout, 0, 1);
             NewRecordLayout.Dock = DockStyle.Fill;
             NewRecordLayout.Location = new Point(3, 3);
             NewRecordLayout.Name = "NewRecordLayout";
@@ -1539,11 +1565,11 @@
             // PastRecords_Layout
             // 
             PastRecords_Layout.ColumnCount = 3;
-            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 166F));
-            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 733F));
-            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
-            PastRecords_Layout.Controls.Add(PastTimes_ListView, 1, 1);
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 908F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 22F));
             PastRecords_Layout.Controls.Add(PastRecords_HeaderLabel, 1, 0);
+            PastRecords_Layout.Controls.Add(PastRecordsGrid, 1, 1);
             PastRecords_Layout.Dock = DockStyle.Fill;
             PastRecords_Layout.Location = new Point(868, 3);
             PastRecords_Layout.Name = "PastRecords_Layout";
@@ -1552,23 +1578,8 @@
             PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             PastRecords_Layout.Size = new Size(1019, 374);
             PastRecords_Layout.TabIndex = 5;
-            // 
-            // PastTimes_ListView
-            // 
-            PastTimes_ListView.BackColor = SystemColors.ControlLight;
-            PastTimes_ListView.Dock = DockStyle.Fill;
-            PastTimes_ListView.FullRowSelect = true;
-            PastTimes_ListView.Items.AddRange(new ListViewItem[] { listViewItem1 });
-            PastTimes_ListView.Location = new Point(169, 52);
-            PastTimes_ListView.Name = "PastTimes_ListView";
-            PastRecords_Layout.SetRowSpan(PastTimes_ListView, 3);
-            PastTimes_ListView.Size = new Size(727, 319);
-            PastTimes_ListView.TabIndex = 0;
-            PastTimes_ListView.UseCompatibleStateImageBehavior = false;
-            PastTimes_ListView.View = View.List;
             // 
             // PastRecords_HeaderLabel
             // 
@@ -1576,12 +1587,122 @@
             PastRecords_HeaderLabel.AutoSize = true;
             PastRecords_HeaderLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             PastRecords_HeaderLabel.ForeColor = SystemColors.ControlLight;
-            PastRecords_HeaderLabel.Location = new Point(169, 0);
+            PastRecords_HeaderLabel.Location = new Point(53, 0);
             PastRecords_HeaderLabel.Name = "PastRecords_HeaderLabel";
-            PastRecords_HeaderLabel.Size = new Size(727, 30);
+            PastRecords_HeaderLabel.Size = new Size(902, 30);
             PastRecords_HeaderLabel.TabIndex = 18;
             PastRecords_HeaderLabel.Text = "Past Records";
             PastRecords_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // PastRecordsGrid
+            // 
+            PastRecordsGrid.AutoGenerateColumns = false;
+            PastRecordsGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PastRecordsGrid.Columns.AddRange(new DataGridViewColumn[] { timeStringDataGridViewTextBoxColumn1, ownedCarNameDataGridViewTextBoxColumn1, carModelDataGridViewTextBoxColumn1, sheetNameDataGridViewTextBoxColumn, pPDataGridViewTextBoxColumn1, tireComboDataGridViewTextBoxColumn1, driverNameDataGridViewTextBoxColumn1, sessionDateDataGridViewTextBoxColumn });
+            PastRecordsGrid.DataSource = pastRecordBindingSource;
+            PastRecordsGrid.Dock = DockStyle.Fill;
+            PastRecordsGrid.Location = new Point(53, 52);
+            PastRecordsGrid.Name = "PastRecordsGrid";
+            PastRecords_Layout.SetRowSpan(PastRecordsGrid, 3);
+            PastRecordsGrid.RowTemplate.Height = 25;
+            PastRecordsGrid.Size = new Size(902, 319);
+            PastRecordsGrid.TabIndex = 19;
+            // 
+            // pastRecordBindingSource
+            // 
+            pastRecordBindingSource.DataSource = typeof(GranTurismoLibrary.Models.PastRecord);
+            // 
+            // CurrentSessionLayout
+            // 
+            CurrentSessionLayout.ColumnCount = 3;
+            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
+            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 778F));
+            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
+            CurrentSessionLayout.Controls.Add(CurrentSessionGrid, 1, 1);
+            CurrentSessionLayout.Dock = DockStyle.Fill;
+            CurrentSessionLayout.Enabled = false;
+            CurrentSessionLayout.Location = new Point(3, 383);
+            CurrentSessionLayout.Name = "CurrentSessionLayout";
+            CurrentSessionLayout.RowCount = 3;
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 6.612903F));
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3870964F));
+            CurrentSessionLayout.Size = new Size(859, 621);
+            CurrentSessionLayout.TabIndex = 6;
+            // 
+            // CurrentSessionGrid
+            // 
+            CurrentSessionGrid.AutoGenerateColumns = false;
+            CurrentSessionGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            CurrentSessionGrid.Columns.AddRange(new DataGridViewColumn[] { timeStringDataGridViewTextBoxColumn, ownedCarNameDataGridViewTextBoxColumn, carModelDataGridViewTextBoxColumn, dataGridViewTextBoxColumn13, pPDataGridViewTextBoxColumn, tireComboDataGridViewTextBoxColumn, driverNameDataGridViewTextBoxColumn });
+            CurrentSessionGrid.DataSource = timeTrialInfoBindingSource;
+            CurrentSessionGrid.Dock = DockStyle.Fill;
+            CurrentSessionGrid.Enabled = false;
+            CurrentSessionGrid.Location = new Point(33, 44);
+            CurrentSessionGrid.MultiSelect = false;
+            CurrentSessionGrid.Name = "CurrentSessionGrid";
+            CurrentSessionGrid.RowTemplate.Height = 25;
+            CurrentSessionGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            CurrentSessionGrid.Size = new Size(772, 366);
+            CurrentSessionGrid.TabIndex = 0;
+            // 
+            // timeStringDataGridViewTextBoxColumn
+            // 
+            timeStringDataGridViewTextBoxColumn.DataPropertyName = "TimeString";
+            timeStringDataGridViewTextBoxColumn.HeaderText = "Time";
+            timeStringDataGridViewTextBoxColumn.Name = "timeStringDataGridViewTextBoxColumn";
+            timeStringDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ownedCarNameDataGridViewTextBoxColumn
+            // 
+            ownedCarNameDataGridViewTextBoxColumn.DataPropertyName = "OwnedCarName";
+            ownedCarNameDataGridViewTextBoxColumn.HeaderText = "Car Name";
+            ownedCarNameDataGridViewTextBoxColumn.Name = "ownedCarNameDataGridViewTextBoxColumn";
+            ownedCarNameDataGridViewTextBoxColumn.ReadOnly = true;
+            ownedCarNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // carModelDataGridViewTextBoxColumn
+            // 
+            carModelDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            carModelDataGridViewTextBoxColumn.DataPropertyName = "CarModel";
+            carModelDataGridViewTextBoxColumn.HeaderText = "Model";
+            carModelDataGridViewTextBoxColumn.Name = "carModelDataGridViewTextBoxColumn";
+            carModelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            dataGridViewTextBoxColumn13.DataPropertyName = "SheetName";
+            dataGridViewTextBoxColumn13.HeaderText = "Sheet Name";
+            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            dataGridViewTextBoxColumn13.ReadOnly = true;
+            dataGridViewTextBoxColumn13.Width = 120;
+            // 
+            // pPDataGridViewTextBoxColumn
+            // 
+            pPDataGridViewTextBoxColumn.DataPropertyName = "PP";
+            pPDataGridViewTextBoxColumn.HeaderText = "PP";
+            pPDataGridViewTextBoxColumn.Name = "pPDataGridViewTextBoxColumn";
+            pPDataGridViewTextBoxColumn.ReadOnly = true;
+            pPDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // tireComboDataGridViewTextBoxColumn
+            // 
+            tireComboDataGridViewTextBoxColumn.DataPropertyName = "TireCombo";
+            tireComboDataGridViewTextBoxColumn.HeaderText = "Tires";
+            tireComboDataGridViewTextBoxColumn.Name = "tireComboDataGridViewTextBoxColumn";
+            tireComboDataGridViewTextBoxColumn.ReadOnly = true;
+            tireComboDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // driverNameDataGridViewTextBoxColumn
+            // 
+            driverNameDataGridViewTextBoxColumn.DataPropertyName = "DriverName";
+            driverNameDataGridViewTextBoxColumn.HeaderText = "Driver";
+            driverNameDataGridViewTextBoxColumn.Name = "driverNameDataGridViewTextBoxColumn";
+            driverNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeTrialInfoBindingSource
+            // 
+            timeTrialInfoBindingSource.DataSource = typeof(GranTurismoLibrary.Models.TimeTrialInfo);
             // 
             // InventoryTab
             // 
@@ -2288,6 +2409,71 @@
             EditTuneDetailsTab.TabIndex = 4;
             EditTuneDetailsTab.Text = "Edit Tune";
             // 
+            // timeTrialInfoBindingSource1
+            // 
+            timeTrialInfoBindingSource1.DataSource = typeof(GranTurismoLibrary.Models.TimeTrialInfo);
+            // 
+            // timeStringDataGridViewTextBoxColumn1
+            // 
+            timeStringDataGridViewTextBoxColumn1.DataPropertyName = "TimeString";
+            timeStringDataGridViewTextBoxColumn1.HeaderText = "Time";
+            timeStringDataGridViewTextBoxColumn1.Name = "timeStringDataGridViewTextBoxColumn1";
+            timeStringDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // ownedCarNameDataGridViewTextBoxColumn1
+            // 
+            ownedCarNameDataGridViewTextBoxColumn1.DataPropertyName = "OwnedCarName";
+            ownedCarNameDataGridViewTextBoxColumn1.HeaderText = "Car Name";
+            ownedCarNameDataGridViewTextBoxColumn1.Name = "ownedCarNameDataGridViewTextBoxColumn1";
+            ownedCarNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            ownedCarNameDataGridViewTextBoxColumn1.Width = 120;
+            // 
+            // carModelDataGridViewTextBoxColumn1
+            // 
+            carModelDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            carModelDataGridViewTextBoxColumn1.DataPropertyName = "CarModel";
+            carModelDataGridViewTextBoxColumn1.HeaderText = "Model";
+            carModelDataGridViewTextBoxColumn1.Name = "carModelDataGridViewTextBoxColumn1";
+            carModelDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // sheetNameDataGridViewTextBoxColumn
+            // 
+            sheetNameDataGridViewTextBoxColumn.DataPropertyName = "SheetName";
+            sheetNameDataGridViewTextBoxColumn.HeaderText = "Sheet Name";
+            sheetNameDataGridViewTextBoxColumn.Name = "sheetNameDataGridViewTextBoxColumn";
+            sheetNameDataGridViewTextBoxColumn.ReadOnly = true;
+            sheetNameDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // pPDataGridViewTextBoxColumn1
+            // 
+            pPDataGridViewTextBoxColumn1.DataPropertyName = "PP";
+            pPDataGridViewTextBoxColumn1.HeaderText = "PP";
+            pPDataGridViewTextBoxColumn1.Name = "pPDataGridViewTextBoxColumn1";
+            pPDataGridViewTextBoxColumn1.ReadOnly = true;
+            pPDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // tireComboDataGridViewTextBoxColumn1
+            // 
+            tireComboDataGridViewTextBoxColumn1.DataPropertyName = "TireCombo";
+            tireComboDataGridViewTextBoxColumn1.HeaderText = "TireCombo";
+            tireComboDataGridViewTextBoxColumn1.Name = "tireComboDataGridViewTextBoxColumn1";
+            tireComboDataGridViewTextBoxColumn1.ReadOnly = true;
+            tireComboDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // driverNameDataGridViewTextBoxColumn1
+            // 
+            driverNameDataGridViewTextBoxColumn1.DataPropertyName = "DriverName";
+            driverNameDataGridViewTextBoxColumn1.HeaderText = "DriverName";
+            driverNameDataGridViewTextBoxColumn1.Name = "driverNameDataGridViewTextBoxColumn1";
+            driverNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // sessionDateDataGridViewTextBoxColumn
+            // 
+            sessionDateDataGridViewTextBoxColumn.DataPropertyName = "SessionDate";
+            sessionDateDataGridViewTextBoxColumn.HeaderText = "SessionDate";
+            sessionDateDataGridViewTextBoxColumn.Name = "sessionDateDataGridViewTextBoxColumn";
+            sessionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -2335,6 +2521,11 @@
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMinutesUpDown).EndInit();
             PastRecords_Layout.ResumeLayout(false);
             PastRecords_Layout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PastRecordsGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pastRecordBindingSource).EndInit();
+            CurrentSessionLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)CurrentSessionGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)timeTrialInfoBindingSource).EndInit();
             InventoryTab.ResumeLayout(false);
             InventoryLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)OwnedCarGrid).EndInit();
@@ -2349,6 +2540,7 @@
             AddTune_Panel.ResumeLayout(false);
             AddTune_Layout.ResumeLayout(false);
             AddTune_Layout.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)timeTrialInfoBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ownedCarInfoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)tuneInfoBindingSource).EndInit();
             ResumeLayout(false);
@@ -2481,7 +2673,6 @@
         private Label AddCar_NicknameLabel;
         private TextBox AddCar_NicknameTextBox;
         private BindingSource tuneInfoBindingSource;
-        private DataGridViewTextBoxColumn sheetNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn pPTextDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn hPTextDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn weightTextDataGridViewTextBoxColumn;
@@ -2534,7 +2725,28 @@
         private DataGridViewButtonColumn Details;
         private Label NewRecord_RecordSavedLabel;
         private TableLayoutPanel PastRecords_Layout;
-        private ListView PastTimes_ListView;
         private Label PastRecords_HeaderLabel;
+        private TableLayoutPanel CurrentSessionLayout;
+        private DataGridView CurrentSessionGrid;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewTextBoxColumn timeStringDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ownedCarNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn carModelDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private DataGridViewTextBoxColumn pPDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn tireComboDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn driverNameDataGridViewTextBoxColumn;
+        private BindingSource timeTrialInfoBindingSource;
+        private DataGridView PastRecordsGrid;
+        private BindingSource timeTrialInfoBindingSource1;
+        private BindingSource pastRecordBindingSource;
+        private DataGridViewTextBoxColumn timeStringDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn ownedCarNameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn carModelDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn sheetNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn pPDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn tireComboDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn driverNameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn sessionDateDataGridViewTextBoxColumn;
     }
 }

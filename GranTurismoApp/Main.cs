@@ -4,6 +4,8 @@ using GranTurismoLibrary.DataAccess;
 using GranTurismoFramework.DataTransfer.Simple;
 using GranTurismoFramework.DataTransfer;
 using GranTurismoFramework;
+using GranTurismoLibrary.Helpers;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace GranTurismoApp
 {
@@ -70,7 +72,24 @@ namespace GranTurismoApp
             _carImages.Images.Add("Skyline", Resources.SkylineIcon);
         }
 
+        /* Helper Methods */
 
+        private void ColorGridViewRow(DataGridViewRow row, int driverId)
+        {
+            if (DriverColorHelper.IdDictionary.TryGetValue(driverId, out var driverColor))
+            {
+                if (driverId > 1)
+                {
+                    row.DefaultCellStyle.BackColor = driverColor;
+                    row.DefaultCellStyle.ForeColor = Color.White;
+                    row.DefaultCellStyle.SelectionBackColor = driverColor;
+                    row.DefaultCellStyle.SelectionForeColor = Color.White;
+
+                    row.HeaderCell.Style.BackColor = driverColor;
+                    row.HeaderCell.Style.SelectionBackColor = driverColor;
+                }
+            }
+        }
 
 
         /* ========== Loading Tab ========== */
@@ -319,6 +338,7 @@ namespace GranTurismoApp
                 if (selectedCar != null)
                 {
                     LoadTimeTrialTunes(selectedCar.OwnedCarId);
+                    PastRecords_PointToCurrentSelectedCar(selectedCar.OwnedCarId);
                 }
             }
         }
@@ -368,6 +388,7 @@ namespace GranTurismoApp
                 NewRecord_SaveRecordButton.Enabled = true;
 
                 _sessionTimeTrials = new List<TimeTrialInfo>();
+                CurrentSessionGrid.DataSource = null;
             }
             else
             {
@@ -434,6 +455,8 @@ namespace GranTurismoApp
                 Task.Delay(3000).Wait();
                 NewRecord_RecordSavedLabel.Invoke(() => NewRecord_RecordSavedLabel.Visible = false);
             });
+
+            LoadCurrentSessionGrid();
         }
 
 
@@ -461,32 +484,92 @@ namespace GranTurismoApp
             {
                 var ttDao = new TimeTrialDao();
                 var pastRecords = ttDao.GetTrackTopTen(trackId);
-                var listViewItems = new List<ListViewItem>();
 
-                foreach (var timeTrial in pastRecords)
+                PastRecordsGrid.DataSource = pastRecords;
+                
+
+                foreach (DataGridViewRow row in PastRecordsGrid.Rows)
                 {
-                    var timeSpan = timeTrial.Time.ToString("c");
-                    var timeShort = timeSpan.Substring(3, timeSpan.Length - 7);
-                    var display = $"{timeShort} - {timeTrial.OwnedCarInfo.Nickname} - {timeTrial.Driver.DriverName}";
+                    var timeTrial = row.DataBoundItem as PastRecord;
 
-                    var lvItem = new ListViewItem(display);
+                    ColorGridViewRow(row, timeTrial.Driver.DriverId);
 
+                    PastRecords_PointToCurrentSelectedCar(timeTrial.OwnedCarInfo.OwnedCarId);
+                }
+            }
+        }
 
-                    if (timeTrial.Driver.DriverName == "Brandon")
+        private void PastRecords_PointToCurrentSelectedCar(int ownedCarId)
+        {
+            if (NewRecord_CarSelectDropDown.SelectedItem != null && PastRecordsGrid.DataSource != null)
+            {
+                var selectedCar = NewRecord_CarSelectDropDown.SelectedItem as OwnedCarInfo;
+                if (ownedCarId == selectedCar.OwnedCarId)
+                {
+                    foreach (DataGridViewRow row in PastRecordsGrid.Rows)
                     {
-                        lvItem.BackColor = Color.FromArgb(50, 115, 79, 149);
+                        var timeTrial = row.DataBoundItem as PastRecord;
+                        if (timeTrial != null && timeTrial.OwnedCarInfo.OwnedCarId == ownedCarId)
+                        {
+                            PastRecordsGrid.CurrentCell = row.Cells[0];
+                        }
                     }
-                    else if (timeTrial.Driver.DriverName == "Bryant")
+                   
+                }
+            }
+        }
+
+
+
+        /***** Current Session *****/
+
+        private void LoadCurrentSessionGrid()
+        {
+            CurrentSessionGrid.DataSource = null;
+            CurrentSessionGrid.DataSource = _sessionTimeTrials;
+            CurrentSessionGrid.ClearSelection();
+
+            var fastestPerDriver = new Dictionary<int, DataGridViewRow>();
+
+            foreach (DataGridViewRow row in CurrentSessionGrid.Rows)
+            {
+                var ttInfo = row.DataBoundItem as TimeTrialInfo;
+                row.DefaultCellStyle.SelectionBackColor = DefaultBackColor;
+                row.DefaultCellStyle.SelectionForeColor = DefaultForeColor;
+
+                if (ttInfo != null)
+                {
+                    if (!fastestPerDriver.ContainsKey(ttInfo.Driver.DriverId))
                     {
-                        lvItem.BackColor = Color.FromArgb(50, 0, 56, 167);
+                        fastestPerDriver.Add(ttInfo.Driver.DriverId, row);
                     }
+                    else
+                    {
+                        var lastMatchingDriverFastest = fastestPerDriver[ttInfo.Driver.DriverId].DataBoundItem as TimeTrialInfo;
 
+                        if (lastMatchingDriverFastest.Time > ttInfo.Time)
+                        {
+                            fastestPerDriver[ttInfo.Driver.DriverId] = row;
+                        }
+                    }
+                }
+            }
 
-                    listViewItems.Add(lvItem);
+            TimeSpan fastest = new TimeSpan(1, 0, 0, 0);
+            foreach (var fastestLapData in fastestPerDriver)
+            {
+                var driverId = fastestLapData.Key;
+                var row = fastestLapData.Value;
+
+                var ttInfo = row.DataBoundItem as TimeTrialInfo;
+
+                if (ttInfo.Time < fastest)
+                {
+                    fastest = ttInfo.Time;
+                    CurrentSessionGrid.CurrentCell = row.Cells[0];
                 }
 
-                PastTimes_ListView.Items.Clear();
-                PastTimes_ListView.Items.AddRange(listViewItems.ToArray());
+                ColorGridViewRow(row, driverId);
             }
         }
 

@@ -99,6 +99,9 @@ namespace GranTurismoLibrary.Helpers
                     .ForMember(dest => dest.TuneInfo, opt => opt.MapFrom(src => Map<TuneInfoDto, TuneInfo>(src.Tune)))
                     .ForMember(dest => dest.Driver, opt => opt.MapFrom(src => Map<Driver, DriverDto>(src.Driver)));
 
+                cfg.CreateMap<TimeTrialInfo, PastRecord>()
+                    .ForMember(dest => dest.SessionDateTime, opt => opt.Ignore());
+
                 cfg.CreateMap<TireType, TireTypeDto>();
                 cfg.CreateMap<TireTypeDto, TireType>();
 

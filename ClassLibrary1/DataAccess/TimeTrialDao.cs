@@ -72,9 +72,9 @@ namespace GranTurismoFramework.DataAccess
                                      HorsePower = tune.HorsePower,
                                      Weight = tune.Weight,
                                      TiresFrontId = tune.TiresFrontId,
-                                     TiresFront = tiresF.Name,
+                                     TiresFront = tiresF.Abreviation,
                                      TiresRearId = tune.TiresRearId,
-                                     TiresRear = tiresR.Name
+                                     TiresRear = tiresR.Abreviation
                                  },
                                  Driver = driver
                              });

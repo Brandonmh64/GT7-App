@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GranTurismoFramework.DataAccess
 {
-    internal class SessionDao
+    public class SessionDao
     {
         /// <summary>
         /// Create a new Session in the Database, and return the SessionId to be used for Time Trials
@@ -35,6 +35,22 @@ namespace GranTurismoFramework.DataAccess
             sessionId = recentSession?.SessionId ?? 0;
 
             return sessionId;
+        }
+
+        public DateTime GetSessionDate(int sessionId)
+        {
+            DateTime sessionDate = new DateTime();
+
+            using (var db = new GranTurismoDb())
+            {
+                var match = db.Sessions.FirstOrDefault(session => session.SessionId == sessionId);
+                if (match != null)
+                {
+                    sessionDate = match.Date;
+                }
+            }
+
+            return sessionDate;
         }
     }
 }

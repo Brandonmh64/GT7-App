@@ -37,7 +37,7 @@ namespace GranTurismoLibrary.DataAccess
         /// </summary>
         /// <param name="trackId"></param>
         /// <returns></returns>
-        public List<TimeTrialInfo> GetTrackTopTen(int trackId)
+        public List<PastRecord> GetTrackTopTen(int trackId)
         {
             var allTimeTrials = GetTrackTimeTrials(trackId).OrderBy(tt => tt.Time).ToList();
             var topTen = new List<TimeTrialInfo>();
@@ -56,7 +56,17 @@ namespace GranTurismoLibrary.DataAccess
                 }
             }
 
-            return topTen;
+            var sessionDao = new SessionDao();
+            var topTenPastRecords = new List<PastRecord>();
+            foreach (var top in topTen)
+            {
+                var pastRecord = GtMapper.Map<TimeTrialInfo, PastRecord>(top);
+                pastRecord.SessionDateTime = sessionDao.GetSessionDate(pastRecord.SessionId);
+
+                topTenPastRecords.Add(pastRecord);
+            }
+
+            return topTenPastRecords;
         }
 
 
@@ -68,6 +78,26 @@ namespace GranTurismoLibrary.DataAccess
             var mappedTimeTrials = GtMapper.MapList<TimeTrialInfo, TimeTrialInfoDto>(timeTrialInfos);
 
             ttDao.SaveTimeTrials(mappedTimeTrials);
+        }
+
+
+
+
+        // Analysis
+        public TimeSpan GetTimeAwayFromNextBestRecord(TimeSpan time, int trackId)
+        {
+            var nextBestTrial = new TimeTrialInfo();
+
+            foreach (var ttInfo in GetTrackTopTen(trackId).OrderBy(tt => tt.Time))
+            {
+                // Find the first Top Ten which is faster than current time
+                if (time > ttInfo.Time)
+                {
+                    return time - ttInfo.Time;
+                }
+            }
+
+            return new TimeSpan(1, 0, 0, 0);
         }
     }
 }
