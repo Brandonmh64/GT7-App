@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="masterModelStoreContainer" CdmEntityContainer="GranTurismoDb">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="masterModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturers">
+      <EntityTypeMapping TypeName="masterModel.Manufacturer">
+        <MappingFragment StoreEntitySet="Manufacturer">
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regions">
+      <EntityTypeMapping TypeName="masterModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeTrials">
+      <EntityTypeMapping TypeName="masterModel.TimeTrial">
+        <MappingFragment StoreEntitySet="TimeTrial">
+          <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+          <ScalarProperty Name="TimeTrialId" ColumnName="TimeTrialId" />
+          <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+          <ScalarProperty Name="TuneId" ColumnName="TuneId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TireTypes">
+      <EntityTypeMapping TypeName="masterModel.TireType">
+        <MappingFragment StoreEntitySet="TireType">
+          <ScalarProperty Name="TireId" ColumnName="TireId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Abreviation" ColumnName="Abreviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tracks">
+      <EntityTypeMapping TypeName="masterModel.Track">
+        <MappingFragment StoreEntitySet="Track">
+          <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tunes">
+      <EntityTypeMapping TypeName="masterModel.Tune">
+        <MappingFragment StoreEntitySet="Tune">
+          <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="HorsePower" ColumnName="HorsePower" />
+          <ScalarProperty Name="TuneId" ColumnName="TuneId" />
+          <ScalarProperty Name="PerformancePoints" ColumnName="PerformancePoints" />
+          <ScalarProperty Name="TiresFrontId" ColumnName="TiresFrontId" />
+          <ScalarProperty Name="TiresRearId" ColumnName="TiresRearId" />
+          <ScalarProperty Name="SheetName" ColumnName="SheetName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MSreplication_options">
+      <EntityTypeMapping TypeName="masterModel.MSreplication_options">
+        <MappingFragment StoreEntitySet="MSreplication_options">
+          <ScalarProperty Name="optname" ColumnName="optname" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="major_version" ColumnName="major_version" />
+          <ScalarProperty Name="minor_version" ColumnName="minor_version" />
+          <ScalarProperty Name="revision" ColumnName="revision" />
+          <ScalarProperty Name="install_failures" ColumnName="install_failures" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_fallback_db">
+      <EntityTypeMapping TypeName="masterModel.spt_fallback_db">
+        <MappingFragment StoreEntitySet="spt_fallback_db">
+          <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+          <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+          <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+          <ScalarProperty Name="xfallback_dbid" ColumnName="xfallback_dbid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="dbid" ColumnName="dbid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_fallback_dev">
+      <EntityTypeMapping TypeName="masterModel.spt_fallback_dev">
+        <MappingFragment StoreEntitySet="spt_fallback_dev">
+          <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+          <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+          <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+          <ScalarProperty Name="xfallback_low" ColumnName="xfallback_low" />
+          <ScalarProperty Name="xfallback_drive" ColumnName="xfallback_drive" />
+          <ScalarProperty Name="low" ColumnName="low" />
+          <ScalarProperty Name="high" ColumnName="high" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phyname" ColumnName="phyname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_fallback_usg">
+      <EntityTypeMapping TypeName="masterModel.spt_fallback_usg">
+        <MappingFragment StoreEntitySet="spt_fallback_usg">
+          <ScalarProperty Name="xserver_name" ColumnName="xserver_name" />
+          <ScalarProperty Name="xdttm_ins" ColumnName="xdttm_ins" />
+          <ScalarProperty Name="xdttm_last_ins_upd" ColumnName="xdttm_last_ins_upd" />
+          <ScalarProperty Name="xfallback_vstart" ColumnName="xfallback_vstart" />
+          <ScalarProperty Name="dbid" ColumnName="dbid" />
+          <ScalarProperty Name="segmap" ColumnName="segmap" />
+          <ScalarProperty Name="lstart" ColumnName="lstart" />
+          <ScalarProperty Name="sizepg" ColumnName="sizepg" />
+          <ScalarProperty Name="vstart" ColumnName="vstart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="spt_monitor">
+      <EntityTypeMapping TypeName="masterModel.spt_monitor">
+        <MappingFragment StoreEntitySet="spt_monitor">
+          <ScalarProperty Name="lastrun" ColumnName="lastrun" />
+          <ScalarProperty Name="cpu_busy" ColumnName="cpu_busy" />
+          <ScalarProperty Name="io_busy" ColumnName="io_busy" />
+          <ScalarProperty Name="idle" ColumnName="idle" />
+          <ScalarProperty Name="pack_received" ColumnName="pack_received" />
+          <ScalarProperty Name="pack_sent" ColumnName="pack_sent" />
+          <ScalarProperty Name="connections" ColumnName="connections" />
+          <ScalarProperty Name="pack_errors" ColumnName="pack_errors" />
+          <ScalarProperty Name="total_read" ColumnName="total_read" />
+          <ScalarProperty Name="total_write" ColumnName="total_write" />
+          <ScalarProperty Name="total_errors" ColumnName="total_errors" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="masterModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OwnedCars">
+      <EntityTypeMapping TypeName="masterModel.OwnedCar">
+        <MappingFragment StoreEntitySet="OwnedCar">
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="PrimaryDriverId" ColumnName="PrimaryDriverId" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
+          <ScalarProperty Name="OwnedCarId" ColumnName="OwnedCarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="masterModel.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="CarId" ColumnName="CarId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="masterModel.Session">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

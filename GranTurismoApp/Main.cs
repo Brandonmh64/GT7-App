@@ -45,8 +45,8 @@ namespace GranTurismoApp
         {
             var allLoadTasks = new List<Task>();
 
-            //var loadScreenCountdown = ShowLoadingTab(BlacklistTab);
-            //allLoadTasks.Add(loadScreenCountdown);
+            var loadScreenCountdown = ShowLoadingTab(BlacklistTab);
+            allLoadTasks.Add(loadScreenCountdown);
 
             // Blacklist
             var loadBlacklistTask = LoadBlacklistTab();
@@ -486,7 +486,7 @@ namespace GranTurismoApp
                 var pastRecords = ttDao.GetTrackTopTen(trackId);
 
                 PastRecordsGrid.DataSource = pastRecords;
-                
+
 
                 foreach (DataGridViewRow row in PastRecordsGrid.Rows)
                 {
@@ -514,7 +514,7 @@ namespace GranTurismoApp
                             PastRecordsGrid.CurrentCell = row.Cells[0];
                         }
                     }
-                   
+
                 }
             }
         }
@@ -929,5 +929,20 @@ namespace GranTurismoApp
         }
 
         #endregion InventoryTab
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void AddCar_ManufacturerLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InventoryLayout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

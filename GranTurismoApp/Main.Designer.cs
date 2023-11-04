@@ -116,7 +116,6 @@
             NewRecord_TuneSelectDropDown = new ComboBox();
             NewRecord_DriverSelectLabel = new Label();
             NewRecord_DriverSelectDropDown = new ComboBox();
-            NewRecord_SaveRecordButton = new Button();
             NewRecord_TimeEntryLayout = new TableLayoutPanel();
             NewRecord_TimeEntryMillisecondsUpDown = new NumericUpDown();
             NewRecord_SecondMilliSecondSeparatorLabel = new Label();
@@ -127,7 +126,9 @@
             NewRecord_TimeEntryMinutesLabel = new Label();
             NewRecord_TimeEntrySecondsLabel = new Label();
             NewRecord_TimeEntryMillisecondsLabel = new Label();
+            splitContainer1 = new SplitContainer();
             NewRecord_RecordSavedLabel = new Label();
+            NewRecord_SaveRecordButton = new Button();
             PastRecords_Layout = new TableLayoutPanel();
             PastRecords_HeaderLabel = new Label();
             PastRecordsGrid = new DataGridView();
@@ -145,12 +146,6 @@
             InventoryTab = new TabPage();
             InventoryLayout = new TableLayoutPanel();
             OwnedCarGrid = new DataGridView();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            regionNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            imageNameDataGridViewTextBoxColumn = new DataGridViewImageColumn();
             ownedCarInfoBindingSource1 = new BindingSource(components);
             TuneGrid = new DataGridView();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
@@ -160,24 +155,19 @@
             dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            Details = new DataGridViewButtonColumn();
             tuneInfoBindingSource1 = new BindingSource(components);
             AddCar_Panel = new Panel();
             AddCar_Layout = new TableLayoutPanel();
             AddCar_RegionDropDown = new ComboBox();
             AddCar_RegionLabel = new Label();
             AddCar_HeaderLabel = new Label();
-            AddCar_PrimaryDriverLabel = new Label();
-            AddCar_DriverDropDown = new ComboBox();
             AddCar_ModelLabel = new Label();
             AddCar_ModelDropDown = new ComboBox();
             AddCar_ManufacturerLabel = new Label();
             AddCar_ManufacturerDropDown = new ComboBox();
-            AddCar_ImageDisplay = new PictureBox();
-            AddCar_BrowseButton = new Button();
-            AddCar_ImageLocation = new TextBox();
-            AddCar_ImageLabel = new Label();
+            AddCar_PrimaryDriverLabel = new Label();
             AddCar_NicknameLabel = new Label();
+            AddCar_DriverDropDown = new ComboBox();
             AddCar_NicknameTextBox = new TextBox();
             AddCar_SaveButton = new Button();
             AddTune_Panel = new Panel();
@@ -206,6 +196,11 @@
             timeTrialInfoBindingSource1 = new BindingSource(components);
             ownedCarInfoBindingSource = new BindingSource(components);
             tuneInfoBindingSource = new BindingSource(components);
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            regionNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             timeStringDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             ownedCarNameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             carModelDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -246,6 +241,10 @@
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMillisecondsUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntrySecondsUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMinutesUpDown).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             PastRecords_Layout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PastRecordsGrid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pastRecordBindingSource).BeginInit();
@@ -260,7 +259,6 @@
             ((System.ComponentModel.ISupportInitialize)tuneInfoBindingSource1).BeginInit();
             AddCar_Panel.SuspendLayout();
             AddCar_Layout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AddCar_ImageDisplay).BeginInit();
             AddTune_Panel.SuspendLayout();
             AddTune_Layout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)timeTrialInfoBindingSource1).BeginInit();
@@ -279,7 +277,7 @@
             TabControl.Location = new Point(0, 0);
             TabControl.Name = "TabControl";
             TabControl.SelectedIndex = 0;
-            TabControl.Size = new Size(1904, 1041);
+            TabControl.Size = new Size(1350, 729);
             TabControl.TabIndex = 0;
             TabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
             // 
@@ -290,7 +288,7 @@
             LoadingTab.Location = new Point(4, 24);
             LoadingTab.Name = "LoadingTab";
             LoadingTab.Padding = new Padding(3);
-            LoadingTab.Size = new Size(1896, 1013);
+            LoadingTab.Size = new Size(1342, 701);
             LoadingTab.TabIndex = 1;
             LoadingTab.Text = "Loading";
             // 
@@ -313,7 +311,7 @@
             LoadingLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 356F));
             LoadingLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 526F));
             LoadingLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
-            LoadingLayout.Size = new Size(1890, 1007);
+            LoadingLayout.Size = new Size(1336, 695);
             LoadingLayout.TabIndex = 1;
             // 
             // Logo
@@ -321,7 +319,7 @@
             Logo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             LoadingLayout.SetColumnSpan(Logo, 2);
             Logo.Image = Properties.Resources.Gt7mw;
-            Logo.Location = new Point(598, 46);
+            Logo.Location = new Point(321, -62);
             Logo.Name = "Logo";
             Logo.Size = new Size(694, 350);
             Logo.TabIndex = 0;
@@ -332,9 +330,9 @@
             SkylineVsTruenoLogo.Anchor = AnchorStyles.None;
             LoadingLayout.SetColumnSpan(SkylineVsTruenoLogo, 4);
             SkylineVsTruenoLogo.Image = Properties.Resources.SkylineVsTrueno;
-            SkylineVsTruenoLogo.Location = new Point(45, 402);
+            SkylineVsTruenoLogo.Location = new Point(33, 294);
             SkylineVsTruenoLogo.Name = "SkylineVsTruenoLogo";
-            SkylineVsTruenoLogo.Size = new Size(1800, 520);
+            SkylineVsTruenoLogo.Size = new Size(1270, 520);
             SkylineVsTruenoLogo.TabIndex = 1;
             SkylineVsTruenoLogo.TabStop = false;
             // 
@@ -346,7 +344,7 @@
             BlacklistTab.Location = new Point(4, 24);
             BlacklistTab.Name = "BlacklistTab";
             BlacklistTab.Padding = new Padding(3);
-            BlacklistTab.Size = new Size(1896, 1013);
+            BlacklistTab.Size = new Size(1342, 701);
             BlacklistTab.TabIndex = 0;
             BlacklistTab.Text = "Blacklist";
             // 
@@ -357,7 +355,7 @@
             TabBackground.Controls.Add(TabLayout);
             TabBackground.Location = new Point(0, 0);
             TabBackground.Name = "TabBackground";
-            TabBackground.Size = new Size(485, 3000);
+            TabBackground.Size = new Size(0, 3000);
             TabBackground.TabIndex = 0;
             // 
             // TabLayout
@@ -373,7 +371,7 @@
             TabLayout.Name = "TabLayout";
             TabLayout.RowCount = 1;
             TabLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TabLayout.Size = new Size(485, 3000);
+            TabLayout.Size = new Size(0, 3000);
             TabLayout.TabIndex = 1;
             // 
             // BlacklistLayout
@@ -444,7 +442,7 @@
             BlacklistLayout.Controls.Add(BLTime14, 3, 13);
             BlacklistLayout.Controls.Add(BLTime15, 3, 14);
             BlacklistLayout.Dock = DockStyle.Fill;
-            BlacklistLayout.Location = new Point(-400, 3);
+            BlacklistLayout.Location = new Point(-674, 3);
             BlacklistLayout.Name = "BlacklistLayout";
             BlacklistLayout.RowCount = 15;
             BlacklistLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
@@ -1193,25 +1191,25 @@
             NewRecordTab.Location = new Point(4, 24);
             NewRecordTab.Name = "NewRecordTab";
             NewRecordTab.Padding = new Padding(3);
-            NewRecordTab.Size = new Size(1896, 1013);
+            NewRecordTab.Size = new Size(1342, 701);
             NewRecordTab.TabIndex = 2;
             NewRecordTab.Text = "Hit the Track";
             // 
             // NewRecordLayout
             // 
             NewRecordLayout.ColumnCount = 2;
-            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.7671967F));
-            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 54.2328033F));
+            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 52.84431F));
+            NewRecordLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 47.15569F));
             NewRecordLayout.Controls.Add(TimeTrial_SelectTrackPanel, 0, 0);
-            NewRecordLayout.Controls.Add(PastRecords_Layout, 1, 0);
             NewRecordLayout.Controls.Add(CurrentSessionLayout, 0, 1);
+            NewRecordLayout.Controls.Add(CurrentSessionGrid, 1, 0);
             NewRecordLayout.Dock = DockStyle.Fill;
             NewRecordLayout.Location = new Point(3, 3);
             NewRecordLayout.Name = "NewRecordLayout";
             NewRecordLayout.RowCount = 2;
-            NewRecordLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 37.7358475F));
-            NewRecordLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 62.2641525F));
-            NewRecordLayout.Size = new Size(1890, 1007);
+            NewRecordLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 52.3741F));
+            NewRecordLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 47.6259F));
+            NewRecordLayout.Size = new Size(1336, 695);
             NewRecordLayout.TabIndex = 0;
             // 
             // TimeTrial_SelectTrackPanel
@@ -1221,17 +1219,17 @@
             TimeTrial_SelectTrackPanel.Dock = DockStyle.Fill;
             TimeTrial_SelectTrackPanel.Location = new Point(3, 3);
             TimeTrial_SelectTrackPanel.Name = "TimeTrial_SelectTrackPanel";
-            TimeTrial_SelectTrackPanel.Size = new Size(859, 374);
+            TimeTrial_SelectTrackPanel.Size = new Size(700, 358);
             TimeTrial_SelectTrackPanel.TabIndex = 4;
             // 
             // TrackInputLayout
             // 
             TrackInputLayout.ColumnCount = 5;
-            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 127F));
-            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 239F));
-            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
-            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 309F));
-            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 31F));
+            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
+            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 226F));
+            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
+            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 287F));
+            TrackInputLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 141F));
             TrackInputLayout.Controls.Add(NewRecord_HeaderLabel, 0, 0);
             TrackInputLayout.Controls.Add(NewRecord_StartSessionButton, 0, 5);
             TrackInputLayout.Controls.Add(NewRecord_RegionSelectLabel, 0, 1);
@@ -1246,9 +1244,8 @@
             TrackInputLayout.Controls.Add(NewRecord_TuneSelectDropDown, 3, 2);
             TrackInputLayout.Controls.Add(NewRecord_DriverSelectLabel, 2, 3);
             TrackInputLayout.Controls.Add(NewRecord_DriverSelectDropDown, 3, 3);
-            TrackInputLayout.Controls.Add(NewRecord_SaveRecordButton, 3, 5);
             TrackInputLayout.Controls.Add(NewRecord_TimeEntryLayout, 3, 4);
-            TrackInputLayout.Controls.Add(NewRecord_RecordSavedLabel, 4, 5);
+            TrackInputLayout.Controls.Add(splitContainer1, 3, 5);
             TrackInputLayout.Dock = DockStyle.Fill;
             TrackInputLayout.Location = new Point(0, 0);
             TrackInputLayout.Name = "TrackInputLayout";
@@ -1260,7 +1257,7 @@
             TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 131F));
             TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             TrackInputLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TrackInputLayout.Size = new Size(859, 374);
+            TrackInputLayout.Size = new Size(700, 358);
             TrackInputLayout.TabIndex = 0;
             // 
             // NewRecord_HeaderLabel
@@ -1272,7 +1269,7 @@
             NewRecord_HeaderLabel.ForeColor = SystemColors.ControlText;
             NewRecord_HeaderLabel.Location = new Point(3, 0);
             NewRecord_HeaderLabel.Name = "NewRecord_HeaderLabel";
-            NewRecord_HeaderLabel.Size = new Size(853, 30);
+            NewRecord_HeaderLabel.Size = new Size(820, 30);
             NewRecord_HeaderLabel.TabIndex = 17;
             NewRecord_HeaderLabel.Text = "New Time Trial";
             NewRecord_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1281,7 +1278,7 @@
             // 
             NewRecord_StartSessionButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_StartSessionButton.AutoSize = true;
-            NewRecord_StartSessionButton.Location = new Point(41, 346);
+            NewRecord_StartSessionButton.Location = new Point(6, 330);
             NewRecord_StartSessionButton.Name = "NewRecord_StartSessionButton";
             NewRecord_StartSessionButton.Size = new Size(83, 25);
             NewRecord_StartSessionButton.TabIndex = 19;
@@ -1294,7 +1291,7 @@
             NewRecord_RegionSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_RegionSelectLabel.AutoSize = true;
             NewRecord_RegionSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_RegionSelectLabel.Location = new Point(52, 50);
+            NewRecord_RegionSelectLabel.Location = new Point(17, 50);
             NewRecord_RegionSelectLabel.Name = "NewRecord_RegionSelectLabel";
             NewRecord_RegionSelectLabel.Size = new Size(72, 45);
             NewRecord_RegionSelectLabel.TabIndex = 8;
@@ -1305,9 +1302,9 @@
             NewRecord_RegionSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NewRecord_RegionSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             NewRecord_RegionSelectDropDown.FormattingEnabled = true;
-            NewRecord_RegionSelectDropDown.Location = new Point(130, 53);
+            NewRecord_RegionSelectDropDown.Location = new Point(95, 53);
             NewRecord_RegionSelectDropDown.Name = "NewRecord_RegionSelectDropDown";
-            NewRecord_RegionSelectDropDown.Size = new Size(233, 23);
+            NewRecord_RegionSelectDropDown.Size = new Size(220, 23);
             NewRecord_RegionSelectDropDown.TabIndex = 1;
             NewRecord_RegionSelectDropDown.SelectedIndexChanged += NewRecord_RegionSelectDropDown_SelectedIndexChanged;
             // 
@@ -1316,7 +1313,7 @@
             NewRecord_CarSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_CarSelectLabel.AutoSize = true;
             NewRecord_CarSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_CarSelectLabel.Location = new Point(439, 50);
+            NewRecord_CarSelectLabel.Location = new Point(351, 50);
             NewRecord_CarSelectLabel.Name = "NewRecord_CarSelectLabel";
             NewRecord_CarSelectLabel.Size = new Size(44, 45);
             NewRecord_CarSelectLabel.TabIndex = 11;
@@ -1327,9 +1324,9 @@
             NewRecord_CarSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NewRecord_CarSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             NewRecord_CarSelectDropDown.FormattingEnabled = true;
-            NewRecord_CarSelectDropDown.Location = new Point(489, 53);
+            NewRecord_CarSelectDropDown.Location = new Point(401, 53);
             NewRecord_CarSelectDropDown.Name = "NewRecord_CarSelectDropDown";
-            NewRecord_CarSelectDropDown.Size = new Size(303, 23);
+            NewRecord_CarSelectDropDown.Size = new Size(281, 23);
             NewRecord_CarSelectDropDown.TabIndex = 13;
             NewRecord_CarSelectDropDown.SelectedIndexChanged += NewRecord_CarSelectDropDown_SelectedIndexChanged;
             // 
@@ -1338,9 +1335,9 @@
             NewRecord_CourseSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NewRecord_CourseSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             NewRecord_CourseSelectDropDown.FormattingEnabled = true;
-            NewRecord_CourseSelectDropDown.Location = new Point(130, 98);
+            NewRecord_CourseSelectDropDown.Location = new Point(95, 98);
             NewRecord_CourseSelectDropDown.Name = "NewRecord_CourseSelectDropDown";
-            NewRecord_CourseSelectDropDown.Size = new Size(233, 23);
+            NewRecord_CourseSelectDropDown.Size = new Size(220, 23);
             NewRecord_CourseSelectDropDown.TabIndex = 0;
             NewRecord_CourseSelectDropDown.SelectedIndexChanged += NewRecord_CourseSelectDropDown_SelectedIndexChanged;
             // 
@@ -1349,7 +1346,7 @@
             NewRecord_CourseSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_CourseSelectLabel.AutoSize = true;
             NewRecord_CourseSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_CourseSelectLabel.Location = new Point(54, 95);
+            NewRecord_CourseSelectLabel.Location = new Point(19, 95);
             NewRecord_CourseSelectLabel.Name = "NewRecord_CourseSelectLabel";
             NewRecord_CourseSelectLabel.Size = new Size(70, 45);
             NewRecord_CourseSelectLabel.TabIndex = 9;
@@ -1360,7 +1357,7 @@
             NewRecord_TrackSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_TrackSelectLabel.AutoSize = true;
             NewRecord_TrackSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_TrackSelectLabel.Location = new Point(65, 140);
+            NewRecord_TrackSelectLabel.Location = new Point(30, 140);
             NewRecord_TrackSelectLabel.Name = "NewRecord_TrackSelectLabel";
             NewRecord_TrackSelectLabel.Size = new Size(59, 45);
             NewRecord_TrackSelectLabel.TabIndex = 10;
@@ -1371,9 +1368,9 @@
             NewRecord_TrackSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NewRecord_TrackSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             NewRecord_TrackSelectDropDown.FormattingEnabled = true;
-            NewRecord_TrackSelectDropDown.Location = new Point(130, 143);
+            NewRecord_TrackSelectDropDown.Location = new Point(95, 143);
             NewRecord_TrackSelectDropDown.Name = "NewRecord_TrackSelectDropDown";
-            NewRecord_TrackSelectDropDown.Size = new Size(233, 23);
+            NewRecord_TrackSelectDropDown.Size = new Size(220, 23);
             NewRecord_TrackSelectDropDown.TabIndex = 18;
             NewRecord_TrackSelectDropDown.SelectedIndexChanged += NewRecord_TrackSelectDropDown_SelectedIndexChanged;
             // 
@@ -1382,7 +1379,7 @@
             NewRecord_TuneSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_TuneSelectLabel.AutoSize = true;
             NewRecord_TuneSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_TuneSelectLabel.Location = new Point(428, 95);
+            NewRecord_TuneSelectLabel.Location = new Point(340, 95);
             NewRecord_TuneSelectLabel.Name = "NewRecord_TuneSelectLabel";
             NewRecord_TuneSelectLabel.Size = new Size(55, 45);
             NewRecord_TuneSelectLabel.TabIndex = 12;
@@ -1393,9 +1390,9 @@
             NewRecord_TuneSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NewRecord_TuneSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             NewRecord_TuneSelectDropDown.FormattingEnabled = true;
-            NewRecord_TuneSelectDropDown.Location = new Point(489, 98);
+            NewRecord_TuneSelectDropDown.Location = new Point(401, 98);
             NewRecord_TuneSelectDropDown.Name = "NewRecord_TuneSelectDropDown";
-            NewRecord_TuneSelectDropDown.Size = new Size(303, 23);
+            NewRecord_TuneSelectDropDown.Size = new Size(281, 23);
             NewRecord_TuneSelectDropDown.TabIndex = 14;
             // 
             // NewRecord_DriverSelectLabel
@@ -1403,7 +1400,7 @@
             NewRecord_DriverSelectLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             NewRecord_DriverSelectLabel.AutoSize = true;
             NewRecord_DriverSelectLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            NewRecord_DriverSelectLabel.Location = new Point(417, 140);
+            NewRecord_DriverSelectLabel.Location = new Point(329, 140);
             NewRecord_DriverSelectLabel.Name = "NewRecord_DriverSelectLabel";
             NewRecord_DriverSelectLabel.Size = new Size(66, 45);
             NewRecord_DriverSelectLabel.TabIndex = 15;
@@ -1414,22 +1411,10 @@
             NewRecord_DriverSelectDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NewRecord_DriverSelectDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             NewRecord_DriverSelectDropDown.FormattingEnabled = true;
-            NewRecord_DriverSelectDropDown.Location = new Point(489, 143);
+            NewRecord_DriverSelectDropDown.Location = new Point(401, 143);
             NewRecord_DriverSelectDropDown.Name = "NewRecord_DriverSelectDropDown";
-            NewRecord_DriverSelectDropDown.Size = new Size(303, 23);
+            NewRecord_DriverSelectDropDown.Size = new Size(281, 23);
             NewRecord_DriverSelectDropDown.TabIndex = 16;
-            // 
-            // NewRecord_SaveRecordButton
-            // 
-            NewRecord_SaveRecordButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            NewRecord_SaveRecordButton.AutoSize = true;
-            NewRecord_SaveRecordButton.Location = new Point(709, 346);
-            NewRecord_SaveRecordButton.Name = "NewRecord_SaveRecordButton";
-            NewRecord_SaveRecordButton.Size = new Size(83, 25);
-            NewRecord_SaveRecordButton.TabIndex = 22;
-            NewRecord_SaveRecordButton.Text = "Save Record";
-            NewRecord_SaveRecordButton.UseVisualStyleBackColor = true;
-            NewRecord_SaveRecordButton.Click += NewRecord_SaveRecordButton_Click;
             // 
             // NewRecord_TimeEntryLayout
             // 
@@ -1450,12 +1435,12 @@
             NewRecord_TimeEntryLayout.Controls.Add(NewRecord_TimeEntrySecondsLabel, 3, 1);
             NewRecord_TimeEntryLayout.Controls.Add(NewRecord_TimeEntryMillisecondsLabel, 5, 1);
             NewRecord_TimeEntryLayout.Dock = DockStyle.Fill;
-            NewRecord_TimeEntryLayout.Location = new Point(489, 188);
+            NewRecord_TimeEntryLayout.Location = new Point(401, 188);
             NewRecord_TimeEntryLayout.Name = "NewRecord_TimeEntryLayout";
             NewRecord_TimeEntryLayout.RowCount = 2;
             NewRecord_TimeEntryLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
             NewRecord_TimeEntryLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            NewRecord_TimeEntryLayout.Size = new Size(303, 125);
+            NewRecord_TimeEntryLayout.Size = new Size(281, 125);
             NewRecord_TimeEntryLayout.TabIndex = 23;
             // 
             // NewRecord_TimeEntryMillisecondsUpDown
@@ -1550,11 +1535,29 @@
             NewRecord_TimeEntryMillisecondsLabel.TabIndex = 28;
             NewRecord_TimeEntryMillisecondsLabel.Text = "Milliseconds";
             // 
+            // splitContainer1
+            // 
+            splitContainer1.Dock = DockStyle.Fill;
+            splitContainer1.Location = new Point(401, 319);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            splitContainer1.Panel1.Controls.Add(NewRecord_RecordSavedLabel);
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(NewRecord_SaveRecordButton);
+            splitContainer1.Size = new Size(281, 36);
+            splitContainer1.SplitterDistance = 190;
+            splitContainer1.TabIndex = 25;
+            splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
+            // 
             // NewRecord_RecordSavedLabel
             // 
             NewRecord_RecordSavedLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             NewRecord_RecordSavedLabel.AutoSize = true;
-            NewRecord_RecordSavedLabel.Location = new Point(798, 351);
+            NewRecord_RecordSavedLabel.Location = new Point(146, 16);
             NewRecord_RecordSavedLabel.Name = "NewRecord_RecordSavedLabel";
             NewRecord_RecordSavedLabel.Padding = new Padding(0, 0, 0, 8);
             NewRecord_RecordSavedLabel.Size = new Size(41, 23);
@@ -1562,23 +1565,37 @@
             NewRecord_RecordSavedLabel.Text = "Saved!";
             NewRecord_RecordSavedLabel.Visible = false;
             // 
+            // NewRecord_SaveRecordButton
+            // 
+            NewRecord_SaveRecordButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            NewRecord_SaveRecordButton.AutoSize = true;
+            NewRecord_SaveRecordButton.Location = new Point(3, 11);
+            NewRecord_SaveRecordButton.Name = "NewRecord_SaveRecordButton";
+            NewRecord_SaveRecordButton.Size = new Size(81, 25);
+            NewRecord_SaveRecordButton.TabIndex = 22;
+            NewRecord_SaveRecordButton.Text = "Save Record";
+            NewRecord_SaveRecordButton.UseVisualStyleBackColor = true;
+            NewRecord_SaveRecordButton.Click += NewRecord_SaveRecordButton_Click;
+            // 
             // PastRecords_Layout
             // 
             PastRecords_Layout.ColumnCount = 3;
-            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
-            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 908F));
-            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 22F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 655F));
+            PastRecords_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
             PastRecords_Layout.Controls.Add(PastRecords_HeaderLabel, 1, 0);
             PastRecords_Layout.Controls.Add(PastRecordsGrid, 1, 1);
             PastRecords_Layout.Dock = DockStyle.Fill;
-            PastRecords_Layout.Location = new Point(868, 3);
+            PastRecords_Layout.Location = new Point(12, 11);
             PastRecords_Layout.Name = "PastRecords_Layout";
             PastRecords_Layout.RowCount = 4;
-            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
             PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            PastRecords_Layout.Size = new Size(1019, 374);
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            PastRecords_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            PastRecords_Layout.Size = new Size(671, 301);
             PastRecords_Layout.TabIndex = 5;
             // 
             // PastRecords_HeaderLabel
@@ -1587,9 +1604,9 @@
             PastRecords_HeaderLabel.AutoSize = true;
             PastRecords_HeaderLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             PastRecords_HeaderLabel.ForeColor = SystemColors.ControlLight;
-            PastRecords_HeaderLabel.Location = new Point(53, 0);
+            PastRecords_HeaderLabel.Location = new Point(11, 0);
             PastRecords_HeaderLabel.Name = "PastRecords_HeaderLabel";
-            PastRecords_HeaderLabel.Size = new Size(902, 30);
+            PastRecords_HeaderLabel.Size = new Size(649, 30);
             PastRecords_HeaderLabel.TabIndex = 18;
             PastRecords_HeaderLabel.Text = "Past Records";
             PastRecords_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1601,11 +1618,12 @@
             PastRecordsGrid.Columns.AddRange(new DataGridViewColumn[] { timeStringDataGridViewTextBoxColumn1, ownedCarNameDataGridViewTextBoxColumn1, carModelDataGridViewTextBoxColumn1, sheetNameDataGridViewTextBoxColumn, pPDataGridViewTextBoxColumn1, tireComboDataGridViewTextBoxColumn1, driverNameDataGridViewTextBoxColumn1, sessionDateDataGridViewTextBoxColumn });
             PastRecordsGrid.DataSource = pastRecordBindingSource;
             PastRecordsGrid.Dock = DockStyle.Fill;
-            PastRecordsGrid.Location = new Point(53, 52);
+            PastRecordsGrid.Location = new Point(11, 35);
             PastRecordsGrid.Name = "PastRecordsGrid";
+            PastRecordsGrid.RowHeadersVisible = false;
             PastRecords_Layout.SetRowSpan(PastRecordsGrid, 3);
             PastRecordsGrid.RowTemplate.Height = 25;
-            PastRecordsGrid.Size = new Size(902, 319);
+            PastRecordsGrid.Size = new Size(649, 263);
             PastRecordsGrid.TabIndex = 19;
             // 
             // pastRecordBindingSource
@@ -1615,19 +1633,20 @@
             // CurrentSessionLayout
             // 
             CurrentSessionLayout.ColumnCount = 3;
-            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
-            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 778F));
-            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30F));
-            CurrentSessionLayout.Controls.Add(CurrentSessionGrid, 1, 1);
+            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 9F));
+            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 677F));
+            CurrentSessionLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 152F));
+            CurrentSessionLayout.Controls.Add(PastRecords_Layout, 1, 1);
             CurrentSessionLayout.Dock = DockStyle.Fill;
             CurrentSessionLayout.Enabled = false;
-            CurrentSessionLayout.Location = new Point(3, 383);
+            CurrentSessionLayout.Location = new Point(3, 367);
             CurrentSessionLayout.Name = "CurrentSessionLayout";
             CurrentSessionLayout.RowCount = 3;
-            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 6.612903F));
-            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3870964F));
-            CurrentSessionLayout.Size = new Size(859, 621);
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 2.46153855F));
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 94.46154F));
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 2.76923084F));
+            CurrentSessionLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            CurrentSessionLayout.Size = new Size(700, 325);
             CurrentSessionLayout.TabIndex = 6;
             // 
             // CurrentSessionGrid
@@ -1638,12 +1657,13 @@
             CurrentSessionGrid.DataSource = timeTrialInfoBindingSource;
             CurrentSessionGrid.Dock = DockStyle.Fill;
             CurrentSessionGrid.Enabled = false;
-            CurrentSessionGrid.Location = new Point(33, 44);
+            CurrentSessionGrid.Location = new Point(709, 3);
             CurrentSessionGrid.MultiSelect = false;
             CurrentSessionGrid.Name = "CurrentSessionGrid";
+            NewRecordLayout.SetRowSpan(CurrentSessionGrid, 2);
             CurrentSessionGrid.RowTemplate.Height = 25;
             CurrentSessionGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            CurrentSessionGrid.Size = new Size(772, 366);
+            CurrentSessionGrid.Size = new Size(624, 689);
             CurrentSessionGrid.TabIndex = 0;
             // 
             // timeStringDataGridViewTextBoxColumn
@@ -1652,6 +1672,7 @@
             timeStringDataGridViewTextBoxColumn.HeaderText = "Time";
             timeStringDataGridViewTextBoxColumn.Name = "timeStringDataGridViewTextBoxColumn";
             timeStringDataGridViewTextBoxColumn.ReadOnly = true;
+            timeStringDataGridViewTextBoxColumn.Width = 80;
             // 
             // ownedCarNameDataGridViewTextBoxColumn
             // 
@@ -1659,7 +1680,6 @@
             ownedCarNameDataGridViewTextBoxColumn.HeaderText = "Car Name";
             ownedCarNameDataGridViewTextBoxColumn.Name = "ownedCarNameDataGridViewTextBoxColumn";
             ownedCarNameDataGridViewTextBoxColumn.ReadOnly = true;
-            ownedCarNameDataGridViewTextBoxColumn.Width = 120;
             // 
             // carModelDataGridViewTextBoxColumn
             // 
@@ -1675,7 +1695,7 @@
             dataGridViewTextBoxColumn13.HeaderText = "Sheet Name";
             dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
             dataGridViewTextBoxColumn13.ReadOnly = true;
-            dataGridViewTextBoxColumn13.Width = 120;
+            dataGridViewTextBoxColumn13.Width = 105;
             // 
             // pPDataGridViewTextBoxColumn
             // 
@@ -1683,7 +1703,7 @@
             pPDataGridViewTextBoxColumn.HeaderText = "PP";
             pPDataGridViewTextBoxColumn.Name = "pPDataGridViewTextBoxColumn";
             pPDataGridViewTextBoxColumn.ReadOnly = true;
-            pPDataGridViewTextBoxColumn.Width = 80;
+            pPDataGridViewTextBoxColumn.Width = 60;
             // 
             // tireComboDataGridViewTextBoxColumn
             // 
@@ -1691,7 +1711,7 @@
             tireComboDataGridViewTextBoxColumn.HeaderText = "Tires";
             tireComboDataGridViewTextBoxColumn.Name = "tireComboDataGridViewTextBoxColumn";
             tireComboDataGridViewTextBoxColumn.ReadOnly = true;
-            tireComboDataGridViewTextBoxColumn.Width = 80;
+            tireComboDataGridViewTextBoxColumn.Width = 60;
             // 
             // driverNameDataGridViewTextBoxColumn
             // 
@@ -1711,7 +1731,7 @@
             InventoryTab.Location = new Point(4, 24);
             InventoryTab.Name = "InventoryTab";
             InventoryTab.Padding = new Padding(3);
-            InventoryTab.Size = new Size(1896, 1013);
+            InventoryTab.Size = new Size(1342, 701);
             InventoryTab.TabIndex = 3;
             InventoryTab.Text = "Inventory";
             // 
@@ -1729,14 +1749,15 @@
             InventoryLayout.Location = new Point(3, 3);
             InventoryLayout.Name = "InventoryLayout";
             InventoryLayout.RowCount = 6;
-            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 266F));
-            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 9F));
-            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 311F));
-            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 9F));
-            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 402F));
-            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
-            InventoryLayout.Size = new Size(1890, 1007);
+            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 127F));
+            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 235F));
+            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 11F));
+            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 306F));
+            InventoryLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            InventoryLayout.Size = new Size(1336, 695);
             InventoryLayout.TabIndex = 0;
+            InventoryLayout.Paint += InventoryLayout_Paint;
             // 
             // OwnedCarGrid
             // 
@@ -1744,7 +1765,7 @@
             OwnedCarGrid.AllowUserToDeleteRows = false;
             OwnedCarGrid.AutoGenerateColumns = false;
             OwnedCarGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OwnedCarGrid.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn4, regionNameDataGridViewTextBoxColumn, dataGridViewTextBoxColumn3, imageNameDataGridViewTextBoxColumn });
+            OwnedCarGrid.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn4, regionNameDataGridViewTextBoxColumn, dataGridViewTextBoxColumn3 });
             OwnedCarGrid.DataSource = ownedCarInfoBindingSource1;
             OwnedCarGrid.Dock = DockStyle.Fill;
             OwnedCarGrid.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -1755,58 +1776,9 @@
             InventoryLayout.SetRowSpan(OwnedCarGrid, 5);
             OwnedCarGrid.RowTemplate.Height = 25;
             OwnedCarGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            OwnedCarGrid.Size = new Size(1004, 991);
+            OwnedCarGrid.Size = new Size(705, 681);
             OwnedCarGrid.TabIndex = 0;
             OwnedCarGrid.SelectionChanged += OwnedCarGrid_SelectionChanged;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Nickname";
-            dataGridViewTextBoxColumn2.HeaderText = "Nickname";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            dataGridViewTextBoxColumn2.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "FullName";
-            dataGridViewTextBoxColumn1.HeaderText = "Model";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "ManufacturerName";
-            dataGridViewTextBoxColumn4.HeaderText = "Manufacturer";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // regionNameDataGridViewTextBoxColumn
-            // 
-            regionNameDataGridViewTextBoxColumn.DataPropertyName = "RegionName";
-            regionNameDataGridViewTextBoxColumn.HeaderText = "Region";
-            regionNameDataGridViewTextBoxColumn.Name = "regionNameDataGridViewTextBoxColumn";
-            regionNameDataGridViewTextBoxColumn.ReadOnly = true;
-            regionNameDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "PrimaryDriverName";
-            dataGridViewTextBoxColumn3.HeaderText = "Primary Driver";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 120;
-            // 
-            // imageNameDataGridViewTextBoxColumn
-            // 
-            imageNameDataGridViewTextBoxColumn.HeaderText = "Image";
-            imageNameDataGridViewTextBoxColumn.Name = "imageNameDataGridViewTextBoxColumn";
-            imageNameDataGridViewTextBoxColumn.ReadOnly = true;
-            imageNameDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
-            imageNameDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-            imageNameDataGridViewTextBoxColumn.Width = 300;
             // 
             // ownedCarInfoBindingSource1
             // 
@@ -1816,15 +1788,16 @@
             // 
             TuneGrid.AutoGenerateColumns = false;
             TuneGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            TuneGrid.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn6, Details });
+            TuneGrid.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn6 });
             TuneGrid.DataSource = tuneInfoBindingSource1;
             TuneGrid.Dock = DockStyle.Fill;
-            TuneGrid.Location = new Point(1013, 3);
+            TuneGrid.Location = new Point(714, 3);
             TuneGrid.MultiSelect = false;
             TuneGrid.Name = "TuneGrid";
+            TuneGrid.RowHeadersVisible = false;
             TuneGrid.RowTemplate.Height = 25;
             TuneGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            TuneGrid.Size = new Size(853, 260);
+            TuneGrid.Size = new Size(598, 121);
             TuneGrid.TabIndex = 1;
             TuneGrid.CellContentClick += TuneGrid_CellContentClick;
             // 
@@ -1833,7 +1806,7 @@
             dataGridViewTextBoxColumn5.DataPropertyName = "SheetName";
             dataGridViewTextBoxColumn5.HeaderText = "Sheet Name";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 200;
+            dataGridViewTextBoxColumn5.Width = 140;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -1841,7 +1814,7 @@
             dataGridViewTextBoxColumn7.HeaderText = "PP";
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             dataGridViewTextBoxColumn7.ReadOnly = true;
-            dataGridViewTextBoxColumn7.Width = 80;
+            dataGridViewTextBoxColumn7.Width = 60;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -1849,7 +1822,7 @@
             dataGridViewTextBoxColumn8.HeaderText = "HP";
             dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             dataGridViewTextBoxColumn8.ReadOnly = true;
-            dataGridViewTextBoxColumn8.Width = 80;
+            dataGridViewTextBoxColumn8.Width = 60;
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -1857,21 +1830,21 @@
             dataGridViewTextBoxColumn9.HeaderText = "Weight";
             dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             dataGridViewTextBoxColumn9.ReadOnly = true;
-            dataGridViewTextBoxColumn9.Width = 80;
+            dataGridViewTextBoxColumn9.Width = 60;
             // 
             // dataGridViewTextBoxColumn10
             // 
             dataGridViewTextBoxColumn10.DataPropertyName = "TiresFront";
             dataGridViewTextBoxColumn10.HeaderText = "TiresF";
             dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.Width = 60;
+            dataGridViewTextBoxColumn10.Width = 50;
             // 
             // dataGridViewTextBoxColumn11
             // 
             dataGridViewTextBoxColumn11.DataPropertyName = "TiresRear";
             dataGridViewTextBoxColumn11.HeaderText = "TiresR";
             dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            dataGridViewTextBoxColumn11.Width = 60;
+            dataGridViewTextBoxColumn11.Width = 50;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -1879,13 +1852,6 @@
             dataGridViewTextBoxColumn6.DataPropertyName = "Notes";
             dataGridViewTextBoxColumn6.HeaderText = "Notes";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // Details
-            // 
-            Details.HeaderText = "Details";
-            Details.Name = "Details";
-            Details.Text = "Details";
-            Details.Width = 70;
             // 
             // tuneInfoBindingSource1
             // 
@@ -1896,52 +1862,47 @@
             AddCar_Panel.BackColor = SystemColors.ControlDark;
             AddCar_Panel.Controls.Add(AddCar_Layout);
             AddCar_Panel.Dock = DockStyle.Fill;
-            AddCar_Panel.Location = new Point(1013, 278);
+            AddCar_Panel.Location = new Point(714, 138);
             AddCar_Panel.Name = "AddCar_Panel";
             AddCar_Panel.Padding = new Padding(5);
-            AddCar_Panel.Size = new Size(853, 305);
+            AddCar_Panel.Size = new Size(598, 229);
             AddCar_Panel.TabIndex = 2;
             // 
             // AddCar_Layout
             // 
             AddCar_Layout.AutoSize = true;
             AddCar_Layout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            AddCar_Layout.ColumnCount = 6;
-            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 143F));
-            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 260F));
-            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 134F));
-            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 60F));
+            AddCar_Layout.ColumnCount = 5;
+            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 129F));
             AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 183F));
+            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 8F));
+            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 116F));
+            AddCar_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
             AddCar_Layout.Controls.Add(AddCar_RegionDropDown, 1, 1);
             AddCar_Layout.Controls.Add(AddCar_RegionLabel, 0, 1);
             AddCar_Layout.Controls.Add(AddCar_HeaderLabel, 0, 0);
-            AddCar_Layout.Controls.Add(AddCar_PrimaryDriverLabel, 3, 1);
-            AddCar_Layout.Controls.Add(AddCar_DriverDropDown, 4, 1);
             AddCar_Layout.Controls.Add(AddCar_ModelLabel, 0, 3);
             AddCar_Layout.Controls.Add(AddCar_ModelDropDown, 1, 3);
             AddCar_Layout.Controls.Add(AddCar_ManufacturerLabel, 0, 2);
             AddCar_Layout.Controls.Add(AddCar_ManufacturerDropDown, 1, 2);
-            AddCar_Layout.Controls.Add(AddCar_ImageDisplay, 5, 2);
-            AddCar_Layout.Controls.Add(AddCar_BrowseButton, 4, 6);
-            AddCar_Layout.Controls.Add(AddCar_ImageLocation, 3, 7);
-            AddCar_Layout.Controls.Add(AddCar_ImageLabel, 3, 6);
-            AddCar_Layout.Controls.Add(AddCar_NicknameLabel, 0, 5);
-            AddCar_Layout.Controls.Add(AddCar_NicknameTextBox, 1, 5);
-            AddCar_Layout.Controls.Add(AddCar_SaveButton, 0, 7);
+            AddCar_Layout.Controls.Add(AddCar_PrimaryDriverLabel, 3, 1);
+            AddCar_Layout.Controls.Add(AddCar_NicknameLabel, 3, 2);
+            AddCar_Layout.Controls.Add(AddCar_DriverDropDown, 4, 1);
+            AddCar_Layout.Controls.Add(AddCar_NicknameTextBox, 4, 2);
+            AddCar_Layout.Controls.Add(AddCar_SaveButton, 0, 5);
             AddCar_Layout.Dock = DockStyle.Fill;
             AddCar_Layout.Location = new Point(5, 5);
             AddCar_Layout.Name = "AddCar_Layout";
-            AddCar_Layout.RowCount = 8;
+            AddCar_Layout.RowCount = 6;
             AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 39F));
             AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
             AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
             AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
-            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
-            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 26F));
-            AddCar_Layout.Size = new Size(843, 295);
+            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 9F));
+            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 75F));
+            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            AddCar_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            AddCar_Layout.Size = new Size(588, 219);
             AddCar_Layout.TabIndex = 0;
             // 
             // AddCar_RegionDropDown
@@ -1949,9 +1910,9 @@
             AddCar_RegionDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddCar_RegionDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             AddCar_RegionDropDown.FormattingEnabled = true;
-            AddCar_RegionDropDown.Location = new Point(146, 42);
+            AddCar_RegionDropDown.Location = new Point(132, 42);
             AddCar_RegionDropDown.Name = "AddCar_RegionDropDown";
-            AddCar_RegionDropDown.Size = new Size(254, 23);
+            AddCar_RegionDropDown.Size = new Size(177, 23);
             AddCar_RegionDropDown.TabIndex = 8;
             AddCar_RegionDropDown.SelectedIndexChanged += AddCar_RegionDropDown_SelectedIndexChanged;
             // 
@@ -1960,7 +1921,7 @@
             AddCar_RegionLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddCar_RegionLabel.AutoSize = true;
             AddCar_RegionLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCar_RegionLabel.Location = new Point(68, 39);
+            AddCar_RegionLabel.Location = new Point(54, 39);
             AddCar_RegionLabel.Name = "AddCar_RegionLabel";
             AddCar_RegionLabel.Size = new Size(72, 51);
             AddCar_RegionLabel.TabIndex = 7;
@@ -1970,44 +1931,22 @@
             // 
             AddCar_HeaderLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddCar_HeaderLabel.AutoSize = true;
-            AddCar_Layout.SetColumnSpan(AddCar_HeaderLabel, 6);
+            AddCar_Layout.SetColumnSpan(AddCar_HeaderLabel, 5);
             AddCar_HeaderLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
             AddCar_HeaderLabel.ForeColor = SystemColors.ControlText;
             AddCar_HeaderLabel.Location = new Point(3, 0);
             AddCar_HeaderLabel.Name = "AddCar_HeaderLabel";
-            AddCar_HeaderLabel.Size = new Size(837, 30);
+            AddCar_HeaderLabel.Size = new Size(582, 30);
             AddCar_HeaderLabel.TabIndex = 0;
             AddCar_HeaderLabel.Text = "Add Car";
             AddCar_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // AddCar_PrimaryDriverLabel
-            // 
-            AddCar_PrimaryDriverLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            AddCar_PrimaryDriverLabel.AutoSize = true;
-            AddCar_PrimaryDriverLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCar_PrimaryDriverLabel.Location = new Point(447, 39);
-            AddCar_PrimaryDriverLabel.Name = "AddCar_PrimaryDriverLabel";
-            AddCar_PrimaryDriverLabel.Size = new Size(127, 51);
-            AddCar_PrimaryDriverLabel.TabIndex = 5;
-            AddCar_PrimaryDriverLabel.Text = "Primary Driver: ";
-            // 
-            // AddCar_DriverDropDown
-            // 
-            AddCar_DriverDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddCar_Layout.SetColumnSpan(AddCar_DriverDropDown, 2);
-            AddCar_DriverDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
-            AddCar_DriverDropDown.FormattingEnabled = true;
-            AddCar_DriverDropDown.Location = new Point(580, 42);
-            AddCar_DriverDropDown.Name = "AddCar_DriverDropDown";
-            AddCar_DriverDropDown.Size = new Size(260, 23);
-            AddCar_DriverDropDown.TabIndex = 6;
             // 
             // AddCar_ModelLabel
             // 
             AddCar_ModelLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddCar_ModelLabel.AutoSize = true;
             AddCar_ModelLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCar_ModelLabel.Location = new Point(73, 141);
+            AddCar_ModelLabel.Location = new Point(59, 141);
             AddCar_ModelLabel.Name = "AddCar_ModelLabel";
             AddCar_ModelLabel.Size = new Size(67, 40);
             AddCar_ModelLabel.TabIndex = 2;
@@ -2018,9 +1957,9 @@
             AddCar_ModelDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddCar_ModelDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             AddCar_ModelDropDown.FormattingEnabled = true;
-            AddCar_ModelDropDown.Location = new Point(146, 144);
+            AddCar_ModelDropDown.Location = new Point(132, 144);
             AddCar_ModelDropDown.Name = "AddCar_ModelDropDown";
-            AddCar_ModelDropDown.Size = new Size(254, 23);
+            AddCar_ModelDropDown.Size = new Size(177, 23);
             AddCar_ModelDropDown.TabIndex = 4;
             AddCar_ModelDropDown.SelectedIndexChanged += AddCar_ModelDropDown_SelectedIndexChanged;
             // 
@@ -2029,97 +1968,70 @@
             AddCar_ManufacturerLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddCar_ManufacturerLabel.AutoSize = true;
             AddCar_ManufacturerLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCar_ManufacturerLabel.Location = new Point(17, 90);
+            AddCar_ManufacturerLabel.Location = new Point(3, 90);
             AddCar_ManufacturerLabel.Name = "AddCar_ManufacturerLabel";
             AddCar_ManufacturerLabel.Size = new Size(123, 51);
             AddCar_ManufacturerLabel.TabIndex = 1;
             AddCar_ManufacturerLabel.Text = "Manufacturer: ";
+            AddCar_ManufacturerLabel.Click += AddCar_ManufacturerLabel_Click;
             // 
             // AddCar_ManufacturerDropDown
             // 
             AddCar_ManufacturerDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddCar_ManufacturerDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
             AddCar_ManufacturerDropDown.FormattingEnabled = true;
-            AddCar_ManufacturerDropDown.Location = new Point(146, 93);
+            AddCar_ManufacturerDropDown.Location = new Point(132, 93);
             AddCar_ManufacturerDropDown.Name = "AddCar_ManufacturerDropDown";
-            AddCar_ManufacturerDropDown.Size = new Size(254, 23);
+            AddCar_ManufacturerDropDown.Size = new Size(177, 23);
             AddCar_ManufacturerDropDown.TabIndex = 3;
             AddCar_ManufacturerDropDown.SelectedIndexChanged += AddCar_ManufacturerDropDown_SelectedIndexChanged;
             // 
-            // AddCar_ImageDisplay
+            // AddCar_PrimaryDriverLabel
             // 
-            AddCar_ImageDisplay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AddCar_ImageDisplay.BorderStyle = BorderStyle.FixedSingle;
-            AddCar_ImageDisplay.Enabled = false;
-            AddCar_ImageDisplay.Location = new Point(640, 112);
-            AddCar_ImageDisplay.Name = "AddCar_ImageDisplay";
-            AddCar_Layout.SetRowSpan(AddCar_ImageDisplay, 5);
-            AddCar_ImageDisplay.Size = new Size(200, 150);
-            AddCar_ImageDisplay.TabIndex = 9;
-            AddCar_ImageDisplay.TabStop = false;
-            // 
-            // AddCar_BrowseButton
-            // 
-            AddCar_BrowseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            AddCar_BrowseButton.Enabled = false;
-            AddCar_BrowseButton.Location = new Point(580, 237);
-            AddCar_BrowseButton.Name = "AddCar_BrowseButton";
-            AddCar_BrowseButton.Size = new Size(54, 23);
-            AddCar_BrowseButton.TabIndex = 11;
-            AddCar_BrowseButton.Text = "Browse";
-            AddCar_BrowseButton.UseVisualStyleBackColor = true;
-            AddCar_BrowseButton.Click += AddCar_BrowseButton_Click;
-            // 
-            // AddCar_ImageLocation
-            // 
-            AddCar_ImageLocation.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AddCar_ImageLocation.BackColor = SystemColors.Window;
-            AddCar_Layout.SetColumnSpan(AddCar_ImageLocation, 3);
-            AddCar_ImageLocation.Enabled = false;
-            AddCar_ImageLocation.Location = new Point(446, 269);
-            AddCar_ImageLocation.Name = "AddCar_ImageLocation";
-            AddCar_ImageLocation.Size = new Size(394, 23);
-            AddCar_ImageLocation.TabIndex = 12;
-            AddCar_ImageLocation.TextAlign = HorizontalAlignment.Right;
-            // 
-            // AddCar_ImageLabel
-            // 
-            AddCar_ImageLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            AddCar_ImageLabel.AutoSize = true;
-            AddCar_ImageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCar_ImageLabel.Location = new Point(508, 234);
-            AddCar_ImageLabel.Name = "AddCar_ImageLabel";
-            AddCar_ImageLabel.Padding = new Padding(0, 3, 0, 0);
-            AddCar_ImageLabel.Size = new Size(66, 31);
-            AddCar_ImageLabel.TabIndex = 10;
-            AddCar_ImageLabel.Text = "Image: ";
+            AddCar_PrimaryDriverLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            AddCar_PrimaryDriverLabel.AutoSize = true;
+            AddCar_PrimaryDriverLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            AddCar_PrimaryDriverLabel.Location = new Point(324, 39);
+            AddCar_PrimaryDriverLabel.Name = "AddCar_PrimaryDriverLabel";
+            AddCar_PrimaryDriverLabel.Size = new Size(109, 51);
+            AddCar_PrimaryDriverLabel.TabIndex = 5;
+            AddCar_PrimaryDriverLabel.Text = "Main Driver: ";
             // 
             // AddCar_NicknameLabel
             // 
             AddCar_NicknameLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddCar_NicknameLabel.AutoSize = true;
             AddCar_NicknameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddCar_NicknameLabel.Location = new Point(47, 206);
+            AddCar_NicknameLabel.Location = new Point(340, 90);
             AddCar_NicknameLabel.Name = "AddCar_NicknameLabel";
             AddCar_Layout.SetRowSpan(AddCar_NicknameLabel, 2);
-            AddCar_NicknameLabel.Size = new Size(93, 59);
+            AddCar_NicknameLabel.Size = new Size(93, 91);
             AddCar_NicknameLabel.TabIndex = 14;
             AddCar_NicknameLabel.Text = "Car Name: ";
+            // 
+            // AddCar_DriverDropDown
+            // 
+            AddCar_DriverDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            AddCar_DriverDropDown.DropDownStyle = ComboBoxStyle.DropDownList;
+            AddCar_DriverDropDown.FormattingEnabled = true;
+            AddCar_DriverDropDown.Location = new Point(439, 42);
+            AddCar_DriverDropDown.Name = "AddCar_DriverDropDown";
+            AddCar_DriverDropDown.Size = new Size(146, 23);
+            AddCar_DriverDropDown.TabIndex = 6;
             // 
             // AddCar_NicknameTextBox
             // 
             AddCar_NicknameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddCar_NicknameTextBox.BackColor = SystemColors.Window;
-            AddCar_NicknameTextBox.Location = new Point(146, 209);
+            AddCar_NicknameTextBox.Location = new Point(439, 93);
             AddCar_NicknameTextBox.Name = "AddCar_NicknameTextBox";
             AddCar_Layout.SetRowSpan(AddCar_NicknameTextBox, 2);
-            AddCar_NicknameTextBox.Size = new Size(254, 23);
+            AddCar_NicknameTextBox.Size = new Size(146, 23);
             AddCar_NicknameTextBox.TabIndex = 15;
             // 
             // AddCar_SaveButton
             // 
-            AddCar_SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            AddCar_SaveButton.Location = new Point(3, 268);
+            AddCar_SaveButton.Location = new Point(3, 193);
             AddCar_SaveButton.Name = "AddCar_SaveButton";
             AddCar_SaveButton.Size = new Size(100, 24);
             AddCar_SaveButton.TabIndex = 13;
@@ -2132,23 +2044,23 @@
             AddTune_Panel.BackColor = SystemColors.ControlDark;
             AddTune_Panel.Controls.Add(AddTune_Layout);
             AddTune_Panel.Dock = DockStyle.Fill;
-            AddTune_Panel.Location = new Point(1013, 598);
+            AddTune_Panel.Location = new Point(714, 384);
             AddTune_Panel.Name = "AddTune_Panel";
             AddTune_Panel.Padding = new Padding(3);
-            AddTune_Panel.Size = new Size(853, 396);
+            AddTune_Panel.Size = new Size(598, 300);
             AddTune_Panel.TabIndex = 3;
             // 
             // AddTune_Layout
             // 
-            AddTune_Layout.ColumnCount = 8;
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 156F));
+            AddTune_Layout.ColumnCount = 7;
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 69F));
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 85F));
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 99F));
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 128F));
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 159F));
+            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 10F));
             AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 107F));
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 162F));
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 206F));
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 164F));
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 39F));
-            AddTune_Layout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 33F));
             AddTune_Layout.Controls.Add(AddTune_PPTextBox, 5, 1);
             AddTune_Layout.Controls.Add(AddTune_PPLabel, 4, 1);
             AddTune_Layout.Controls.Add(AddTune_AssociatedCarLabel, 0, 1);
@@ -2176,21 +2088,21 @@
             AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
             AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 94F));
-            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 45F));
-            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 74F));
-            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            AddTune_Layout.Size = new Size(847, 390);
+            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
+            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
+            AddTune_Layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 23F));
+            AddTune_Layout.Size = new Size(592, 294);
             AddTune_Layout.TabIndex = 0;
             // 
             // AddTune_PPTextBox
             // 
             AddTune_PPTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddTune_Layout.SetColumnSpan(AddTune_PPTextBox, 2);
-            AddTune_PPTextBox.Location = new Point(654, 43);
+            AddTune_PPTextBox.Location = new Point(418, 43);
             AddTune_PPTextBox.Margin = new Padding(3, 3, 9, 3);
             AddTune_PPTextBox.Name = "AddTune_PPTextBox";
-            AddTune_PPTextBox.Size = new Size(191, 23);
+            AddTune_PPTextBox.Size = new Size(165, 23);
             AddTune_PPTextBox.TabIndex = 13;
             // 
             // AddTune_PPLabel
@@ -2198,22 +2110,22 @@
             AddTune_PPLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_PPLabel.AutoSize = true;
             AddTune_PPLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_PPLabel.Location = new Point(480, 40);
+            AddTune_PPLabel.Location = new Point(374, 40);
             AddTune_PPLabel.Name = "AddTune_PPLabel";
-            AddTune_PPLabel.Size = new Size(168, 45);
+            AddTune_PPLabel.Size = new Size(38, 45);
             AddTune_PPLabel.TabIndex = 12;
-            AddTune_PPLabel.Text = "Performance Points: ";
+            AddTune_PPLabel.Text = "PP: ";
             // 
             // AddTune_AssociatedCarLabel
             // 
             AddTune_AssociatedCarLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_AssociatedCarLabel.AutoSize = true;
             AddTune_AssociatedCarLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_AssociatedCarLabel.Location = new Point(23, 40);
+            AddTune_AssociatedCarLabel.Location = new Point(22, 40);
             AddTune_AssociatedCarLabel.Name = "AddTune_AssociatedCarLabel";
-            AddTune_AssociatedCarLabel.Size = new Size(130, 45);
+            AddTune_AssociatedCarLabel.Size = new Size(44, 45);
             AddTune_AssociatedCarLabel.TabIndex = 9;
-            AddTune_AssociatedCarLabel.Text = "Associated Car: ";
+            AddTune_AssociatedCarLabel.Text = "Car: ";
             // 
             // AddTune_HeaderLabel
             // 
@@ -2224,7 +2136,7 @@
             AddTune_HeaderLabel.ForeColor = SystemColors.ControlText;
             AddTune_HeaderLabel.Location = new Point(3, 0);
             AddTune_HeaderLabel.Name = "AddTune_HeaderLabel";
-            AddTune_HeaderLabel.Size = new Size(848, 30);
+            AddTune_HeaderLabel.Size = new Size(586, 30);
             AddTune_HeaderLabel.TabIndex = 1;
             AddTune_HeaderLabel.Text = "Add Tune";
             AddTune_HeaderLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -2234,29 +2146,29 @@
             AddTune_SheetName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_SheetName.AutoSize = true;
             AddTune_SheetName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_SheetName.Location = new Point(42, 85);
+            AddTune_SheetName.Location = new Point(5, 85);
             AddTune_SheetName.Name = "AddTune_SheetName";
-            AddTune_SheetName.Size = new Size(111, 45);
+            AddTune_SheetName.Size = new Size(61, 45);
             AddTune_SheetName.TabIndex = 8;
-            AddTune_SheetName.Text = "Sheet Name: ";
+            AddTune_SheetName.Text = "Sheet: ";
             // 
             // AddTune_AssociatedCarDropDown
             // 
             AddTune_AssociatedCarDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddTune_Layout.SetColumnSpan(AddTune_AssociatedCarDropDown, 3);
+            AddTune_Layout.SetColumnSpan(AddTune_AssociatedCarDropDown, 2);
             AddTune_AssociatedCarDropDown.FormattingEnabled = true;
-            AddTune_AssociatedCarDropDown.Location = new Point(159, 43);
+            AddTune_AssociatedCarDropDown.Location = new Point(72, 43);
             AddTune_AssociatedCarDropDown.Name = "AddTune_AssociatedCarDropDown";
-            AddTune_AssociatedCarDropDown.Size = new Size(283, 23);
+            AddTune_AssociatedCarDropDown.Size = new Size(178, 23);
             AddTune_AssociatedCarDropDown.TabIndex = 10;
             // 
             // AddTune_SheetNameTextBox
             // 
             AddTune_SheetNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddTune_Layout.SetColumnSpan(AddTune_SheetNameTextBox, 3);
-            AddTune_SheetNameTextBox.Location = new Point(159, 88);
+            AddTune_Layout.SetColumnSpan(AddTune_SheetNameTextBox, 2);
+            AddTune_SheetNameTextBox.Location = new Point(72, 88);
             AddTune_SheetNameTextBox.Name = "AddTune_SheetNameTextBox";
-            AddTune_SheetNameTextBox.Size = new Size(283, 23);
+            AddTune_SheetNameTextBox.Size = new Size(178, 23);
             AddTune_SheetNameTextBox.TabIndex = 11;
             // 
             // AddTune_HPLabel
@@ -2264,7 +2176,7 @@
             AddTune_HPLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_HPLabel.AutoSize = true;
             AddTune_HPLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_HPLabel.Location = new Point(537, 85);
+            AddTune_HPLabel.Location = new Point(301, 85);
             AddTune_HPLabel.Name = "AddTune_HPLabel";
             AddTune_HPLabel.Size = new Size(111, 45);
             AddTune_HPLabel.TabIndex = 14;
@@ -2274,10 +2186,10 @@
             // 
             AddTune_HPTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddTune_Layout.SetColumnSpan(AddTune_HPTextBox, 2);
-            AddTune_HPTextBox.Location = new Point(654, 88);
+            AddTune_HPTextBox.Location = new Point(418, 88);
             AddTune_HPTextBox.Margin = new Padding(3, 3, 9, 3);
             AddTune_HPTextBox.Name = "AddTune_HPTextBox";
-            AddTune_HPTextBox.Size = new Size(191, 23);
+            AddTune_HPTextBox.Size = new Size(165, 23);
             AddTune_HPTextBox.TabIndex = 15;
             // 
             // AddTune_WeightLabel
@@ -2285,9 +2197,9 @@
             AddTune_WeightLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_WeightLabel.AutoSize = true;
             AddTune_WeightLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_WeightLabel.Location = new Point(574, 130);
+            AddTune_WeightLabel.Location = new Point(338, 130);
             AddTune_WeightLabel.Name = "AddTune_WeightLabel";
-            AddTune_WeightLabel.Size = new Size(74, 94);
+            AddTune_WeightLabel.Size = new Size(74, 51);
             AddTune_WeightLabel.TabIndex = 16;
             AddTune_WeightLabel.Text = "Weight: ";
             // 
@@ -2295,10 +2207,10 @@
             // 
             AddTune_WeightTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddTune_Layout.SetColumnSpan(AddTune_WeightTextBox, 2);
-            AddTune_WeightTextBox.Location = new Point(654, 133);
+            AddTune_WeightTextBox.Location = new Point(418, 133);
             AddTune_WeightTextBox.Margin = new Padding(3, 3, 9, 3);
             AddTune_WeightTextBox.Name = "AddTune_WeightTextBox";
-            AddTune_WeightTextBox.Size = new Size(191, 23);
+            AddTune_WeightTextBox.Size = new Size(165, 23);
             AddTune_WeightTextBox.TabIndex = 17;
             // 
             // AddTune_NotesLabel
@@ -2306,9 +2218,9 @@
             AddTune_NotesLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_NotesLabel.AutoSize = true;
             AddTune_NotesLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_NotesLabel.Location = new Point(90, 224);
+            AddTune_NotesLabel.Location = new Point(3, 181);
             AddTune_NotesLabel.Name = "AddTune_NotesLabel";
-            AddTune_NotesLabel.Size = new Size(63, 45);
+            AddTune_NotesLabel.Size = new Size(63, 27);
             AddTune_NotesLabel.TabIndex = 18;
             AddTune_NotesLabel.Text = "Notes: ";
             // 
@@ -2317,9 +2229,9 @@
             AddTune_TiresFrontLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_TiresFrontLabel.AutoSize = true;
             AddTune_TiresFrontLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_TiresFrontLabel.Location = new Point(550, 224);
+            AddTune_TiresFrontLabel.Location = new Point(314, 181);
             AddTune_TiresFrontLabel.Name = "AddTune_TiresFrontLabel";
-            AddTune_TiresFrontLabel.Size = new Size(98, 45);
+            AddTune_TiresFrontLabel.Size = new Size(98, 27);
             AddTune_TiresFrontLabel.TabIndex = 20;
             AddTune_TiresFrontLabel.Text = "Front Tires: ";
             // 
@@ -2328,9 +2240,9 @@
             AddTune_TiresRearLabel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             AddTune_TiresRearLabel.AutoSize = true;
             AddTune_TiresRearLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_TiresRearLabel.Location = new Point(556, 269);
+            AddTune_TiresRearLabel.Location = new Point(320, 208);
             AddTune_TiresRearLabel.Name = "AddTune_TiresRearLabel";
-            AddTune_TiresRearLabel.Size = new Size(92, 74);
+            AddTune_TiresRearLabel.Size = new Size(92, 49);
             AddTune_TiresRearLabel.TabIndex = 21;
             AddTune_TiresRearLabel.Text = "Rear Tires: ";
             // 
@@ -2338,27 +2250,27 @@
             // 
             AddTune_TiresFrontDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddTune_TiresFrontDropDown.FormattingEnabled = true;
-            AddTune_TiresFrontDropDown.Location = new Point(654, 227);
+            AddTune_TiresFrontDropDown.Location = new Point(418, 184);
             AddTune_TiresFrontDropDown.Name = "AddTune_TiresFrontDropDown";
-            AddTune_TiresFrontDropDown.Size = new Size(158, 23);
+            AddTune_TiresFrontDropDown.Size = new Size(153, 23);
             AddTune_TiresFrontDropDown.TabIndex = 22;
             // 
             // AddTune_TiresRearDropDown
             // 
             AddTune_TiresRearDropDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             AddTune_TiresRearDropDown.FormattingEnabled = true;
-            AddTune_TiresRearDropDown.Location = new Point(654, 272);
+            AddTune_TiresRearDropDown.Location = new Point(418, 211);
             AddTune_TiresRearDropDown.Name = "AddTune_TiresRearDropDown";
-            AddTune_TiresRearDropDown.Size = new Size(158, 23);
+            AddTune_TiresRearDropDown.Size = new Size(153, 23);
             AddTune_TiresRearDropDown.TabIndex = 23;
             // 
             // AddTune_SaveButton
             // 
             AddTune_SaveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            AddTune_SaveButton.Location = new Point(53, 362);
+            AddTune_SaveButton.Location = new Point(3, 263);
             AddTune_SaveButton.Margin = new Padding(3, 3, 3, 6);
             AddTune_SaveButton.Name = "AddTune_SaveButton";
-            AddTune_SaveButton.Size = new Size(100, 25);
+            AddTune_SaveButton.Size = new Size(63, 25);
             AddTune_SaveButton.TabIndex = 24;
             AddTune_SaveButton.Text = "Save";
             AddTune_SaveButton.UseVisualStyleBackColor = true;
@@ -2368,21 +2280,21 @@
             // 
             AddTune_NotesTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AddTune_Layout.SetColumnSpan(AddTune_NotesTextBox, 3);
-            AddTune_NotesTextBox.Location = new Point(159, 227);
+            AddTune_NotesTextBox.Location = new Point(72, 184);
             AddTune_NotesTextBox.Multiline = true;
             AddTune_NotesTextBox.Name = "AddTune_NotesTextBox";
             AddTune_Layout.SetRowSpan(AddTune_NotesTextBox, 2);
-            AddTune_NotesTextBox.Size = new Size(283, 113);
+            AddTune_NotesTextBox.Size = new Size(212, 70);
             AddTune_NotesTextBox.TabIndex = 19;
             // 
             // AddTune_EditDetailsButton
             // 
             AddTune_EditDetailsButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             AddTune_EditDetailsButton.Enabled = false;
-            AddTune_EditDetailsButton.Location = new Point(179, 362);
+            AddTune_EditDetailsButton.Location = new Point(157, 263);
             AddTune_EditDetailsButton.Margin = new Padding(3, 3, 3, 6);
             AddTune_EditDetailsButton.Name = "AddTune_EditDetailsButton";
-            AddTune_EditDetailsButton.Size = new Size(100, 25);
+            AddTune_EditDetailsButton.Size = new Size(93, 25);
             AddTune_EditDetailsButton.TabIndex = 25;
             AddTune_EditDetailsButton.Text = "Edit Details";
             AddTune_EditDetailsButton.UseVisualStyleBackColor = true;
@@ -2392,7 +2304,7 @@
             AddTune_DetailsFilledLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             AddTune_DetailsFilledLabel.AutoSize = true;
             AddTune_DetailsFilledLabel.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
-            AddTune_DetailsFilledLabel.Location = new Point(286, 369);
+            AddTune_DetailsFilledLabel.Location = new Point(256, 270);
             AddTune_DetailsFilledLabel.Name = "AddTune_DetailsFilledLabel";
             AddTune_DetailsFilledLabel.Padding = new Padding(0, 0, 0, 11);
             AddTune_DetailsFilledLabel.Size = new Size(21, 24);
@@ -2405,7 +2317,7 @@
             EditTuneDetailsTab.Location = new Point(4, 24);
             EditTuneDetailsTab.Name = "EditTuneDetailsTab";
             EditTuneDetailsTab.Padding = new Padding(3);
-            EditTuneDetailsTab.Size = new Size(1896, 1013);
+            EditTuneDetailsTab.Size = new Size(1342, 701);
             EditTuneDetailsTab.TabIndex = 4;
             EditTuneDetailsTab.Text = "Edit Tune";
             // 
@@ -2413,12 +2325,53 @@
             // 
             timeTrialInfoBindingSource1.DataSource = typeof(GranTurismoLibrary.Models.TimeTrialInfo);
             // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "Nickname";
+            dataGridViewTextBoxColumn2.HeaderText = "Nickname";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            dataGridViewTextBoxColumn2.Width = 160;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "FullName";
+            dataGridViewTextBoxColumn1.HeaderText = "Model";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewTextBoxColumn4.DataPropertyName = "ManufacturerName";
+            dataGridViewTextBoxColumn4.HeaderText = "Manufacturer";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // regionNameDataGridViewTextBoxColumn
+            // 
+            regionNameDataGridViewTextBoxColumn.DataPropertyName = "RegionName";
+            regionNameDataGridViewTextBoxColumn.HeaderText = "Region";
+            regionNameDataGridViewTextBoxColumn.Name = "regionNameDataGridViewTextBoxColumn";
+            regionNameDataGridViewTextBoxColumn.ReadOnly = true;
+            regionNameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "PrimaryDriverName";
+            dataGridViewTextBoxColumn3.HeaderText = "Primary Driver";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Width = 110;
+            // 
             // timeStringDataGridViewTextBoxColumn1
             // 
             timeStringDataGridViewTextBoxColumn1.DataPropertyName = "TimeString";
             timeStringDataGridViewTextBoxColumn1.HeaderText = "Time";
             timeStringDataGridViewTextBoxColumn1.Name = "timeStringDataGridViewTextBoxColumn1";
             timeStringDataGridViewTextBoxColumn1.ReadOnly = true;
+            timeStringDataGridViewTextBoxColumn1.Width = 80;
             // 
             // ownedCarNameDataGridViewTextBoxColumn1
             // 
@@ -2426,15 +2379,15 @@
             ownedCarNameDataGridViewTextBoxColumn1.HeaderText = "Car Name";
             ownedCarNameDataGridViewTextBoxColumn1.Name = "ownedCarNameDataGridViewTextBoxColumn1";
             ownedCarNameDataGridViewTextBoxColumn1.ReadOnly = true;
-            ownedCarNameDataGridViewTextBoxColumn1.Width = 120;
+            ownedCarNameDataGridViewTextBoxColumn1.Width = 110;
             // 
             // carModelDataGridViewTextBoxColumn1
             // 
-            carModelDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             carModelDataGridViewTextBoxColumn1.DataPropertyName = "CarModel";
             carModelDataGridViewTextBoxColumn1.HeaderText = "Model";
             carModelDataGridViewTextBoxColumn1.Name = "carModelDataGridViewTextBoxColumn1";
             carModelDataGridViewTextBoxColumn1.ReadOnly = true;
+            carModelDataGridViewTextBoxColumn1.Width = 110;
             // 
             // sheetNameDataGridViewTextBoxColumn
             // 
@@ -2442,7 +2395,7 @@
             sheetNameDataGridViewTextBoxColumn.HeaderText = "Sheet Name";
             sheetNameDataGridViewTextBoxColumn.Name = "sheetNameDataGridViewTextBoxColumn";
             sheetNameDataGridViewTextBoxColumn.ReadOnly = true;
-            sheetNameDataGridViewTextBoxColumn.Width = 120;
+            sheetNameDataGridViewTextBoxColumn.Width = 110;
             // 
             // pPDataGridViewTextBoxColumn1
             // 
@@ -2450,27 +2403,29 @@
             pPDataGridViewTextBoxColumn1.HeaderText = "PP";
             pPDataGridViewTextBoxColumn1.Name = "pPDataGridViewTextBoxColumn1";
             pPDataGridViewTextBoxColumn1.ReadOnly = true;
-            pPDataGridViewTextBoxColumn1.Width = 80;
+            pPDataGridViewTextBoxColumn1.Width = 50;
             // 
             // tireComboDataGridViewTextBoxColumn1
             // 
             tireComboDataGridViewTextBoxColumn1.DataPropertyName = "TireCombo";
-            tireComboDataGridViewTextBoxColumn1.HeaderText = "TireCombo";
+            tireComboDataGridViewTextBoxColumn1.HeaderText = "Tires";
             tireComboDataGridViewTextBoxColumn1.Name = "tireComboDataGridViewTextBoxColumn1";
             tireComboDataGridViewTextBoxColumn1.ReadOnly = true;
-            tireComboDataGridViewTextBoxColumn1.Width = 80;
+            tireComboDataGridViewTextBoxColumn1.Width = 50;
             // 
             // driverNameDataGridViewTextBoxColumn1
             // 
             driverNameDataGridViewTextBoxColumn1.DataPropertyName = "DriverName";
-            driverNameDataGridViewTextBoxColumn1.HeaderText = "DriverName";
+            driverNameDataGridViewTextBoxColumn1.HeaderText = "Driver";
             driverNameDataGridViewTextBoxColumn1.Name = "driverNameDataGridViewTextBoxColumn1";
             driverNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            driverNameDataGridViewTextBoxColumn1.Width = 70;
             // 
             // sessionDateDataGridViewTextBoxColumn
             // 
+            sessionDateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             sessionDateDataGridViewTextBoxColumn.DataPropertyName = "SessionDate";
-            sessionDateDataGridViewTextBoxColumn.HeaderText = "SessionDate";
+            sessionDateDataGridViewTextBoxColumn.HeaderText = "Date";
             sessionDateDataGridViewTextBoxColumn.Name = "sessionDateDataGridViewTextBoxColumn";
             sessionDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -2478,7 +2433,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1350, 729);
             Controls.Add(TabControl);
             Name = "Main";
             Text = "GT7 Companion";
@@ -2519,6 +2474,12 @@
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMillisecondsUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntrySecondsUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)NewRecord_TimeEntryMinutesUpDown).EndInit();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel1.PerformLayout();
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             PastRecords_Layout.ResumeLayout(false);
             PastRecords_Layout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PastRecordsGrid).EndInit();
@@ -2536,7 +2497,6 @@
             AddCar_Panel.PerformLayout();
             AddCar_Layout.ResumeLayout(false);
             AddCar_Layout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)AddCar_ImageDisplay).EndInit();
             AddTune_Panel.ResumeLayout(false);
             AddTune_Layout.ResumeLayout(false);
             AddTune_Layout.PerformLayout();
@@ -2637,10 +2597,6 @@
         private Label AddCar_RegionLabel;
         private Label AddCar_PrimaryDriverLabel;
         private ComboBox AddCar_DriverDropDown;
-        private PictureBox AddCar_ImageDisplay;
-        private Label AddCar_ImageLabel;
-        private Button AddCar_BrowseButton;
-        private TextBox AddCar_ImageLocation;
         private Button AddCar_SaveButton;
         private Panel AddTune_Panel;
         private Label AddTune_HeaderLabel;
@@ -2707,28 +2663,19 @@
         private NumericUpDown NewRecord_TimeEntryMillisecondsUpDown;
         private Label NewRecord_SecondMilliSecondSeparatorLabel;
         private Label NewRecord_TimeEntryMillisecondsLabel;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn regionNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewImageColumn imageNameDataGridViewTextBoxColumn;
         private BindingSource ownedCarInfoBindingSource1;
         private BindingSource tuneInfoBindingSource1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewButtonColumn Details;
         private Label NewRecord_RecordSavedLabel;
         private TableLayoutPanel PastRecords_Layout;
         private Label PastRecords_HeaderLabel;
         private TableLayoutPanel CurrentSessionLayout;
         private DataGridView CurrentSessionGrid;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private BindingSource timeTrialInfoBindingSource;
+        private DataGridView PastRecordsGrid;
+        private BindingSource timeTrialInfoBindingSource1;
+        private BindingSource pastRecordBindingSource;
+        private SplitContainer splitContainer1;
         private DataGridViewTextBoxColumn timeStringDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ownedCarNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn carModelDataGridViewTextBoxColumn;
@@ -2736,10 +2683,18 @@
         private DataGridViewTextBoxColumn pPDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn tireComboDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn driverNameDataGridViewTextBoxColumn;
-        private BindingSource timeTrialInfoBindingSource;
-        private DataGridView PastRecordsGrid;
-        private BindingSource timeTrialInfoBindingSource1;
-        private BindingSource pastRecordBindingSource;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn regionNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn timeStringDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn ownedCarNameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn carModelDataGridViewTextBoxColumn1;

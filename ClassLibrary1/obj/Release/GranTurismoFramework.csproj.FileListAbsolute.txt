@@ -1,0 +1,17 @@
+C:\repos\GT7-App\ClassLibrary1\bin\Release\ClassLibrary1.dll.config
+C:\repos\GT7-App\ClassLibrary1\bin\Release\ClassLibrary1.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Release\ClassLibrary1.pdb
+C:\repos\GT7-App\ClassLibrary1\bin\Release\AutoMapper.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Release\EntityFramework.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Release\EntityFramework.SqlServer.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Release\System.Drawing.Common.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Release\System.ValueTuple.dll
+C:\repos\GT7-App\ClassLibrary1\bin\Release\AutoMapper.xml
+C:\repos\GT7-App\ClassLibrary1\bin\Release\EntityFramework.xml
+C:\repos\GT7-App\ClassLibrary1\bin\Release\EntityFramework.SqlServer.xml
+C:\repos\GT7-App\ClassLibrary1\bin\Release\System.ValueTuple.xml
+C:\repos\GT7-App\ClassLibrary1\obj\Release\GranTurismoFramework.csproj.AssemblyReference.cache
+C:\repos\GT7-App\ClassLibrary1\obj\Release\GranTurismoFramework.csproj.CoreCompileInputs.cache
+C:\repos\GT7-App\ClassLibrary1\obj\Release\GranTurismoFramework.csproj.CopyComplete
+C:\repos\GT7-App\ClassLibrary1\obj\Release\ClassLibrary1.dll
+C:\repos\GT7-App\ClassLibrary1\obj\Release\ClassLibrary1.pdb
