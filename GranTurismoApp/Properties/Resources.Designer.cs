@@ -63,6 +63,66 @@ namespace GranTurismoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _180SXIcon {
+            get {
+                object obj = ResourceManager.GetObject("180SXIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _86LimitedIcon {
+            get {
+                object obj = ResourceManager.GetObject("86LimitedIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BRZ21Icon {
+            get {
+                object obj = ResourceManager.GetObject("BRZ21Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CamaroZ28Icon {
+            get {
+                object obj = ResourceManager.GetObject("CamaroZ28Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CivicIcon {
+            get {
+                object obj = ResourceManager.GetObject("CivicIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CorvetteZR1Icon {
+            get {
+                object obj = ResourceManager.GetObject("CorvetteZR1Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gt7mw {
             get {
                 object obj = ResourceManager.GetObject("Gt7mw", resourceCulture);
@@ -73,9 +133,39 @@ namespace GranTurismoApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SkylineIcon {
+        internal static System.Drawing.Bitmap M3GTRIcon {
             get {
-                object obj = ResourceManager.GetObject("SkylineIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("M3GTRIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NSX02Icon {
+            get {
+                object obj = ResourceManager.GetObject("NSX02Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap R34SkylineIcon {
+            get {
+                object obj = ResourceManager.GetObject("R34SkylineIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RX8Icon {
+            get {
+                object obj = ResourceManager.GetObject("RX8Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +176,26 @@ namespace GranTurismoApp.Properties {
         internal static System.Drawing.Bitmap SkylineVsTrueno {
             get {
                 object obj = ResourceManager.GetObject("SkylineVsTrueno", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TruenoIcon {
+            get {
+                object obj = ResourceManager.GetObject("TruenoIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WRX04Icon {
+            get {
+                object obj = ResourceManager.GetObject("WRX04Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

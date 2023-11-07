@@ -118,13 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="180SXIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\180SXIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="86LimitedIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\86LimitedIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BRZ21Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BRZ21Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CamaroZ28Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CamaroZ28Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CivicIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CivicIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CorvetteZR1Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CorvetteZR1Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Gt7mw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gt7mw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SkylineIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SkylineIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="M3GTRIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\M3GTRIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NSX02Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NSX02Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="R34SkylineIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\R34SkylineIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RX8Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RX8Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SkylineVsTrueno" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SkylineVsTrueno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TruenoIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TruenoIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WRX04Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WRX04Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -21,6 +21,7 @@ namespace GranTurismoApp
         private List<TimeTrialInfo> _sessionTimeTrials { get; set; }
 
         private ImageList _carImages { get; set; }
+        private Dictionary<string, Image> _blackListIcons { get; } = new Dictionary<string, Image>();
 
 
         // Inventory Properties
@@ -37,20 +38,23 @@ namespace GranTurismoApp
             InitializeComponent();
             _loadingTab = LoadingTab;
             _carImages = new ImageList();
+            _carImages.ImageSize = new Size(256, 200);
+
 
             TabControl.SelectedIndex = 0;
             _sessionTimeTrials = new List<TimeTrialInfo>();
+
         }
         private void Main_Load(object sender, EventArgs e)
         {
             var allLoadTasks = new List<Task>();
 
-            var loadScreenCountdown = ShowLoadingTab(BlacklistTab);
-            allLoadTasks.Add(loadScreenCountdown);
+            TabControl.SelectedIndex = 0;
+            ShowLoadingTab();
 
             // Blacklist
-            var loadBlacklistTask = LoadBlacklistTab();
-            allLoadTasks.Add(loadBlacklistTask);
+            LoadCarImages();
+            LoadBlacklist();
 
             // Track
             var loadTrackTabTasks = Task.Run(() =>
@@ -62,14 +66,22 @@ namespace GranTurismoApp
 
             // Inventory
             var loadInventoryTask = LoadInventoryTab();
-            allLoadTasks.Add(loadInventoryTask);
 
-            LoadCarImages();
         }
 
         private void LoadCarImages()
         {
-            _carImages.Images.Add("Skyline", Resources.SkylineIcon);
+            _blackListIcons.Add("R34SkylineIcon", Resources.R34SkylineIcon);
+            _blackListIcons.Add("M3GTRIcon", Resources.M3GTRIcon);
+            _blackListIcons.Add("RX8Icon", Resources.RX8Icon);
+            _blackListIcons.Add("180SXIcon", Resources._180SXIcon);
+            _blackListIcons.Add("NSX02Icon", Resources.NSX02Icon);
+            _blackListIcons.Add("BRZ21Icon", Resources.BRZ21Icon);
+            _blackListIcons.Add("CorvetteZR1Icon", Resources.CorvetteZR1Icon);
+            _blackListIcons.Add("WRX04Icon", Resources.WRX04Icon);
+            _blackListIcons.Add("CivicIcon", Resources.CivicIcon);
+            _blackListIcons.Add("TruenoIcon", Resources.TruenoIcon);
+            _blackListIcons.Add("86LimitedIcon", Resources._86LimitedIcon);
         }
 
         /* Helper Methods */
@@ -98,10 +110,28 @@ namespace GranTurismoApp
 
         private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
+            switch (TabControl.SelectedTab.Name)
+            {
+                case "BlacklistTab":
 
+                    break;
+
+                case "TrackTab":
+
+                    LoadTimeTrialCarOptions();
+                    ClearCurrentSession();
+                    break;
+
+                case "InventoryTab":
+
+                    break;
+
+                default:
+                    break;
+            }
         }
 
-        private async Task ShowLoadingTab(TabPage nextTab)
+        private void ShowLoadingTab()
         {
             var displayLoadTask = () =>
             {
@@ -109,21 +139,14 @@ namespace GranTurismoApp
                 {
                     TabControl.TabPages.Add(_loadingTab);
                 }
-
                 TabControl.SelectedTab = _loadingTab;
-
-                Task.Delay(3500).Wait();
-
-                if (TabControl.Contains(nextTab))
-                {
-                    TabControl.Invoke(() => TabControl.SelectedTab = nextTab);
-                }
+                Task.Delay(5000).Wait();
 
                 TabControl.Invoke(() => TabControl.TabPages.Remove(_loadingTab));
             };
 
 
-            await Task.Run(() => TabControl.Invoke(displayLoadTask));
+            Task.Run(() => TabControl.Invoke(displayLoadTask));
         }
 
 
@@ -142,29 +165,43 @@ namespace GranTurismoApp
 
         private void LoadBlacklist()
         {
+            var ttDao = new TimeTrialDao();
+            var ringTop15 = ttDao.GetTrackTopRecords(75, 15);
+
             for (int i = 1; i < 16; i++)
             {
-                var bL = new BlacklistCarInfo();
+                var bL = ringTop15[i - 1];
+                if (bL != null)
+                {
+                    var pictureBox = Controls.Find($"BLImage{i}", true).FirstOrDefault() as PictureBox;
+                    if (pictureBox != null)
+                    {
+                        pictureBox.Image = GetBlacklistIcon(bL.OwnedCarInfo.ImageName);
+                    }
 
-                var pictureBox = Controls.Find($"BLImage{i}", true).FirstOrDefault() as PictureBox;
-                if (pictureBox != null) { pictureBox.Image = GetBlacklistIcon(bL.Name); }
+                    var nameLabel = Controls.Find($"BLName{i}", true).FirstOrDefault() as Label;
+                    if (nameLabel != null) { nameLabel.Text = bL.OwnedCarName; }
 
-                var nameLabel = Controls.Find($"BLName{i}", true).FirstOrDefault() as Label;
-                if (nameLabel != null) { nameLabel.Text = bL.Name; }
+                    var performanceLabel = Controls.Find($"BLPerformance{i}", true).FirstOrDefault() as Label;
+                    if (performanceLabel != null)
+                    {
+                        performanceLabel.Text = $"{bL.PP} - {bL.TireCombo}";
+                    }
 
-                var performanceLabel = Controls.Find($"BLPerformance{i}", true).FirstOrDefault() as Label;
-                if (performanceLabel != null) { performanceLabel.Text = bL.Performance; }
-
-                var timeLabel = Controls.Find($"BLTime{i}", true).FirstOrDefault() as Label;
-                if (timeLabel != null) { timeLabel.Text = bL.Time; }
+                    var timeLabel = Controls.Find($"BLTime{i}", true).FirstOrDefault() as Label;
+                    if (timeLabel != null)
+                    {
+                        timeLabel.Text = TimeSpanHelper.GetTimeString3Milliseconds(bL.Time);
+                    }
+                }
             }
         }
 
         private Image? GetBlacklistIcon(string carName)
         {
-            if (_carImages.Images.ContainsKey(carName))
+            if (_blackListIcons.ContainsKey(carName))
             {
-                return _carImages.Images[carName];
+                return _blackListIcons[carName];
             }
             else
             {
@@ -172,10 +209,6 @@ namespace GranTurismoApp
             }
         }
 
-        private void AddCar_BrowseButton_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         #endregion BlacklistTab 
@@ -187,6 +220,8 @@ namespace GranTurismoApp
         #region TrackTab
 
         /***** New Record *****/
+
+        #region NewRecord
 
         // Location Info
         private void LoadTimeTrialLocationDropDowns()
@@ -383,7 +418,6 @@ namespace GranTurismoApp
                 NewRecord_RegionSelectDropDown.Enabled = false;
                 NewRecord_CourseSelectDropDown.Enabled = false;
                 NewRecord_TrackSelectDropDown.Enabled = false;
-                NewRecord_CarSelectDropDown.Enabled = false;
 
                 NewRecord_SaveRecordButton.Enabled = true;
 
@@ -400,7 +434,6 @@ namespace GranTurismoApp
                 NewRecord_RegionSelectDropDown.Enabled = true;
                 NewRecord_CourseSelectDropDown.Enabled = true;
                 NewRecord_TrackSelectDropDown.Enabled = true;
-                NewRecord_CarSelectDropDown.Enabled = true;
 
                 NewRecord_SaveRecordButton.Enabled = false;
 
@@ -418,22 +451,7 @@ namespace GranTurismoApp
             var min = NewRecord_TimeEntryMinutesUpDown.Value.ToString();
             var sec = NewRecord_TimeEntrySecondsUpDown.Value.ToString();
             var milli = NewRecord_TimeEntryMillisecondsUpDown.Value.ToString();
-            var milliString = milli;
-
-            if (milli.Length != 3)
-            {
-                if (milli.Length == 1)
-                {
-                    milliString = $"00{milli}";
-                }
-                else if (milli.Length == 2)
-                {
-                    milliString = $"0{milli}";
-                }
-            }
-
-            var time = $"0:{min}:{sec}.{milliString}";
-            var parsedTime = TimeSpan.Parse(time);
+            var parsedTime = TimeSpanHelper.AssembleTimeSpan(min, sec, milli);
 
             var timeTrial = new TimeTrialInfo()
             {
@@ -444,7 +462,7 @@ namespace GranTurismoApp
                 Time = parsedTime,
                 OwnedCarInfo = NewRecord_CarSelectDropDown.SelectedItem as OwnedCarInfo,
                 TuneInfo = NewRecord_TuneSelectDropDown.SelectedItem as TuneInfo,
-                Driver = NewRecord_DriverSelectDropDown.SelectedItem as DriverDto
+                Driver = NewRecord_DriverSelectDropDown.SelectedItem as DriverDto,
             };
 
             _sessionTimeTrials.Add(timeTrial);
@@ -475,6 +493,8 @@ namespace GranTurismoApp
             NewRecord_TimeEntryMillisecondsUpDown.Enter += activateMethod;
         }
 
+        #endregion NewRecord
+
 
         /***** Past Records *****/
 
@@ -483,19 +503,21 @@ namespace GranTurismoApp
             if (trackId > 0)
             {
                 var ttDao = new TimeTrialDao();
-                var pastRecords = ttDao.GetTrackTopTen(trackId);
+                var pastRecords = ttDao.GetTrackTopRecords(trackId, 10);
 
                 PastRecordsGrid.DataSource = pastRecords;
 
-
-                foreach (DataGridViewRow row in PastRecordsGrid.Rows)
+                for (int i = 0; i < PastRecordsGrid.Rows.Count; i++)
                 {
+                    var row = PastRecordsGrid.Rows[i];
                     var timeTrial = row.DataBoundItem as PastRecord;
 
                     ColorGridViewRow(row, timeTrial.Driver.DriverId);
 
                     PastRecords_PointToCurrentSelectedCar(timeTrial.OwnedCarInfo.OwnedCarId);
+                    row.Cells[0].Value = i + 1;
                 }
+
             }
         }
 
@@ -573,6 +595,10 @@ namespace GranTurismoApp
             }
         }
 
+        private void ClearCurrentSession()
+        {
+            CurrentSessionGrid.DataSource = null;
+        }
 
         #endregion TrackTab
 

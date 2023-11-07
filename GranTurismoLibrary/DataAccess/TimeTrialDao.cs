@@ -37,38 +37,39 @@ namespace GranTurismoLibrary.DataAccess
         /// </summary>
         /// <param name="trackId"></param>
         /// <returns></returns>
-        public List<PastRecord> GetTrackTopTen(int trackId)
+        public List<PastRecord> GetTrackTopRecords(int trackId, int topRecordCount)
         {
             var allTimeTrials = GetTrackTimeTrials(trackId).OrderBy(tt => tt.Time).ToList();
-            var topTen = new List<TimeTrialInfo>();
+            var topRecords = new List<TimeTrialInfo>();
 
             foreach (var timeTrial in allTimeTrials)
             {
-                if (topTen.Count != 10)
+                if (topRecords.Count != topRecordCount)
                 {
-                    var carMatch = topTen.FirstOrDefault(tt => tt.OwnedCarInfo.CarId == timeTrial.OwnedCarInfo.CarId);
+                    var carMatch = topRecords.FirstOrDefault(tt => tt.OwnedCarInfo.CarId == timeTrial.OwnedCarInfo.CarId);
 
-                    // Add the record to top 10 only if that car has not been used already
+                    // Add the record only if that car has not been used already
                     if (carMatch == null)
                     {
-                        topTen.Add(timeTrial);
+                        topRecords.Add(timeTrial);
                     }
                 }
             }
 
             var sessionDao = new SessionDao();
-            var topTenPastRecords = new List<PastRecord>();
-            foreach (var top in topTen)
+            var topPastRecords = new List<PastRecord>();
+            foreach (var top in topRecords)
             {
                 var pastRecord = GtMapper.Map<TimeTrialInfo, PastRecord>(top);
                 pastRecord.SessionDateTime = sessionDao.GetSessionDate(pastRecord.SessionId);
 
-                topTenPastRecords.Add(pastRecord);
+                topPastRecords.Add(pastRecord);
             }
 
-            return topTenPastRecords;
+            return topPastRecords;
         }
 
+        
 
 
         // Save
@@ -84,11 +85,53 @@ namespace GranTurismoLibrary.DataAccess
 
 
         // Analysis
-        public TimeSpan GetTimeAwayFromNextBestRecord(TimeSpan time, int trackId)
+        public int GetTrackTopChartPosition(int trackId, TimeSpan time)
+        {
+            var topTenRecords = GetTrackTopRecords(trackId, 10);
+
+            if (topTenRecords.Count > 0)
+            {
+                for (int i = 0; i < topTenRecords.Count; i++)
+                {
+                    var comparisonRecord = topTenRecords[i];
+
+                    if (comparisonRecord != null)
+                    {
+                        if (comparisonRecord.Time > time)
+                        {
+                            return i + 1;
+                        }
+                    }
+                }
+                return topTenRecords.Count + 1;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+        public TimeSpan GetTimeAwayFromTopRecord(int trackId, TimeSpan time)
         {
             var nextBestTrial = new TimeTrialInfo();
 
-            foreach (var ttInfo in GetTrackTopTen(trackId).OrderBy(tt => tt.Time))
+            foreach (var ttInfo in GetTrackTopRecords(trackId, 10).OrderBy(tt => tt.Time))
+            {
+                // Find the first Top Ten which is faster than current time
+                if (time > ttInfo.Time)
+                {
+                    return time - ttInfo.Time;
+                }
+            }
+
+            return new TimeSpan(1, 0, 0, 0);
+        }
+
+        public TimeSpan GetTimeAwayFromNextBestRecord(int trackId, TimeSpan time)
+        {
+            var nextBestTrial = new TimeTrialInfo();
+
+            foreach (var ttInfo in GetTrackTopRecords(trackId, 10).OrderBy(tt => tt.Time).Reverse())
             {
                 // Find the first Top Ten which is faster than current time
                 if (time > ttInfo.Time)

@@ -1,5 +1,7 @@
 ﻿using GranTurismoFramework;
 using GranTurismoFramework.DataTransfer.Simple;
+using GranTurismoLibrary.DataAccess;
+using GranTurismoLibrary.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,7 @@ namespace GranTurismoLibrary.Models
         public int SessionId { get; set; }
 
         public System.TimeSpan Time { get; set; }
-        public string TimeString { get => GetTimeString(); }
+        public string TimeString { get => TimeSpanHelper.GetTimeString3Milliseconds(Time); }
 
         public TrackInfo Track { get; set; }
         public CourseDto Course { get; set; }
@@ -35,19 +37,10 @@ namespace GranTurismoLibrary.Models
         public DriverDto Driver { get; set; }
         public string DriverName { get => Driver.DriverName; }
 
-
-        private string GetTimeString()
-        {
-            var timeSpan = Time.ToString("c");
-
-            if (timeSpan.Length > 8)
-            {
-                return timeSpan.Substring(3, timeSpan.Length - 7);
-            }
-            else
-            {
-                return timeSpan.Substring(3, timeSpan.Length - 3);
-            }
-        }
+        
+        private static TimeTrialDao _ttDao { get => new TimeTrialDao(); }
+        public int ProjectedTopTenRank { get => _ttDao.GetTrackTopChartPosition(Track.TrackId, Time); }
+        public TimeSpan TimeToNextTopRank { get => _ttDao.GetTimeAwayFromNextBestRecord(Track.TrackId, Time); }
+        public string TopRankProjection { get => $"{ProjectedTopTenRank}, +{TimeSpanHelper.GetTimeStringNoMinutes(TimeToNextTopRank)}"; }
     }
 }

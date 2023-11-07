@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="GranTurismoApp.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="GranTurismoApp.exe" version="1.0.0.9" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="Launcher" version="8.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -143,13 +143,13 @@
       <dsig:DigestValue>fWSpjjrFXbfEOJoXSuZETViVneutJQ8tHwvVWDC6IH4=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="GranTurismoApp.dll" size="635904">
+  <file name="GranTurismoApp.dll" size="1138688">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>o916FFFRxRP3FY60fcFz3pZwGVQniYHyEmAHIG1jQa4=</dsig:DigestValue>
+      <dsig:DigestValue>AihH2cnAed4Tv0g7wNQXUFeNRbXU61HGuwH5N9P+o1c=</dsig:DigestValue>
     </hash>
   </file>
   <file name="GranTurismoApp.dll.config" size="1277">
@@ -179,13 +179,13 @@
       <dsig:DigestValue>DSp4MGmJyWjNc/SmtGLu8DcWOcu4eQJIAo4Sy6A1RFo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="GranTurismoLibrary.dll" size="31744">
+  <file name="GranTurismoLibrary.dll" size="33280">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>SjT7KE2UI61Pwz6XBTiLpz14KHK3aio2d5RYu0Vpui8=</dsig:DigestValue>
+      <dsig:DigestValue>UrlaOqMpURyl6DJdH4+KlvfD3fca99SbbMy7ACw4qmA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="it\TimeSpan2.Core.resources.dll" size="5632">
